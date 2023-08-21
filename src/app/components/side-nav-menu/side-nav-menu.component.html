@@ -1,0 +1,24 @@
+<!-- mobile categories  -->
+<mat-drawer-container autosize class="drawer-container">
+  <mat-drawer #drawer mode="side" class="drawer">
+    <div class="drawer-title">
+      <h1>Welcome</h1>
+      <button mat-icon-button (click)="drawer.toggle()">
+        <mat-icon>close</mat-icon>
+      </button>
+    </div>
+    <div class="category-container">
+      <a href="#">Title of Category</a>
+      <a href="#">Title of Category</a>
+      <a href="#">Title of Category</a>
+      <a href="#">Title of Category</a>
+      <a href="#">Title of Category</a>
+    </div>
+  </mat-drawer>
+  <!-- TODO connect it to the menu button in the app-header -->
+  <div class="example-sidenav-content">
+    <button type="button" mat-button (click)="drawer.toggle()">
+      Toggle sidenav
+    </button>
+  </div>
+</mat-drawer-container>

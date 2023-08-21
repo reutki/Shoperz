@@ -14,9 +14,10 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { SideNavMenuComponent } from './components/side-nav-menu/side-nav-menu.component';
 
 @NgModule({
-  declarations: [AppComponent, HeaderComponent],
+  declarations: [AppComponent, HeaderComponent, SideNavMenuComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
