@@ -1,1 +1,28 @@
-<p>header works!</p>
+<mat-toolbar class="header">
+  <button mat-icon-button><mat-icon>menu</mat-icon></button>
+  <img src="../../../assets/logo.svg" alt="company logo" />
+  <div class="search">
+    <input matInput placeholder="Search for products..." />
+    <mat-select class="select" placeholder="All Categories">
+      <mat-option>Item here</mat-option>
+    </mat-select>
+    <button class="search-button" mat-button>
+      <mat-icon>search</mat-icon>
+    </button>
+  </div>
+  <div class="icon-buttons">
+    <button mat-icon-button matTooltip="My Account">
+      <mat-icon>account_circle</mat-icon>
+    </button>
+    <button mat-icon-button matTooltip="Compare">
+      <mat-icon>shuffle</mat-icon>
+    </button>
+    <button mat-icon-button matTooltip="Wishlist">
+      <mat-icon>favorite</mat-icon>
+    </button>
+    <button mat-icon-button matTooltip="My Cart">
+      <mat-icon>shopping_basket</mat-icon>
+    </button>
+    <span>$0.00</span>
+  </div>
+</mat-toolbar>
