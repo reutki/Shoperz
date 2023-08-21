@@ -1,0 +1,9 @@
+<div class="shop-features">
+    <div class="feature" *ngFor="let feature of features">
+        <img [src]="'/assets/' + feature.img" alt="">
+        <div>
+            <h3>{{feature.title}}</h3>
+            <p>{{feature.subtitle}}</p>
+        </div>
+    </div>
+</div>

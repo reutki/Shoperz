@@ -1,0 +1,31 @@
+@import "/src/mixins";
+
+.shop-features {
+  @include flex-center;
+  padding: 20px 0;
+  width: 100%;
+  height: auto;
+}
+.feature {
+  @include flex-center;
+  @include right-border(rgba(0, 0, 0, 0.089), 1px, 5em);
+  padding: 25px 10px;
+  gap: 10px;
+  width: 100%;
+
+  img {
+    @include same-height-images(40px, 1);
+  }
+  div {
+    margin: 0;
+
+    h3{
+        font-weight: 600;
+    }
+
+    p, h3{
+        margin: 0;
+        padding: 0;
+    }
+  }
+}

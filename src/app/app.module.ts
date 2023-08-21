@@ -10,12 +10,14 @@ import { TopHeaderComponent } from './components/top-header/top-header.component
 import {MatSelectModule} from '@angular/material/select';
 import {MatCardModule} from '@angular/material/card';
 import {MatIconModule} from '@angular/material/icon';
+import { ShopFeaturesComponent } from './components/shop-features/shop-features.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    TopHeaderComponent
+    TopHeaderComponent,
+    ShopFeaturesComponent
   ],
   imports: [
     BrowserModule,

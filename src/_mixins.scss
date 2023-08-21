@@ -19,10 +19,10 @@
     }
   }
 
-  @mixin same-height-images {
-    width: 30px;
+  @mixin same-height-images($width: 30px, $opacity: .5) {
+    width: $width;
     aspect-ratio: 3/2;
     object-fit: contain;
-    filter: opacity(0.5);
+    filter: opacity($opacity);
   }
   
