@@ -1,0 +1,40 @@
+<div id="top-header">
+  <div id="lest-side">
+    <div class="decor">
+      <div class="custom-select">
+        <mat-icon>language</mat-icon>
+        <select>
+          <option value="option1">Language</option>
+          <option value="option2">English</option>
+          <option value="option3">Romanian</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="decor">
+      <div class="custom-select">
+        <mat-icon>attach_money</mat-icon>
+        <select>
+          <option value="option1">Currency</option>
+          <option value="option2">Usd</option>
+          <option value="option3">Ron</option>
+          <option value="option4">Mdl</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <div id="right-side">
+    <div class="links-container">
+      <img *ngFor="let link of links" [src]="link" alt="">
+    </div>
+
+    <div class="links-container utils-container">
+        <div class="util" *ngFor="let util of utils">
+            <mat-icon>{{util.img}}</mat-icon>
+            <p>{{util.text}}</p>
+        </div>
+        <p>FAQ</p>
+    </div>
+  </div>
+</div>
