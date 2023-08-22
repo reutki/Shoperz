@@ -8,7 +8,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { TopHeaderComponent } from './components/top-header/top-header.component';
 
 // import {MatSelectModule} from '@angular/material/select';
-import {MatCardModule} from '@angular/material/card';
+import { MatCardModule } from '@angular/material/card';
 // import {MatIconModule} from '@angular/material/icon';
 import { ShopFeaturesComponent } from './components/shop-features/shop-features.component';
 
@@ -22,7 +22,8 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { SideNavMenuComponent } from './components/side-nav-menu/side-nav-menu.component';
 import { CategoriesNavBarComponent } from './components/categories-nav-bar/categories-nav-bar.component';
-
+import { LoginScreenComponent } from './components/login-screen/login-screen.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,7 +31,8 @@ import { CategoriesNavBarComponent } from './components/categories-nav-bar/categ
     TopHeaderComponent,
     ShopFeaturesComponent,
     SideNavMenuComponent,
-    CategoriesNavBarComponent
+    CategoriesNavBarComponent,
+    LoginScreenComponent,
   ],
   imports: [
     BrowserModule,
@@ -44,6 +46,7 @@ import { CategoriesNavBarComponent } from './components/categories-nav-bar/categ
     MatSelectModule,
     MatTooltipModule,
     MatSidenavModule,
+    MatFormFieldModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
