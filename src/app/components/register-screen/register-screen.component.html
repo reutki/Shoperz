@@ -3,8 +3,8 @@
     <img src="../../../assets/logo.svg" alt="company logo" />
   </div>
   <form>
-    <h1>Hello!</h1>
-    <p>Welcome Back</p>
+    <h1>Welcome!</h1>
+    <p>Register and you are good to go!</p>
     <mat-form-field appearance="outline" class="form-container">
       <input matInput placeholder="Email Address" />
       <mat-icon matPrefix class="email-icon">email</mat-icon>
@@ -14,7 +14,11 @@
       <input matInput type="password" placeholder="Password" />
       <mat-icon matPrefix class="lock-icon">lock</mat-icon>
     </mat-form-field>
-    <button mat-flat-button>Login</button>
-    <a href="#">Don't have an account?</a>
+    <mat-form-field appearance="outline" class="form-container">
+      <input matInput type="password" placeholder="Confirm Password" />
+      <mat-icon matPrefix class="lock-icon">lock</mat-icon>
+    </mat-form-field>
+    <button mat-flat-button>Register</button>
+    <a href="#">Allready have an account?</a>
   </form>
 </div>
