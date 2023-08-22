@@ -4,25 +4,29 @@
   align-items: center;
 }
 
-@mixin right-border($color: rgba(0, 0, 0, 0.205), $width: 1px, $height: 100%, $position: 0) {
-    position: relative;
+@mixin right-border(
+  $color: rgba(0, 0, 0, 0.205),
+  $width: 1px,
+  $height: 100%,
+  $position: 0
+) {
+  position: relative;
 
-    &::after {
-      content: "";
-      position: absolute;
-      width: $width;
-      top: 50%;
-      right: $position;
-      transform: translateY(-50%);
-      height: $height;
-      border-right: $width solid $color;
-    }
-  }
-
-  @mixin same-height-images($width: 30px, $opacity: .5) {
+  &::after {
+    content: "";
+    position: absolute;
     width: $width;
-    aspect-ratio: 3/2;
-    object-fit: contain;
-    filter: opacity($opacity);
+    top: 50%;
+    right: $position;
+    transform: translateY(-50%);
+    height: $height;
+    border-right: $width solid $color;
   }
-  
+}
+
+@mixin same-height-images($width: 30px, $opacity: 0.5) {
+  width: $width;
+  aspect-ratio: 3/2;
+  object-fit: contain;
+  filter: opacity($opacity);
+}

@@ -24,6 +24,7 @@ import { CategoriesNavBarComponent } from './components/categories-nav-bar/categ
 import { LoginScreenComponent } from './components/login-screen/login-screen.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { RegisterScreenComponent } from './components/register-screen/register-screen.component';
+import { ProductCardV1Component } from './components/product-card-v1/product-card-v1.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,6 +35,7 @@ import { RegisterScreenComponent } from './components/register-screen/register-s
     CategoriesNavBarComponent,
     LoginScreenComponent,
     RegisterScreenComponent,
+    ProductCardV1Component,
   ],
   imports: [
     BrowserModule,
