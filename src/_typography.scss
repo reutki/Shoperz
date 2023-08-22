@@ -1,224 +1,205 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Rubik:wght@300;400;500;600;700;800;900&display=swap");
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  line-height: normal !important;
+@mixin font-size($size) {
+  font-size: $size;
 }
 
-html,
-body {
-  height: 100%;
-}
-body {
-  font-family: Roboto, "Helvetica Neue", sans-serif;
-}
-
-// bold
-
-.h1-bold {
+@mixin h1-bold() {
   font-size: 36px !important;
   font-weight: 700 !important;
 }
 
-.h2-bold {
+@mixin h2-bold() {
   font-size: 30px !important;
   font-weight: 700 !important;
 }
-
-.h3-bold {
+@mixin h3-bold() {
   font-size: 24px !important;
   font-weight: 700 !important;
 }
-
-.h4-bold {
+@mixin h3-bold() {
+  font-size: 24px !important;
+  font-weight: 700 !important;
+}
+@mixin h4-bold() {
   font-size: 20px !important;
   font-weight: 700 !important;
 }
-
-.h5-bold {
+@mixin h5-bold() {
   font-size: 18px !important;
   font-weight: 700 !important;
 }
-
-.h6-bold {
+@mixin h6-bold() {
   font-size: 16px !important;
   font-weight: 700 !important;
 }
-
-.text1-bold {
+@mixin text1-bold() {
   font-size: 14px !important;
   font-weight: 700 !important;
 }
-
-.text2-bold {
+@mixin text2-bold() {
   font-size: 10px !important;
   font-weight: 700 !important;
 }
-
-.text3-bold {
+@mixin text3-bold() {
   font-size: 12px !important;
   font-weight: 700 !important;
 }
-
-.text4-bold {
+@mixin text4-bold() {
   font-size: 9px !important;
   font-weight: 700 !important;
 }
 
 // medium
 
-.h1-medium {
+@mixin h1-medium() {
   font-size: 36px !important;
   font-weight: 500 !important;
 }
 
-.h2-medium {
+@mixin h2-medium() {
   font-size: 30px !important;
   font-weight: 500 !important;
 }
 
-.h3-medium {
+@mixin h3-medium() {
   font-size: 24px !important;
   font-weight: 500 !important;
 }
 
-.h4-medium {
+@mixin h4-medium() {
   font-size: 20px !important;
   font-weight: 500 !important;
 }
 
-.h5-medium {
+@mixin h5-medium() {
   font-size: 18px !important;
   font-weight: 500 !important;
 }
 
-.h6-medium {
+@mixin h6-medium() {
   font-size: 16px !important;
   font-weight: 500 !important;
 }
 
-.text1-medium {
+@mixin text1-medium() {
   font-size: 14px !important;
   font-weight: 500 !important;
 }
 
-.text2-medium {
+@mixin text2-medium() {
   font-size: 10px !important;
   font-weight: 500 !important;
 }
 
-.text3-medium {
+@mixin text3-medium() {
   font-size: 12px !important;
   font-weight: 500 !important;
 }
 
-.text4-medium {
+@mixin text4-medium() {
   font-size: 9px !important;
   font-weight: 500 !important;
 }
 
 // regular
 
-.h1-regular {
+@mixin h1-regular() {
   font-size: 36px !important;
   font-weight: 400 !important;
 }
 
-.h2-regular {
+@mixin h2-regular() {
   font-size: 30px !important;
   font-weight: 400 !important;
 }
 
-.h3-regular {
+@mixin h3-regular() {
   font-size: 24px !important;
   font-weight: 400 !important;
 }
 
-.h4-regular {
+@mixin h4-regular() {
   font-size: 20px !important;
   font-weight: 400 !important;
 }
 
-.h5-regular {
+@mixin h5-regular() {
   font-size: 18px !important;
   font-weight: 400 !important;
 }
 
-.h6-regular {
+@mixin h6-regular() {
   font-size: 16px !important;
   font-weight: 400 !important;
 }
 
-.text1-regular {
+@mixin text1-regular() {
   font-size: 14px !important;
   font-weight: 400 !important;
 }
 
-.text2-regular {
+@mixin text2-regular() {
   font-size: 10px !important;
   font-weight: 400 !important;
 }
 
-.text3-regular {
+@mixin text3-regular() {
   font-size: 12px !important;
   font-weight: 400 !important;
 }
 
-.text4-regular {
+@mixin text4-regular() {
   font-size: 9px !important;
   font-weight: 400 !important;
 }
 
 // light
 
-.h1-light {
+@mixin h1-light() {
   font-size: 36px !important;
   font-weight: 300 !important;
 }
 
-.h2-light {
+@mixin h2-light() {
   font-size: 30px !important;
   font-weight: 300 !important;
 }
 
-.h3-light {
+@mixin h3-light() {
   font-size: 24px !important;
   font-weight: 300 !important;
 }
 
-.h4-light {
+@mixin h4-light() {
   font-size: 20px !important;
   font-weight: 300 !important;
 }
 
-.h5-light {
+@mixin h5-light() {
   font-size: 18px !important;
   font-weight: 300 !important;
 }
 
-.h6-light {
+@mixin h6-light() {
   font-size: 16px !important;
   font-weight: 300 !important;
 }
 
-.text1-light {
+@mixin text1-light() {
   font-size: 14px !important;
   font-weight: 300 !important;
 }
 
-.text2-light {
+@mixin text2-light() {
   font-size: 10px !important;
   font-weight: 300 !important;
 }
 
-.text3-light {
+@mixin text3-light() {
   font-size: 12px !important;
   font-weight: 300 !important;
 }
 
-.text4-light {
+@mixin text4-light() {
   font-size: 9px !important;
   font-weight: 300 !important;
 }

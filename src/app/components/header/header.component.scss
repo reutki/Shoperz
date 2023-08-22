@@ -1,44 +1,47 @@
-.header{
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+@import "/src/typography";
+
+.header {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-.search{
-    width: 40%;
-    border: 1px solid #319dff;
-    border-radius: 20px;
-    overflow: hidden;
-    display: flex;
-    padding: 0 0 0 10px;
-    align-items: center;
+.search {
+  width: 40%;
+  border: 1px solid #319dff;
+  border-radius: 20px;
+  overflow: hidden;
+  display: flex;
+  padding: 0 0 0 10px;
+  align-items: center;
 }
-.search>input{
-    flex: 1;
- border: none; 
+.search > input {
+  flex: 1;
+  border: none;
   outline: none;
   padding: 10px;
   background: none;
 }
-.search .select{
-max-width: 30%;
-padding: 0 10px;
-position: relative;
-
+.search .select {
+  max-width: 30%;
+  padding: 0 10px;
+  position: relative;
 }
-.select::before{
-    content: '';
-    height: 100%;
-    position: absolute;
-    left:0;
-    top: 0;
-    width: 1px;
-    background-color: #eef0f4;
-    z-index: 1;
-    
+.select::before {
+  content: "";
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 1px;
+  background-color: #eef0f4;
+  z-index: 1;
 }
-.search .search-button{
-    color:white;
-    background-color: #319dff;
-    justify-self: flex-end ;
+.search .search-button {
+  color: white;
+  background-color: #319dff;
+  justify-self: flex-end;
+}
+h1 {
+  @include h1-bold;
 }
