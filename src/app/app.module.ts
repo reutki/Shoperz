@@ -11,7 +11,6 @@ import { TopHeaderComponent } from './components/top-header/top-header.component
 import { MatCardModule } from '@angular/material/card';
 // import {MatIconModule} from '@angular/material/icon';
 import { ShopFeaturesComponent } from './components/shop-features/shop-features.component';
-
 //material imports
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -24,6 +23,7 @@ import { SideNavMenuComponent } from './components/side-nav-menu/side-nav-menu.c
 import { CategoriesNavBarComponent } from './components/categories-nav-bar/categories-nav-bar.component';
 import { LoginScreenComponent } from './components/login-screen/login-screen.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { RegisterScreenComponent } from './components/register-screen/register-screen.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,6 +33,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     SideNavMenuComponent,
     CategoriesNavBarComponent,
     LoginScreenComponent,
+    RegisterScreenComponent,
   ],
   imports: [
     BrowserModule,
