@@ -25,6 +25,7 @@ import { LoginScreenComponent } from './components/login-screen/login-screen.com
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { RegisterScreenComponent } from './components/register-screen/register-screen.component';
 import { ProductCardV1Component } from './components/product-card-v1/product-card-v1.component';
+import { BundleCardComponent } from './components/bundle-card/bundle-card.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,6 +37,7 @@ import { ProductCardV1Component } from './components/product-card-v1/product-car
     LoginScreenComponent,
     RegisterScreenComponent,
     ProductCardV1Component,
+    BundleCardComponent,
   ],
   imports: [
     BrowserModule,
