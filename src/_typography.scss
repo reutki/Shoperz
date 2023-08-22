@@ -2,6 +2,12 @@
   font-size: $size;
 }
 
+@mixin link-as-text() {
+  color: inherit;
+  text-decoration: none;
+  cursor: auto;
+}
+
 @mixin h1-bold() {
   font-size: 36px !important;
   font-weight: 700 !important;

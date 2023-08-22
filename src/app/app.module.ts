@@ -24,6 +24,8 @@ import { SideNavMenuComponent } from './components/side-nav-menu/side-nav-menu.c
 import { CategoriesNavBarComponent } from './components/categories-nav-bar/categories-nav-bar.component';
 import { LoginScreenComponent } from './components/login-screen/login-screen.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { FooterComponent } from './components/footer/footer.component';
+import { ListComponent } from './components/list/list.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,6 +35,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     SideNavMenuComponent,
     CategoriesNavBarComponent,
     LoginScreenComponent,
+    FooterComponent,
+    ListComponent,
   ],
   imports: [
     BrowserModule,

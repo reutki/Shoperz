@@ -1,0 +1,9 @@
+<h1 class="h6-medium">{{ header }}</h1>
+<div class="list">
+  <a
+    *ngFor="let item of list"
+    [href]="'/' + item"
+    class="link-as-text text1-regular"
+    >{{ item }}</a
+  >
+</div>
