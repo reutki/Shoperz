@@ -1,0 +1,30 @@
+.categories-nav {
+  background-color: #319dff;
+  color: white;
+
+  display: flex;
+  justify-content: center;
+  padding: 10px 0;
+}
+.container-categories {
+  display: flex;
+  justify-content: center;
+  width: 80%;
+  transition: 0.5s;
+  a {
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+    border-left: 1px solid grey;
+    border-right: 1px solid grey;
+    text-align: center;
+    &:hover {
+      text-decoration: underline;
+      color: #ffff;
+    }
+  }
+}
+
+.category {
+  flex: 1;
+}
