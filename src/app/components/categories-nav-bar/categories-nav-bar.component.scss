@@ -1,10 +1,12 @@
+@import "/src/mixins";
+
 .categories-nav {
   background-color: #319dff;
   color: white;
 
   display: flex;
   justify-content: center;
-  padding: 10px 0;
+  padding: 0;
 }
 .container-categories {
   display: flex;
@@ -13,11 +15,11 @@
   transition: 0.5s;
   a {
     text-decoration: none;
+    padding: 10px 0;
     color: inherit;
     cursor: pointer;
-    border-left: 1px solid grey;
-    border-right: 1px solid grey;
     text-align: center;
+    @include right-border();
     &:hover {
       text-decoration: underline;
       color: #ffff;

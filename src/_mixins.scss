@@ -4,7 +4,7 @@
   align-items: center;
 }
 
-@mixin right-border($color: rgba(0, 0, 0, 0.205), $width: 1px, $height: 1.3em, $position: 0) {
+@mixin right-border($color: rgba(0, 0, 0, 0.205), $width: 1px, $height: 100%, $position: 0) {
     position: relative;
 
     &::after {
