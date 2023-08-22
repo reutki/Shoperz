@@ -1,0 +1,38 @@
+@import "/src/imports";
+
+.root {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  padding: 20px 0;
+}
+
+.row {
+  border: 1px solid rebeccapurple;
+  @include flex-center;
+  overflow: hidden;
+
+  .mid {
+    @include flex-gap(20px, column);
+    height: 100%;
+    width: 100%;
+    justify-content: start;
+
+    h1 {
+        color: $primary-700;
+    }
+  }
+}
+
+.img-container {
+  width: 80%;
+  height: auto;
+  border: 1px solid rebeccapurple;
+  @include flex-center;
+  overflow: hidden;
+  padding: 5px;
+
+  img {
+    width: 100%;
+    height: inherit;
+  }
+}

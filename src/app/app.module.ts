@@ -28,6 +28,10 @@ import { ListComponent } from './components/list/list.component';
 import { RegisterScreenComponent } from './components/register-screen/register-screen.component';
 import { ProductCardV1Component } from './components/product-card-v1/product-card-v1.component';
 import { BundleCardComponent } from './components/bundle-card/bundle-card.component';
+
+import { StarRatingModule } from 'angular-star-rating';
+import { ProductCardListViewV1Component } from './component/product-card-list-view-v1/product-card-list-view-v1.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -42,6 +46,7 @@ import { BundleCardComponent } from './components/bundle-card/bundle-card.compon
     RegisterScreenComponent,
     ProductCardV1Component,
     BundleCardComponent,
+    ProductCardListViewV1Component,
   ],
   imports: [
     BrowserModule,
@@ -56,6 +61,8 @@ import { BundleCardComponent } from './components/bundle-card/bundle-card.compon
     MatTooltipModule,
     MatSidenavModule,
     MatFormFieldModule,
+    StarRatingModule.forRoot()
+
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -1,4 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Rubik:wght@300;400;500;600;700;800;900&display=swap");
+@import '../node_modules/css-star-rating/scss/star-rating';
+
 * {
   margin: 0;
   padding: 0;
@@ -58,12 +60,12 @@ body {
 }
 
 .text2-bold {
-  font-size: 10px !important;
+  font-size: 12px !important;
   font-weight: 700 !important;
 }
 
 .text3-bold {
-  font-size: 12px !important;
+  font-size: 10px !important;
   font-weight: 700 !important;
 }
 
@@ -110,12 +112,12 @@ body {
 }
 
 .text2-medium {
-  font-size: 10px !important;
+  font-size: 12px !important;
   font-weight: 500 !important;
 }
 
 .text3-medium {
-  font-size: 12px !important;
+  font-size: 10px !important;
   font-weight: 500 !important;
 }
 
@@ -162,12 +164,12 @@ body {
 }
 
 .text2-regular {
-  font-size: 10px !important;
+  font-size: 12px !important;
   font-weight: 400 !important;
 }
 
 .text3-regular {
-  font-size: 12px !important;
+  font-size: 10px !important;
   font-weight: 400 !important;
 }
 
@@ -214,12 +216,12 @@ body {
 }
 
 .text2-light {
-  font-size: 10px !important;
+  font-size: 12px !important;
   font-weight: 300 !important;
 }
 
 .text3-light {
-  font-size: 12px !important;
+  font-size: 10px !important;
   font-weight: 300 !important;
 }
 
