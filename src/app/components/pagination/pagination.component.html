@@ -1,0 +1,26 @@
+<div class="pagination-container">
+  <pagination-controls
+    class="pagination"
+    previousLabel="<"
+    nextLabel=">"
+    [responsive]="true"
+    (pageChange)="handlePageChange($event)"
+  >
+    <div
+      class="page-circle"
+      *ngFor="
+        let page of pages
+          | paginate
+            : {
+                itemsPerPage: itemsPerPage,
+                currentPage: activePage,
+                totalItems: length
+              }
+      "
+      [class.active]="page === activePage"
+      (click)="handlePageChange(page)"
+    >
+      {{ page }}
+    </div>
+  </pagination-controls>
+</div>

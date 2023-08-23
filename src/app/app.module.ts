@@ -12,6 +12,8 @@ import { MatCardModule } from '@angular/material/card';
 // import {MatIconModule} from '@angular/material/icon';
 import { ShopFeaturesComponent } from './components/shop-features/shop-features.component';
 //material imports
+import { NgxPaginationModule } from 'ngx-pagination';
+import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatInputModule } from '@angular/material/input';
@@ -32,6 +34,7 @@ import { ProductCardV2Component } from './components/product-card-v2/product-car
 import { RatingCardComponent } from './components/rating-card/rating-card.component';
 import { StarRatingModule } from 'angular-star-rating';
 import { ProductCardListViewV1Component } from './components/product-card-list-view-v1/product-card-list-view-v1.component';
+import { PaginationComponent } from './components/pagination/pagination.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -49,6 +52,7 @@ import { ProductCardListViewV1Component } from './components/product-card-list-v
     ProductCardV2Component,
     RatingCardComponent,
     ProductCardListViewV1Component,
+    PaginationComponent,
   ],
   imports: [
     BrowserModule,
@@ -64,6 +68,8 @@ import { ProductCardListViewV1Component } from './components/product-card-list-v
     MatSidenavModule,
     MatFormFieldModule,
     StarRatingModule.forRoot(),
+    MatPaginatorModule,
+    NgxPaginationModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
