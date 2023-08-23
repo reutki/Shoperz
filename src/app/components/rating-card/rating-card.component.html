@@ -1,0 +1,14 @@
+<mat-card>
+  <h6>Rating</h6>
+  <div class="checkbox-container">
+    <div
+      class="checkbox-item"
+      (click)="toggleCheckbox($event, i)"
+      *ngFor="let state of checkboxStates; let i = index"
+    >
+      <input id="checkbox" type="checkbox" [checked]="state" />
+      <star-rating [readOnly]="true" [rating]="5 - i"></star-rating>
+      <p>(2000)</p>
+    </div>
+  </div>
+</mat-card>

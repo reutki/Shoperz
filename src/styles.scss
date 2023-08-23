@@ -239,15 +239,10 @@ body {
 
   padding: 0 !important;
 }
-.rating .color-negative .star-container .star {
-  svg {
-    fill: #ffc045 !important;
-  }
-  i {
-    color: #ffc045 !important;
-  }
+.rating.color-negative .star-container .star svg {
+  fill: #ffc045 !important;
+  color: #ffc045 !important;
 }
-
 .rating.color-ok .star-container .star {
   svg {
     fill: #ffc045 !important;

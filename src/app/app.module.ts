@@ -13,7 +13,6 @@ import { MatCardModule } from '@angular/material/card';
 import { ShopFeaturesComponent } from './components/shop-features/shop-features.component';
 //material imports
 import { MatIconModule } from '@angular/material/icon';
-import { StarRatingModule } from 'angular-star-rating';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
@@ -29,14 +28,10 @@ import { ListComponent } from './components/list/list.component';
 import { RegisterScreenComponent } from './components/register-screen/register-screen.component';
 import { ProductCardV1Component } from './components/product-card-v1/product-card-v1.component';
 import { BundleCardComponent } from './components/bundle-card/bundle-card.component';
-<<<<<<< HEAD
 import { ProductCardV2Component } from './components/product-card-v2/product-card-v2.component';
-=======
-
+import { RatingCardComponent } from './components/rating-card/rating-card.component';
 import { StarRatingModule } from 'angular-star-rating';
-import { ProductCardListViewV1Component } from './component/product-card-list-view-v1/product-card-list-view-v1.component';
-
->>>>>>> 772d74b013510effafe2210158a57bc3de4cebcf
+import { ProductCardListViewV1Component } from './components/product-card-list-view-v1/product-card-list-view-v1.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -51,11 +46,9 @@ import { ProductCardListViewV1Component } from './component/product-card-list-vi
     RegisterScreenComponent,
     ProductCardV1Component,
     BundleCardComponent,
-<<<<<<< HEAD
     ProductCardV2Component,
-=======
+    RatingCardComponent,
     ProductCardListViewV1Component,
->>>>>>> 772d74b013510effafe2210158a57bc3de4cebcf
   ],
   imports: [
     BrowserModule,
@@ -70,12 +63,7 @@ import { ProductCardListViewV1Component } from './component/product-card-list-vi
     MatTooltipModule,
     MatSidenavModule,
     MatFormFieldModule,
-<<<<<<< HEAD
     StarRatingModule.forRoot(),
-=======
-    StarRatingModule.forRoot()
-
->>>>>>> 772d74b013510effafe2210158a57bc3de4cebcf
   ],
   providers: [],
   bootstrap: [AppComponent],
