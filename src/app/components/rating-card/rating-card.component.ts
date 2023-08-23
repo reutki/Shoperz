@@ -10,6 +10,7 @@ export class RatingCardComponent {
 
   toggleCheckbox(event: Event, index: number) {
     event.stopPropagation();
+    event.preventDefault();
     this.checkboxStates[index] = !this.checkboxStates[index];
   }
 }
