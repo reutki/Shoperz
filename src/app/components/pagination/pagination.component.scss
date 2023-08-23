@@ -1,0 +1,95 @@
+@import "/src/imports";
+.pagination-container {
+  @include text1-regular;
+
+  display: flex;
+  width: 100%;
+  background-color: white;
+  padding: 12px 20px;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.page-circle {
+  display: flex;
+  background-color: $gray-100;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  color: $gray-700;
+  cursor: pointer;
+  margin: 0 5px;
+  transition: background-color 0.3s ease;
+
+  &.active {
+    background-color: $primary-600;
+    color: white;
+  }
+}
+.pagination ::ng-deep .ngx-pagination {
+  display: flex;
+  text-align: center;
+  ::after {
+    content: "" !important;
+  }
+  ::before {
+    content: "" !important;
+  }
+  a {
+    padding: 0 !important;
+  }
+}
+
+.pagination ::ng-deep .ngx-pagination li {
+  background-color: $gray-100;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  color: $gray-700;
+  transition: background-color 0.3s ease;
+  margin-right: 10px;
+  :hover {
+    border-radius: 50%;
+  }
+
+  > * {
+    display: grid !important;
+    align-items: center;
+    padding: 0;
+    height: 100%;
+    > span {
+      align-self: center;
+
+      justify-self: center;
+    }
+  }
+  &.pagination-previous {
+    display: grid;
+    text-align: center;
+    justify-content: center;
+    background: transparent;
+    font-weight: 900;
+
+    a {
+      padding: 10px !important;
+    }
+  }
+  &.pagination-next {
+    display: grid;
+    text-align: center;
+    justify-content: center;
+    background: transparent;
+    font-weight: 900;
+  }
+
+  a {
+    padding: 10px !important;
+  }
+
+  &.current {
+    background-color: $primary-600;
+    color: white;
+  }
+}

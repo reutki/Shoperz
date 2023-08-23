@@ -21,7 +21,7 @@
     @include flex-gap(20px, column);
     height: 100%;
     width: 100%;
-    justify-content: start;
+    justify-content: flex-start;
 
     h1 {
       color: $primary-700;
