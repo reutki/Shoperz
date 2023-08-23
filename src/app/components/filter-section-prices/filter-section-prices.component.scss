@@ -1,0 +1,66 @@
+@import "/src/imports";
+
+.root {
+  flex-direction: column;
+  color: $gray-700;
+  width: 272px;
+  padding: 20px;
+  border-radius: 5%;
+  @include text1-regular;
+
+  h2 {
+    color: $gray-900;
+    @include h6-medium;
+  }
+
+  .checkbox-container {
+    @include flex-gap(20px, column);
+    padding-bottom: 20px;
+    width: 100%;
+    border-bottom: 1px solid $gray-200;
+
+    .checkbox-item {
+      @include flex-gap(6px);
+      align-items: center;
+
+      p {
+        margin: 0;
+        padding: 0;
+      }
+    }
+
+    .numeric-range {
+      @include flex-gap(6px);
+
+      .count {
+        color: $gray-400;
+        @include text1-regular;
+        margin: 0 !important;
+      }
+    }
+  }
+
+  p {
+    margin: 0;
+    padding: 0;
+  }
+
+  .flex {
+    @include flex-gap(6px);
+    padding: 20px 0;
+  }
+
+  .x {
+    mat-slider {
+      scale: 0.7;
+      width: 140%;
+      transform: translate(-24%, 0);
+      filter: hue-rotate(333deg) saturate(3) brightness(2);
+    }
+  }
+
+  .disable-ripple {
+    pointer-events: none;
+    user-select: none;
+  }
+}

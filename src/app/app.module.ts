@@ -32,6 +32,8 @@ import { ProductCardV2Component } from './components/product-card-v2/product-car
 import { RatingCardComponent } from './components/rating-card/rating-card.component';
 import { StarRatingModule } from 'angular-star-rating';
 import { ProductCardListViewV1Component } from './components/product-card-list-view-v1/product-card-list-view-v1.component';
+import { FilterSectionPricesComponent } from './components/filter-section-prices/filter-section-prices.component';
+import {MatSliderModule} from '@angular/material/slider';
 @NgModule({
   declarations: [
     AppComponent,
@@ -49,6 +51,7 @@ import { ProductCardListViewV1Component } from './components/product-card-list-v
     ProductCardV2Component,
     RatingCardComponent,
     ProductCardListViewV1Component,
+    FilterSectionPricesComponent,
   ],
   imports: [
     BrowserModule,
@@ -63,6 +66,7 @@ import { ProductCardListViewV1Component } from './components/product-card-list-v
     MatTooltipModule,
     MatSidenavModule,
     MatFormFieldModule,
+    MatSliderModule,
     StarRatingModule.forRoot(),
   ],
   providers: [],
