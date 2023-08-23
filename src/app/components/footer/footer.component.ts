@@ -13,28 +13,7 @@ export class FooterComponent {
     'https://cdn-icons-png.flaticon.com/512/3128/3128219.png',
     'https://cdn-icons-png.flaticon.com/512/152/152810.png',
   ];
-  categories = [
-    'smartphones',
-    'laptops',
-    'lighting',
-    'skincare',
-    'groceries',
-    'home-decoration',
-    'furniture',
-    'tops',
-    'womens-dresses',
-    'womens-shoes',
-    'mens-shirts',
-    'mens-shoes',
-    'mens-watches',
-    'womens-watches',
-    'womens-bags',
-    'womens-jewellery',
-    'sunglasses',
-    'automotive',
-    'motorcycle',
-    'fragrances',
-  ];
+  
   usefulLinks = [
     'Useful Links',
     'About',
@@ -46,6 +25,7 @@ export class FooterComponent {
     'Privacy Policy',
     'Cookie Policy',
   ];
+  
   customerService = [
     'My Account',
     'My Cart',
@@ -53,5 +33,34 @@ export class FooterComponent {
     'Returns & Exchanges',
     'Repair Services',
     'Support',
+  ];
+
+  general = [
+    'lighting',
+    'skincare',
+    'groceries',
+    'home-decoration',
+    'furniture',
+    'laptops',
+    'smartphones',
+    'automotive',
+    'motorcycle',
+  ];
+
+  accessories = [
+    'womens-bags',
+    'womens-jewellery',
+    'womens-watches',
+    'sunglasses',
+    'mens-watches',
+    'fragrances',
+  ];
+
+  clothing = [
+    'tops',
+    'womens-dresses',
+    'womens-shoes',
+    'mens-shirts',
+    'mens-shoes',
   ];
 }

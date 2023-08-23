@@ -5,15 +5,12 @@
 footer {
   display: grid;
   margin: 0 auto;
-  grid-template-columns: repeat(4, max-content);
+  grid-template-columns: repeat(6, max-content);
   padding: 20px 0 40px;
   justify-content: center;
   grid-gap: 20px;
 }
 
-.info-column,
-app-list {
-}
 .info-column {
   .logo {
     margin: 0 -15px !important;
@@ -39,5 +36,37 @@ app-list {
 
   img {
     @include same-height-images;
+  }
+}
+
+@media (max-width: 700px) {
+  footer {
+    display: grid;
+    grid-template-columns: 1fr 1fr; 
+    padding: 20px 0 40px 15px;
+    justify-content: center;
+    grid-gap: 20px;
+  }
+
+  .info-column {
+    grid-column: span 2; 
+  }
+}
+
+@media (min-width: 701px) {
+  footer {
+    grid-template-columns: repeat(4, max-content);
+  }
+}
+
+@media (min-width: 1024px) and (max-width: 1100px) {
+  footer {
+    grid-template-columns: repeat(5, max-content);
+  }
+}
+
+@media (min-width: 1101px) {
+  footer {
+    grid-template-columns: repeat(6, max-content);
   }
 }

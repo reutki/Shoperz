@@ -1,8 +1,6 @@
-<footer>
+<!-- <footer>
   <div class="info-column">
-    <!-- <div class="img-container"> -->
     <img class="logo" src="../../../assets/logo.svg" alt="company logo" />
-    <!-- </div> -->
     <h1>Headquarters</h1>
     <p>Presei Square No45, Bucharest - 099455</p>
     <h1>Email</h1>
@@ -17,6 +15,28 @@
     </div>
   </div>
   <app-list header="Categories" [list]="categories"></app-list>
+  <app-list header="Useful Links" [list]="usefulLinks"></app-list>
+  <app-list header="Customer Service" [list]="customerService"></app-list>
+</footer> -->
+<footer>
+  <div class="info-column">
+    <img class="logo" src="../../../assets/logo.svg" alt="company logo" />
+    <h1>Headquarters</h1>
+    <p>Presei Square No45, Bucharest - 099455</p>
+    <h1>Email</h1>
+    <p>contact@shoperz.com</p>
+    <h1>Telephone</h1>
+    <p>(+40) 987 123 654</p>
+
+    <div>
+      <div class="links-container">
+        <img *ngFor="let link of links" [src]="link" alt="" />
+      </div>
+    </div>
+  </div>
+  <app-list header="General" [list]="general"></app-list>
+  <app-list header="Accessories" [list]="accessories"></app-list>
+  <app-list header="Clothing" [list]="clothing"></app-list>
   <app-list header="Useful Links" [list]="usefulLinks"></app-list>
   <app-list header="Customer Service" [list]="customerService"></app-list>
 </footer>
