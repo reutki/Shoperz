@@ -29,7 +29,14 @@ import { ListComponent } from './components/list/list.component';
 import { RegisterScreenComponent } from './components/register-screen/register-screen.component';
 import { ProductCardV1Component } from './components/product-card-v1/product-card-v1.component';
 import { BundleCardComponent } from './components/bundle-card/bundle-card.component';
+<<<<<<< HEAD
 import { ProductCardV2Component } from './components/product-card-v2/product-card-v2.component';
+=======
+
+import { StarRatingModule } from 'angular-star-rating';
+import { ProductCardListViewV1Component } from './component/product-card-list-view-v1/product-card-list-view-v1.component';
+
+>>>>>>> 772d74b013510effafe2210158a57bc3de4cebcf
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,7 +51,11 @@ import { ProductCardV2Component } from './components/product-card-v2/product-car
     RegisterScreenComponent,
     ProductCardV1Component,
     BundleCardComponent,
+<<<<<<< HEAD
     ProductCardV2Component,
+=======
+    ProductCardListViewV1Component,
+>>>>>>> 772d74b013510effafe2210158a57bc3de4cebcf
   ],
   imports: [
     BrowserModule,
@@ -59,7 +70,12 @@ import { ProductCardV2Component } from './components/product-card-v2/product-car
     MatTooltipModule,
     MatSidenavModule,
     MatFormFieldModule,
+<<<<<<< HEAD
     StarRatingModule.forRoot(),
+=======
+    StarRatingModule.forRoot()
+
+>>>>>>> 772d74b013510effafe2210158a57bc3de4cebcf
   ],
   providers: [],
   bootstrap: [AppComponent],

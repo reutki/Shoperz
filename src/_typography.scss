@@ -42,11 +42,11 @@
   font-weight: 700 !important;
 }
 @mixin text2-bold() {
-  font-size: 10px !important;
+  font-size: 12px !important;
   font-weight: 700 !important;
 }
 @mixin text3-bold() {
-  font-size: 12px !important;
+  font-size: 10px !important;
   font-weight: 700 !important;
 }
 @mixin text4-bold() {
@@ -92,12 +92,12 @@
 }
 
 @mixin text2-medium() {
-  font-size: 10px !important;
+  font-size: 12px !important;
   font-weight: 500 !important;
 }
 
 @mixin text3-medium() {
-  font-size: 12px !important;
+  font-size: 10px !important;
   font-weight: 500 !important;
 }
 
@@ -144,12 +144,12 @@
 }
 
 @mixin text2-regular() {
-  font-size: 10px !important;
+  font-size: 12px !important;
   font-weight: 400 !important;
 }
 
 @mixin text3-regular() {
-  font-size: 12px !important;
+  font-size: 10px !important;
   font-weight: 400 !important;
 }
 
@@ -196,12 +196,12 @@
 }
 
 @mixin text2-light() {
-  font-size: 10px !important;
+  font-size: 12px !important;
   font-weight: 300 !important;
 }
 
 @mixin text3-light() {
-  font-size: 12px !important;
+  font-size: 10px !important;
   font-weight: 300 !important;
 }
 
