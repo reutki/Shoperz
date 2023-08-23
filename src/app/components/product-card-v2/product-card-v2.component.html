@@ -1,0 +1,29 @@
+<mat-card>
+  <div class="image-container">
+    <img src="../../../assets/guard.svg" alt="" />
+  </div>
+  <div class="data-container">
+    <p>Product name here</p>
+    <star-rating [starType]="'svg'" [rating]="5"></star-rating>
+    <h5>$1200.00</h5>
+    <div class="button-container">
+      <button
+        matTooltipPosition="left"
+        mat-icon-button
+        matTooltip="Add to cart"
+      >
+        <img
+          src="../../../assets/bag-s.svg"
+          matTooltip="Add to cart"
+          alt="add to cart"
+        />
+      </button>
+      <button matTooltipPosition="left" mat-icon-button matTooltip="Whishlist">
+        <img src="../../../assets/favorite-s.svg" alt="add to cart" />
+      </button>
+      <button matTooltipPosition="left" mat-icon-button matTooltip="Compare">
+        <img src="../../../assets/compare-s.svg" alt="add to cart" />
+      </button>
+    </div>
+  </div>
+</mat-card>

@@ -13,6 +13,7 @@ import { MatCardModule } from '@angular/material/card';
 import { ShopFeaturesComponent } from './components/shop-features/shop-features.component';
 //material imports
 import { MatIconModule } from '@angular/material/icon';
+import { StarRatingModule } from 'angular-star-rating';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
@@ -28,6 +29,7 @@ import { ListComponent } from './components/list/list.component';
 import { RegisterScreenComponent } from './components/register-screen/register-screen.component';
 import { ProductCardV1Component } from './components/product-card-v1/product-card-v1.component';
 import { BundleCardComponent } from './components/bundle-card/bundle-card.component';
+import { ProductCardV2Component } from './components/product-card-v2/product-card-v2.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -42,6 +44,7 @@ import { BundleCardComponent } from './components/bundle-card/bundle-card.compon
     RegisterScreenComponent,
     ProductCardV1Component,
     BundleCardComponent,
+    ProductCardV2Component,
   ],
   imports: [
     BrowserModule,
@@ -56,6 +59,7 @@ import { BundleCardComponent } from './components/bundle-card/bundle-card.compon
     MatTooltipModule,
     MatSidenavModule,
     MatFormFieldModule,
+    StarRatingModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent],

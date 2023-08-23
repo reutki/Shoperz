@@ -1,44 +1,34 @@
-@import "/src/typography";
-@import "/src/variables";
 @import "/src/mixins";
+@import "/src/variables";
+@import "/src/typography";
 
 mat-card {
-  width: 100%;
-  height: 100%;
   padding: 20px;
   overflow: hidden;
-}
-
-mat-card:hover .button-container {
-  transform: translateY(0%);
-}
-
-h5 {
-  @include h5-bold;
-  color: $gray-900;
-}
-
-mat-card-subtitle {
-  @include text3-regular;
-  color: $gray-700;
-}
-
-mat-card-title {
-  @include text1-medium;
-  color: $primary-700;
-}
-
-mat-card-footer {
+  max-width: 427px;
   display: flex;
-  position: relative;
+  flex-direction: row;
+  p {
+    @include text1-medium();
+    color: $primary-700;
+  }
+  h5 {
+    @include h5-bold();
+    color: $gray-900;
+    margin-top: 25px;
+  }
 }
-
-mat-card-content {
+.image-container {
+  flex: 0.5;
   img {
     @include same-height-images(100%, 1);
     margin: 20px 0;
   }
-  padding: 20px;
+}
+.data-container {
+  flex: 1;
+  padding-right: 40px;
+  justify-items: start;
 }
 
 .button-container {
@@ -63,10 +53,13 @@ mat-card-content {
 
   :nth-child(2) {
     background-color: $danger-600;
-    margin: 10px 0;
+    margin: 3px 0;
   }
 
   :nth-child(3) {
     background-color: $info-600;
   }
+}
+mat-card:hover .button-container {
+  transform: translateY(0%);
 }

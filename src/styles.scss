@@ -1,4 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Rubik:wght@300;400;500;600;700;800;900&display=swap");
+@import "../node_modules/css-star-rating/scss/star-rating";
+
 * {
   margin: 0;
   padding: 0;
@@ -226,4 +228,49 @@ body {
 .text4-light {
   font-size: 9px !important;
   font-weight: 300 !important;
+}
+
+// overriding the styles of the star rating
+.rating {
+  max-height: 16px;
+  margin-left: -5px !important;
+  justify-content: inherit !important;
+  cursor: pointer;
+
+  padding: 0 !important;
+}
+.rating .color-negative .star-container .star {
+  svg {
+    fill: #ffc045 !important;
+  }
+  i {
+    color: #ffc045 !important;
+  }
+}
+
+.rating.color-ok .star-container .star {
+  svg {
+    fill: #ffc045 !important;
+  }
+  i {
+    color: #ffc045 !important;
+  }
+}
+
+.rating.color-positive .star-container .star {
+  svg {
+    fill: #ffc045 !important;
+  }
+  i {
+    color: #ffc045 !important;
+  }
+}
+
+.rating.color-default .star-container .star {
+  svg {
+    fill: #ffc045 !important;
+  }
+  i {
+    color: #ffc045 !important;
+  }
 }
