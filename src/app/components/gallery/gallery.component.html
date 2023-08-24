@@ -1,0 +1,85 @@
+<div class="root">
+  <gallery [items]="images"></gallery>
+
+  <div class="mid">
+    <p class="text2-m">{{ product.category }}</p>
+    <h1>{{ product.brand + " " + product.title }}</h1>
+    <div class="rating-row">
+      <star-rating [starType]="'svg'" [rating]="product.rating"></star-rating>
+      <p class="text1-regular">{{ product.rating }}</p>
+    </div>
+    <ul>
+      <li>{{ product.description }}</li>
+    </ul>
+  </div>
+
+  <div class="row">
+    <div class="delivery">
+      <p>Delivery:</p>
+      <p>Free</p>
+    </div>
+    <div class="delivery">
+      <p>Stock:</p>
+      <p>26</p>
+    </div>
+    <div class="button-container">
+      <button
+        disableRipple
+        matTooltipPosition="left"
+        mat-button
+        matTooltip="Compare"
+      >
+        <div class="btn-center">
+          <span id="x">Compare</span>
+          <img src="../../../assets/compare-s.svg" alt="add to cart" />
+        </div>
+      </button>
+      <button mat-button disableRipple matTooltip="Whishlist">
+        <div class="btn-center">
+          <span id="x">Compare</span>
+          <img src="../../../assets/favorite-s.svg" alt="add to cart" />
+        </div>
+      </button>
+    </div>
+    <div class="price">
+      <h1 class="h1-medium" [ngClass]="{ 'red-text': product.discountPercentage }">
+        {{ formattedPrice }}
+      </h1>
+      <p *ngIf="product.discountPercentage">
+        {{
+          (product.price / (1 - product.discountPercentage / 100)).toFixed(2)
+        }}
+      </p>
+    </div>
+
+    <div class="button-container">
+      <div
+        class="btn"
+        disableRipple
+        matTooltipPosition="left"
+        matTooltip="Count"
+      >
+        <div class="btn-center">
+            <button (click)="modifyProductCount('-')">−</button>
+            <span id="mid-span">{{productCount}}</span>
+            <button (click)="modifyProductCount('+')">+</button>
+        </div>
+      </div>
+    </div>
+
+    <button
+      disableRipple
+      class="add-btn"
+      matTooltipPosition="left"
+      mat-button
+      matTooltip="Add to cart"
+    >
+      <span>Add to Cart</span>
+      <img
+        src="../../../assets/bag-s.svg"
+        matTooltip="Add to cart"
+        alt="add to cart"
+      />
+    </button>
+  </div>
+</div>

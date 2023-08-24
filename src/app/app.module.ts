@@ -38,6 +38,8 @@ import { ProductCardListViewV1Component } from './components/product-card-list-v
 import { FilterSectionPricesComponent } from './components/filter-section-prices/filter-section-prices.component';
 import { MatSliderModule } from '@angular/material/slider';
 import { PaginationComponent } from './components/pagination/pagination.component';
+import { GalleryComponent } from './components/gallery/gallery.component';
+import { GalleryModule } from 'ng-gallery'
 import { TabsProductComponent } from './components/tabs-product/tabs-product.component';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { ClientReviewComponent } from './components/client-review/client-review.component';
@@ -64,6 +66,7 @@ import { AppWrapperComponent } from './components/app-wrapper/app-wrapper.compon
     ProductCardListViewV1Component,
     FilterSectionPricesComponent,
     PaginationComponent,
+    GalleryComponent,
     TabsProductComponent,
     ClientReviewComponent,
     ReviewModalComponent,
@@ -89,6 +92,7 @@ import { AppWrapperComponent } from './components/app-wrapper/app-wrapper.compon
     MatPaginatorModule,
     MatTabsModule,
     NgxPaginationModule,
+    GalleryModule,
     MatProgressBarModule,
     MatDialogModule,
   ],
