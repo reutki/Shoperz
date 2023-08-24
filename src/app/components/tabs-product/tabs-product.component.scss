@@ -1,0 +1,64 @@
+@import "/src/imports";
+::ng-deep .mat-mdc-tab-body-wrapper {
+  height: 100% !important;
+}
+.description {
+  width: 100%;
+  padding: 40px 20px;
+  h4 {
+    @include h4-medium;
+  }
+}
+.reviews {
+  width: 100% !important;
+  padding: 40px 20px;
+  padding-bottom: 0;
+}
+
+.bar ::ng-deep {
+  max-width: 160px;
+  color: #fff !important;
+}
+.top-container {
+  padding-bottom: 40px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 5%;
+  overflow: hidden;
+  border-bottom: solid 1px $gray-100;
+  position: relative;
+  &::before {
+    content: "";
+    position: absolute;
+    background-color: $gray-100;
+    top: 0;
+    left: 50%;
+    height: 80%;
+    width: 1px;
+  }
+}
+.rating-container {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: max-content;
+}
+.call-to-action {
+  height: 100% !important;
+  width: 100%;
+  button {
+    background-color: $primary-600;
+    color: white;
+    border-radius: 25px;
+  }
+  span {
+    display: flex;
+  }
+  h4 {
+    color: $gray-900;
+    @include h4-medium;
+    span {
+      color: $gray-100 !important;
+    }
+  }
+}
