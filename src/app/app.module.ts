@@ -37,6 +37,8 @@ import { ProductCardListViewV1Component } from './components/product-card-list-v
 import { FilterSectionPricesComponent } from './components/filter-section-prices/filter-section-prices.component';
 import { MatSliderModule } from '@angular/material/slider';
 import { PaginationComponent } from './components/pagination/pagination.component';
+import { GalleryComponent } from './components/gallery/gallery.component';
+import { GalleryModule } from 'ng-gallery'
 @NgModule({
   declarations: [
     AppComponent,
@@ -56,6 +58,7 @@ import { PaginationComponent } from './components/pagination/pagination.componen
     ProductCardListViewV1Component,
     FilterSectionPricesComponent,
     PaginationComponent,
+    GalleryComponent,
   ],
   imports: [
     BrowserModule,
@@ -74,6 +77,7 @@ import { PaginationComponent } from './components/pagination/pagination.componen
     StarRatingModule.forRoot(),
     MatPaginatorModule,
     NgxPaginationModule,
+    GalleryModule
   ],
   providers: [],
   bootstrap: [AppComponent],
