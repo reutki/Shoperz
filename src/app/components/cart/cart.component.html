@@ -1,7 +1,7 @@
-<div class="cart">
+<div class="cart" [ngClass]="isOpen ? 'right-0' : '-right-full'">
   <div class="header">
     <div class="title">Shopping Bag</div>
-    <div class="close-icon" (click)="handleClose()">
+    <div class="close-icon" (click)="toggleCart()">
       <mat-icon>arrow_forward</mat-icon>
     </div>
   </div>

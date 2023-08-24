@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { CartService } from 'src/app/cart.service';
 
 @Component({
   selector: 'app-cart',
@@ -6,29 +7,35 @@ import { Component } from '@angular/core';
   styleUrls: ['./cart.component.scss'],
 })
 export class CartComponent {
-  isOpen = false;
-  cart: any[] = [
-    {
-      id: 'productId',
-      title: 'title',
-      thumbnail: 'https://www.freetogame.com/g/21/thumbnail.jpg',
-    },
-    {
-      id: 'productId',
-      title: 'title',
-      thumbnail: 'https://www.freetogame.com/g/21/thumbnail.jpg',
-    },
-  ];
-  total = 0;
-  handleClose(): void {
-    // Implement the handleClose logic here
+  // @Input() isOpen: boolean = true;
+  isOpen = true;
+  total = 1;
+  cart: any[] = [];
+
+  constructor(private cartService: CartService) {
+    this.cart = this.cartService.cart;
+
+    // Subscribe to isOpen$ and total$ observables
+    this.cartService.isOpen$.subscribe(isOpen => {
+      this.isOpen = isOpen;
+    });
+
+    this.cartService.total$.subscribe(total => {
+      this.total = total;
+    });
+  }
+
+  toggleCart(): void {
+    this.cartService.handleClose(); 
   }
 
   clearCart(): void {
-    // Implement the clearCart logic here
+    this.cart = this.cartService.clearCart();
   }
 
-  removeFromCart(id: string) {}
+  removeFromCart(id: string) {
+    // Implement the removeFromCart logic here
+  }
 
   // addToCart = (game, id) => {
   //   if (!this.cart.find((game) => game.id == id)) {
