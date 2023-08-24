@@ -41,6 +41,8 @@ import { PaginationComponent } from './components/pagination/pagination.componen
 import { TabsProductComponent } from './components/tabs-product/tabs-product.component';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { ClientReviewComponent } from './components/client-review/client-review.component';
+import { ReviewModalComponent } from './components/review-modal/review-modal.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -63,6 +65,7 @@ import { ClientReviewComponent } from './components/client-review/client-review.
     PaginationComponent,
     TabsProductComponent,
     ClientReviewComponent,
+    ReviewModalComponent,
   ],
   imports: [
     BrowserModule,
@@ -83,6 +86,7 @@ import { ClientReviewComponent } from './components/client-review/client-review.
     MatTabsModule,
     NgxPaginationModule,
     MatProgressBarModule,
+    MatDialogModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
