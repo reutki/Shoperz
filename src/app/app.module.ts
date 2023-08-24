@@ -45,6 +45,7 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { ClientReviewComponent } from './components/client-review/client-review.component';
 import { ReviewModalComponent } from './components/review-modal/review-modal.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { CartComponent } from './components/cart/cart.component';
 
 @NgModule({
   declarations: [
@@ -69,6 +70,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     TabsProductComponent,
     ClientReviewComponent,
     ReviewModalComponent,
+    CartComponent,
   ],
   imports: [
     BrowserModule,

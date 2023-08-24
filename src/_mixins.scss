@@ -36,3 +36,17 @@
   object-fit: contain;
   filter: opacity($opacity);
 }
+
+@mixin border($position: bottom, $color: black, $height: 1px) {
+  @if $position == top {
+    border-top: $height solid $color;
+  } @else if $position == right {
+    border-right: $height solid $color;
+  } @else if $position == bottom {
+    border-bottom: $height solid $color;
+  } @else if $position == left {
+    border-left: $height solid $color;
+  } @else {
+    @error "Invalid border position: #{$position}. Choose from top, right, bottom, or left.";
+  }
+}
