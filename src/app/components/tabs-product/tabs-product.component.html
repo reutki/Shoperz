@@ -1,0 +1,66 @@
+<mat-tab-group mat-stretch-tabs="false" mat-align-tabs="start">
+  <mat-tab label="Description">
+    <div class="description">
+      <h4>Title Here</h4>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit
+        consequatur accusamus veritatis consectetur commodi, dolore quidem.
+        Repellat dolores nesciunt temporibus. Illo commodi, delectus sunt
+        consequatur eum architecto magnam doloribus modi! Lorem ipsum dolor sit
+        amet consectetur adipisicing elit. Recusandae, expedita?Lorem, ipsum
+        dolor sit amet consectetur adipisicing elit. Odio sunt quos impedit ipsa
+        nisi hic fuga numquam animi voluptatem, dolore consectetur aperiam
+        delectus minus. Eaque accusantium, deleniti minus cum, sed consequuntur
+        vero, repellendus laboriosam delectus provident labore tempore veritatis
+        neque a molestias eligendi maiores totam ut saepe sint hic? Dolorem
+        asperiores minima assumenda, commodi accusantium nam, nulla a voluptas
+        saepe, sint optio. Neque iusto distinctio nulla cum, beatae dicta a
+        rerum illo fugiat cumque consectetur inventore pariatur aut quos at
+        delectus harum tempora ipsum eligendi nostrum, libero recusandae odio.
+        Dolore vero pariatur quia ab amet, quam quae beatae eos debitis!
+      </p>
+    </div>
+  </mat-tab>
+  <mat-tab label="Reviews" class="tab">
+    <!-- reviews tab content -->
+    <div class="reviews">
+      <div class="top-container">
+        <div class="ratings-container">
+          <h4>4.5 <span>(amount reviews)</span></h4>
+          <div class="rating-container" *ngFor="let item of ratings">
+            <star-rating [readOnly]="true" [rating]="item"> </star-rating>
+            <mat-progress-bar
+              class="bar"
+              mode="determinate"
+              value="20"
+            ></mat-progress-bar>
+          </div>
+        </div>
+        <div class="call-to-action">
+          <h4>Add Your Review</h4>
+          <span>
+            <star-rating> </star-rating>
+            <p>Your rating</p>
+          </span>
+          <button mat-flat-button (click)="openDialog()">Add a review</button>
+        </div>
+      </div>
+      <div class="user-reviews"></div>
+      <app-client-review></app-client-review>
+      <app-client-review></app-client-review>
+      <app-client-review></app-client-review>
+      <app-client-review></app-client-review>
+      <app-client-review></app-client-review>
+      <app-client-review></app-client-review>
+      <app-client-review></app-client-review>
+      <app-client-review></app-client-review>
+      <app-client-review></app-client-review>
+      <app-client-review></app-client-review>
+      <app-client-review></app-client-review>
+      <app-client-review></app-client-review>
+      <app-client-review></app-client-review>
+      <app-client-review></app-client-review>
+    </div>
+    <app-pagination></app-pagination>
+  </mat-tab>
+</mat-tab-group>

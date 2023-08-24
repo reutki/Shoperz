@@ -12,6 +12,7 @@ import { MatCardModule } from '@angular/material/card';
 // import {MatIconModule} from '@angular/material/icon';
 import { ShopFeaturesComponent } from './components/shop-features/shop-features.component';
 //material imports
+import { MatTabsModule } from '@angular/material/tabs';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatIconModule } from '@angular/material/icon';
@@ -39,6 +40,12 @@ import { MatSliderModule } from '@angular/material/slider';
 import { PaginationComponent } from './components/pagination/pagination.component';
 import { GalleryComponent } from './components/gallery/gallery.component';
 import { GalleryModule } from 'ng-gallery'
+import { TabsProductComponent } from './components/tabs-product/tabs-product.component';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { ClientReviewComponent } from './components/client-review/client-review.component';
+import { ReviewModalComponent } from './components/review-modal/review-modal.component';
+import { MatDialogModule } from '@angular/material/dialog';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -59,6 +66,9 @@ import { GalleryModule } from 'ng-gallery'
     FilterSectionPricesComponent,
     PaginationComponent,
     GalleryComponent,
+    TabsProductComponent,
+    ClientReviewComponent,
+    ReviewModalComponent,
   ],
   imports: [
     BrowserModule,
@@ -76,8 +86,11 @@ import { GalleryModule } from 'ng-gallery'
     MatSliderModule,
     StarRatingModule.forRoot(),
     MatPaginatorModule,
+    MatTabsModule,
     NgxPaginationModule,
-    GalleryModule
+    GalleryModule,
+    MatProgressBarModule,
+    MatDialogModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

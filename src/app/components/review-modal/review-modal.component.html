@@ -1,0 +1,21 @@
+<form class="container">
+  <div class="top-actions">
+    <img src="../../../assets/brands.svg" alt="product image" />
+    <h5>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed accusamus
+      natus esse! Sint vero, voluptatum facere at atque mollitia aut..
+    </h5>
+    <button mat-icon-button [mat-dialog-close]="true">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+  <span>
+    <star-rating></star-rating>
+    <p>Your Rating</p>
+  </span>
+  <div class="review">
+    <label for="review">Review</label>
+    <textarea id="review" type="text" placeholder="Write a review"></textarea>
+  </div>
+  <button class="submitbutton" type="submit" mat-flat-button>Add Review</button>
+</form>
