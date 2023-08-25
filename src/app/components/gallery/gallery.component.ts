@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { GalleryItem, ImageItem } from 'ng-gallery';
+import { CartService } from 'src/app/Services/cart.service';
+import { CartItem } from 'src/types/cart.interface';
+import { Product } from 'src/types/item.interface';
 // import "../../../assets/bag-b.svg"
 
 @Component({
@@ -9,8 +12,7 @@ import { GalleryItem, ImageItem } from 'ng-gallery';
 })
 export class GalleryComponent implements OnInit {
   images: GalleryItem[];
-
-  product = {
+  product: Product = {
     id: 1,
     title: 'iPhone 14 Pro, LTPO Super Retina XDR OLED 6.1"',
     description: 'An apple mobile which is nothing like apple',
@@ -39,7 +41,7 @@ export class GalleryComponent implements OnInit {
     }
   }
 
-  constructor() {
+  constructor(private cartService: CartService) {
     this.images = [];
     this.formattedPrice = new Intl.NumberFormat('en-US', {
       style: 'currency',
@@ -47,8 +49,21 @@ export class GalleryComponent implements OnInit {
     }).format(this.product.price);
   }
 
+  addToCart(item: Product): void {
+      const cartItem: CartItem = {
+        id: item.id,
+        title: item.title,
+        price: item.price,
+        total: item.price,
+        discountPercentage: item.discountPercentage,
+        discountedPrice: item.price * (item.discountPercentage / 100),
+        quantity: 1,
+      };
+      this.cartService.addToCart(cartItem, 5); // Assuming user id is 5
+  }
+  
+
   ngOnInit() {
-    // Set items array
     this.images = [
       new ImageItem({
         src: 'https://media.croma.com/image/upload/v1664009609/Croma%20Assets/Communication/Mobiles/Images/243463_0_qtsxpd.png',
