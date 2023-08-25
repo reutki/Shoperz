@@ -42,7 +42,10 @@
       </button>
     </div>
     <div class="price">
-      <h1 class="h1-medium" [ngClass]="{ 'red-text': product.discountPercentage }">
+      <h1
+        class="h1-medium"
+        [ngClass]="{ 'red-text': product.discountPercentage }"
+      >
         {{ formattedPrice }}
       </h1>
       <p *ngIf="product.discountPercentage">
@@ -60,14 +63,15 @@
         matTooltip="Count"
       >
         <div class="btn-center">
-            <button (click)="modifyProductCount('-')">−</button>
-            <span id="mid-span">{{productCount}}</span>
-            <button (click)="modifyProductCount('+')">+</button>
+          <button (click)="modifyProductCount('-')">−</button>
+          <span id="mid-span">{{ productCount }}</span>
+          <button (click)="modifyProductCount('+')">+</button>
         </div>
       </div>
     </div>
 
     <button
+      (click)="addToCart(product)"
       disableRipple
       class="add-btn"
       matTooltipPosition="left"

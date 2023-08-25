@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CartService } from 'src/app/Services/cart.service';
-import { Cart } from '../../../types/cart.interface';
+import { Cart, CartItem } from '../../../types/cart.interface';
 
 @Component({
   selector: 'app-cart',
@@ -8,32 +8,36 @@ import { Cart } from '../../../types/cart.interface';
   styleUrls: ['./cart.component.scss'],
 })
 export class CartComponent {
-  isOpen = true;
-  total = 1;
-  cart: Cart[] = [];
+  cartIsOpen = true;
+  cart: Cart | undefined;
 
-  constructor(private cartService: CartService) {
-    this.cartService.cart$.subscribe((cart) => (this.cart = cart));
+  constructor(private cartService: CartService) {}
+
+  ngOnInit(): void {
+    this.cartService.cart$.subscribe((cart) => {
+      this.cart = cart;
+    });
 
     this.cartService.isOpen$.subscribe((isOpen) => {
-      this.isOpen = isOpen;
+      this.cartIsOpen = isOpen;
     });
 
-    this.cartService.total$.subscribe((total) => {
-      this.total = total;
-    });
+    this.cartService.fetchCartData(5);
   }
 
-  removeItem = (id: number) => {
+  removeItem(id: number): void {
     this.cartService.removeItem(id);
-    console.log(id);
-  };
-
-  toggleCart(): void {
-    this.cartService.handleClose();
   }
 
-  clearCart(): void {
+  addToCart(item: CartItem, id: number): void {
+    this.cartService.addToCart(item, id);
+  }
+
+  clearCart() {
     this.cartService.clearCart();
+  }
+
+  toggleCart() {
+    this.cartService.toggleCart();
   }
 }

@@ -1,19 +1,19 @@
-<div class="cart" [ngClass]="isOpen ? 'right-0' : '-right-full'">
+<div class="cart" [ngClass]="cartIsOpen ? 'right-0' : '-right-full'">
   <div class="header">
     <div class="title">Shopping Bag</div>
     <div class="close-icon" (click)="toggleCart()">
       <mat-icon>arrow_forward</mat-icon>
     </div>
   </div>
-  <div class="cart-items">
-    <div *ngFor="let item of cart" class="cart-item">
+  <div class="cart-items" *ngIf="cart">
+    <div *ngFor="let item of cart.products" class="cart-item">
       <div class="item-row">
         <a [routerLink]="['/game', item.id]">
-          <img
+          <!-- <img
             [src]="item.thumbnail"
             [alt]="item.title"
             class="item-row-image"
-          />
+          /> -->
         </a>
         <div class="item-link-container">
           <div class="item-link">
@@ -30,7 +30,7 @@
   </div>
   <div class="cart-summary">
     <div class="total">
-      <span>Total: ${{ total }}</span>
+      <span>Total: ${{ cart?.total }}</span>
       <div (click)="clearCart()" class="clear-cart">
         <mat-icon>delete</mat-icon>
       </div>
