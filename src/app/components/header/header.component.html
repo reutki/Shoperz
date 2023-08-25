@@ -1,4 +1,4 @@
-<mat-toolbar class="header" style="position: relative; z-index: -1;">
+<mat-toolbar class="header">
   <button mat-icon-button>
     <mat-icon>menu</mat-icon>
   </button>
@@ -22,10 +22,10 @@
     <button mat-icon-button matTooltip="Wishlist">
       <mat-icon>favorite</mat-icon>
     </button>
-    <button mat-icon-button matTooltip="My Cart">
+    <button mat-icon-button matTooltip="My Cart" (click)="toggleCart()">
       <mat-icon>shopping_basket</mat-icon>
     </button>
     <span>$0.00</span>
   </div>
-  <app-cart></app-cart>
 </mat-toolbar>
+<app-cart></app-cart>

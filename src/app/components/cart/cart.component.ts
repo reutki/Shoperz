@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { CartService } from 'src/app/cart.service';
+import { Cart } from '../../../types/cart.interface';
 
 @Component({
   selector: 'app-cart',
@@ -6,42 +8,32 @@ import { Component } from '@angular/core';
   styleUrls: ['./cart.component.scss'],
 })
 export class CartComponent {
-  isOpen = false;
-  cart: any[] = [
-    {
-      id: 'productId',
-      title: 'title',
-      thumbnail: 'https://www.freetogame.com/g/21/thumbnail.jpg',
-    },
-    {
-      id: 'productId',
-      title: 'title',
-      thumbnail: 'https://www.freetogame.com/g/21/thumbnail.jpg',
-    },
-  ];
-  total = 0;
-  handleClose(): void {
-    // Implement the handleClose logic here
+  isOpen = true;
+  total = 1;
+  cart: Cart[] = [];
+
+  constructor(private cartService: CartService) {
+    this.cartService.cart$.subscribe((cart) => (this.cart = cart));
+
+    this.cartService.isOpen$.subscribe((isOpen) => {
+      this.isOpen = isOpen;
+    });
+
+    this.cartService.total$.subscribe((total) => {
+      this.total = total;
+    });
+  }
+
+  removeItem = (id: number) => {
+    this.cartService.removeItem(id);
+    console.log(id);
+  };
+
+  toggleCart(): void {
+    this.cartService.handleClose();
   }
 
   clearCart(): void {
-    // Implement the clearCart logic here
+    this.cartService.clearCart();
   }
-
-  removeFromCart(id: string) {}
-
-  // addToCart = (game, id) => {
-  //   if (!this.cart.find((game) => game.id == id)) {
-  //     this.cart.push(game);
-  //   }
-  // };
-
-  // removeFromCart = (id) => {
-  //   const newCart = cart.filter((game) => game.id !== id);
-  //   this.cart.push(newCart);
-  // };
-
-  // clearCart = () => {
-  //   this.cart.push([]);
-  // };
 }
