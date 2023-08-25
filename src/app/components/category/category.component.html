@@ -1,1 +1,15 @@
-<p>category works!</p>
+<div class="container">
+  <div class="filters">
+    <app-filter-section-prices></app-filter-section-prices>
+    <app-rating-card></app-rating-card>
+  </div>
+  <div class="products">
+    <app-product-card-v1
+      *ngFor="let item of products"
+      [Price]="item.price"
+      [Discount]="item.discount"
+      [Image]="item.thumbnail"
+      [Title]="item.title"
+    ></app-product-card-v1>
+  </div>
+</div>

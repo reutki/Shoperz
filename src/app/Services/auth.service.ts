@@ -16,19 +16,15 @@ export class AuthService {
   //stores the token in the localStorage
   saveToken(token: string): void {
     localStorage.setItem('authToken', token);
-    console.log('Token saved:', token);
   }
 
   getToken(): string | null {
     const token = localStorage.getItem('authToken');
-    console.log('Token retrieved:', token);
     return token;
   }
 
   //if the token is not anymore he same, it will log out
   isLoggedIn(): boolean {
-    console.log(!!this.getToken());
-
     return !!this.getToken();
   }
   //removes the token from local storage

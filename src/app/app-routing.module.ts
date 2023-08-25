@@ -4,12 +4,12 @@ import { RouterModule, Routes } from '@angular/router';
 import { AppWrapperComponent } from './components/app-wrapper/app-wrapper.component';
 import { LoginScreenComponent } from './components/login-screen/login-screen.component';
 import { CategoryComponent } from './components/category/category.component';
+import { AppComponent } from './app.component';
 
 const routes: Routes = [
-  { path: 'app', component: AppWrapperComponent },
   { path: 'login', component: LoginScreenComponent },
   { path: 'category/:categoryName', component: CategoryComponent },
-  { path: '', redirectTo: '/app', pathMatch: 'full' },
+  { path: '', pathMatch: 'full', component: AppComponent },
 ];
 
 @NgModule({

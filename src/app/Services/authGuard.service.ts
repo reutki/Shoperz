@@ -13,7 +13,7 @@ export class AuthGuard {
 
   checkLoginAndNavigate() {
     if (this.authService.isLoggedIn()) {
-      this.router.navigate(['/app']);
+      this.router.navigate(['']);
       return true;
     } else {
       this.router.navigate(['/login']);

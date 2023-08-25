@@ -36,7 +36,6 @@ export class CartService {
     this.cartSubject.next(
       this.cartSubject.value.filter((item) => item.id !== id)
     );
-    console.log(this.cartSubject);
   }
   addToCart = (item: Cart, id: number) => {
     const existingItem = this.cartSubject.value.find(

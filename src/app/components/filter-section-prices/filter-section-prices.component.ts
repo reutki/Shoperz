@@ -19,6 +19,5 @@ export class FilterSectionPricesComponent {
     event.stopPropagation();
     event.preventDefault();
     this.checkboxStates[index] = !this.checkboxStates[index];
-    console.log(index, event.target, this.checkboxStates);
   }
 }
