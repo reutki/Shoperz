@@ -1,16 +1,16 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderComponent } from './components/header/header.component';
 import { TopHeaderComponent } from './components/top-header/top-header.component';
-
-// import {MatSelectModule} from '@angular/material/select';
-import { MatCardModule } from '@angular/material/card';
-// import {MatIconModule} from '@angular/material/icon';
 import { ShopFeaturesComponent } from './components/shop-features/shop-features.component';
+
+import { MatCardModule } from '@angular/material/card';
 //material imports
 import { MatTabsModule } from '@angular/material/tabs';
 import { NgxPaginationModule } from 'ngx-pagination';
@@ -46,6 +46,7 @@ import { ClientReviewComponent } from './components/client-review/client-review.
 import { ReviewModalComponent } from './components/review-modal/review-modal.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { CartComponent } from './components/cart/cart.component';
+import { AppWrapperComponent } from './components/app-wrapper/app-wrapper.component';
 
 @NgModule({
   declarations: [
@@ -71,10 +72,13 @@ import { CartComponent } from './components/cart/cart.component';
     ClientReviewComponent,
     ReviewModalComponent,
     CartComponent,
+    AppWrapperComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
+    FormsModule,
     BrowserAnimationsModule,
     MatCardModule,
     MatToolbarModule,
