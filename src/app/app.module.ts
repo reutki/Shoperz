@@ -39,7 +39,7 @@ import { FilterSectionPricesComponent } from './components/filter-section-prices
 import { MatSliderModule } from '@angular/material/slider';
 import { PaginationComponent } from './components/pagination/pagination.component';
 import { GalleryComponent } from './components/gallery/gallery.component';
-import { GalleryModule } from 'ng-gallery'
+import { GalleryModule } from 'ng-gallery';
 import { TabsProductComponent } from './components/tabs-product/tabs-product.component';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { ClientReviewComponent } from './components/client-review/client-review.component';
@@ -47,6 +47,9 @@ import { ReviewModalComponent } from './components/review-modal/review-modal.com
 import { MatDialogModule } from '@angular/material/dialog';
 import { CartComponent } from './components/cart/cart.component';
 import { AppWrapperComponent } from './components/app-wrapper/app-wrapper.component';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatDividerModule } from '@angular/material/divider';
+import { CategoryComponent } from './components/category/category.component';
 
 @NgModule({
   declarations: [
@@ -73,6 +76,7 @@ import { AppWrapperComponent } from './components/app-wrapper/app-wrapper.compon
     ReviewModalComponent,
     CartComponent,
     AppWrapperComponent,
+    CategoryComponent,
   ],
   imports: [
     BrowserModule,
@@ -97,6 +101,8 @@ import { AppWrapperComponent } from './components/app-wrapper/app-wrapper.compon
     GalleryModule,
     MatProgressBarModule,
     MatDialogModule,
+    MatMenuModule,
+    MatDividerModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

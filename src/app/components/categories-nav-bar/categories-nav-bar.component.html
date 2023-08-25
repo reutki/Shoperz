@@ -1,9 +1,27 @@
 <div class="categories-nav">
-  <div class="container-categories">
-    <a href="#" class="category">Item</a>
-    <a href="#" class="category">Item</a>
-    <a href="#" class="category">Item</a>
-    <a href="#" class="category">Item</a>
-    <a href="#" class="category">Item</a>
+  <div *ngFor="let category of mainCategories" class="container-categories">
+    <a [routerLink]="['/category', category]" class="category">{{
+      category
+    }}</a>
+  </div>
+  <div *ngIf="dropdownCategories.length > 0" class="container-categories">
+    <div class="dropdown">
+      <button
+        disableRipple="true"
+        mat-button
+        [matMenuTriggerFor]="menu"
+        class="dropbtn"
+      >
+        ...
+      </button>
+      <mat-menu #menu="matMenu" class="dropdown-content">
+        <a
+          mat-menu-item
+          *ngFor="let category of dropdownCategories"
+          [routerLink]="['/category', category]"
+          >{{ category }}</a
+        >
+      </mat-menu>
+    </div>
   </div>
 </div>

@@ -1,6 +1,7 @@
-@import "/src/mixins";
+@import "/src/imports";
 
 .categories-nav {
+  @include text1-medium;
   background-color: #319dff;
   color: white;
 
@@ -24,6 +25,13 @@
       text-decoration: underline;
       color: #ffff;
     }
+  }
+  button {
+    color: white;
+    width: 100%;
+  }
+  mat-menu {
+    justify-self: center;
   }
 }
 

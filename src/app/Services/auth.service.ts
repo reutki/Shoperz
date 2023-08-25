@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { ApiService } from './api.service';
 
@@ -7,9 +6,7 @@ import { ApiService } from './api.service';
   providedIn: 'root',
 })
 export class AuthService {
-  private apiUrl = 'https://dummyjson.com/auth';
-
-  constructor(private http: HttpClient, private api: ApiService) {}
+  constructor(private api: ApiService) {}
 
   login(username: string, password: string): Observable<any> {
     const loginData = { username, password };
