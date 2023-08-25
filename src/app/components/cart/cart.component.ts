@@ -1,5 +1,6 @@
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
 import { CartService } from 'src/app/cart.service';
+import { Cart } from '../../../types/cart.interface';
 
 @Component({
   selector: 'app-cart',
@@ -7,48 +8,32 @@ import { CartService } from 'src/app/cart.service';
   styleUrls: ['./cart.component.scss'],
 })
 export class CartComponent {
-  // @Input() isOpen: boolean = true;
   isOpen = true;
   total = 1;
-  cart: any[] = [];
+  cart: Cart[] = [];
 
   constructor(private cartService: CartService) {
-    this.cart = this.cartService.cart;
+    this.cartService.cart$.subscribe((cart) => (this.cart = cart));
 
-    // Subscribe to isOpen$ and total$ observables
-    this.cartService.isOpen$.subscribe(isOpen => {
+    this.cartService.isOpen$.subscribe((isOpen) => {
       this.isOpen = isOpen;
     });
 
-    this.cartService.total$.subscribe(total => {
+    this.cartService.total$.subscribe((total) => {
       this.total = total;
     });
   }
 
+  removeItem = (id: number) => {
+    this.cartService.removeItem(id);
+    console.log(id);
+  };
+
   toggleCart(): void {
-    this.cartService.handleClose(); 
+    this.cartService.handleClose();
   }
 
   clearCart(): void {
-    this.cart = this.cartService.clearCart();
+    this.cartService.clearCart();
   }
-
-  removeFromCart(id: string) {
-    // Implement the removeFromCart logic here
-  }
-
-  // addToCart = (game, id) => {
-  //   if (!this.cart.find((game) => game.id == id)) {
-  //     this.cart.push(game);
-  //   }
-  // };
-
-  // removeFromCart = (id) => {
-  //   const newCart = cart.filter((game) => game.id !== id);
-  //   this.cart.push(newCart);
-  // };
-
-  // clearCart = () => {
-  //   this.cart.push([]);
-  // };
 }

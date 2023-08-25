@@ -6,31 +6,21 @@
     </div>
   </div>
   <div class="cart-items">
-    <div
-      *ngFor="let item of cart"
-      class="cart-item flex gap-x-4 pu-2 lg-px-6 border-b border-gray-200 w-full font-light text-white"
-    >
-      <!-- * Cart Item Component -->
-      <div class="two w-full min-h-[100px] flex items-center gap-x-4">
+    <div *ngFor="let item of cart" class="cart-item">
+      <div class="item-row">
         <a [routerLink]="['/game', item.id]">
           <img
             [src]="item.thumbnail"
             [alt]="item.title"
-            class="two-image max-w-[120px] rounded-md cursor-pointer"
+            class="item-row-image"
           />
         </a>
-        <div class="three w-full flex flex-col">
-          <div class="four flex justify-between mb-2">
-            <a
-              [routerLink]="['/game', item.id]"
-              class="text-sm uppercase font-medium max-w-[240px] text-primary hover:underline"
-            >
+        <div class="item-link-container">
+          <div class="item-link">
+            <a [routerLink]="['/game', item.id]">
               {{ item.title }}
             </a>
-            <div
-              (click)="removeFromCart(item.id)"
-              class="five text-xl cursor-pointer"
-            >
+            <div (click)="removeItem(item.id)" class="remove-item">
               <mat-icon>close</mat-icon>
             </div>
           </div>

@@ -1,24 +1,26 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+import { Cart } from '../types/cart.interface';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CartService {
-  cart = [
-    {
-      id: 'productId',
-      title: 'title',
-      thumbnail: 'https://www.freetogame.com/g/21/thumbnail.jpg',
-    },
-    {
-      id: 'productId',
-      title: 'title',
-      thumbnail: 'https://www.freetogame.com/g/21/thumbnail.jpg',
-    },
-  ];
   private isOpenSubject = new BehaviorSubject<boolean>(true);
   isOpen$ = this.isOpenSubject.asObservable();
+  private cartSubject = new BehaviorSubject<Cart[]>([
+    {
+      id: 1,
+      title: 'title',
+      thumbnail: 'https://www.freetogame.com/g/21/thumbnail.jpg',
+    },
+    {
+      id: 2,
+      title: 'title',
+      thumbnail: 'https://www.freetogame.com/g/21/thumbnail.jpg',
+    },
+  ]);
+  cart$ = this.cartSubject.asObservable();
   private totalSubject = new BehaviorSubject<number>(0);
   total$ = this.totalSubject.asObservable();
 
@@ -26,10 +28,24 @@ export class CartService {
     this.isOpenSubject.next(!this.isOpenSubject.value);
   }
 
-  clearCart(): any[] {
-    this.cart = [];
-    return this.cart;
+  clearCart(): void {
+    this.cartSubject.next([]);
   }
 
-  removeFromCart(id: string) {}
+  removeItem(id: number): void {
+    this.cartSubject.next(
+      this.cartSubject.value.filter((item) => item.id !== id)
+    );
+    console.log(this.cartSubject);
+  }
+  addToCart = (item: Cart, id: number) => {
+    const existingItem = this.cartSubject.value.find(
+      (existingItem) => existingItem.id === id
+    );
+
+    if (!existingItem) {
+      const updatedCart = [...this.cartSubject.value, item];
+      this.cartSubject.next(updatedCart);
+    }
+  };
 }
