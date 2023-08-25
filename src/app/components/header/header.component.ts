@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { CartService } from 'src/app/cart.service';
+import { CartService } from 'src/app/Services/cart.service';
 
 @Component({
   selector: 'app-header',
@@ -9,7 +9,7 @@ import { CartService } from 'src/app/cart.service';
 export class HeaderComponent {
   constructor(private cartService: CartService) {}
 
-  toggleCart(){
-    this.cartService.handleClose()
+  toggleCart() {
+    this.cartService.handleClose();
   }
 }
