@@ -75,11 +75,7 @@
           }
         }
 
-        .price {
-          flex: 1;
-          @include flex-center(end);
-        }
-
+        .price,
         .price-total-item {
           flex: 1;
           @include flex-center(flex-end);

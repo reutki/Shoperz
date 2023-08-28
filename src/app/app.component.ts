@@ -6,9 +6,8 @@ import { AuthService } from './Services/auth.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'Shoperz';
-
   constructor(private authGuard: AuthGuard, private authService: AuthService) {}
   ngOnInit() {
     this.authGuard.checkLoginAndNavigate();

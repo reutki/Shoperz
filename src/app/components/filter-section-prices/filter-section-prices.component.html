@@ -1,37 +1,50 @@
 <div class="root">
-    <h2>Prices</h2>
-    
-    <div class="checkbox-container">
-      <ng-container *ngFor="let state of checkboxStates; let i = index">
-        <div class="checkbox-item" (click)="toggleCheckbox($event, i)">
-          <input id="checkbox" type="checkbox" [checked]="state" />
-          <div class="numeric-range">
-            <p>{{ i == 0 ? '<50' : i * 100 + '-' + (i + 1) * 100 }}</p>
-            <p class="count">(50)</p>
-          </div>
-        </div>
-      </ng-container>
-      
-      <div class="checkbox-item">
+  <h2>Prices</h2>
+
+  <div class="checkbox-container">
+    <ng-container *ngFor="let state of checkboxStates; let i = index">
+      <div class="checkbox-item" (click)="toggleCheckbox($event, i)">
+        <input
+          id="checkbox"
+          type="checkbox"
+          [checked]="state"
+          [disabled]="noPriceFilter"
+        />
         <div class="numeric-range">
-          <input id="checkbox" type="checkbox" [checked]="maxPriceVal" />
-          <p>>500</p>
+          <p>
+            {{
+              i === 0 ? "<50" : i === 5 ? ">500" : i * 100 + "-" + (i + 1) * 100
+            }}
+          </p>
+          <p class="count">(50)</p>
         </div>
       </div>
-    </div>
-  
-    <div class="checkbox-item">
-      <div class="numeric-range flex">
-        <input id="checkbox" type="checkbox" [checked]="priceInterval" />
-        <p class="count">Price interval</p>
+    </ng-container>
+
+    <!-- <div class="checkbox-item">
+      <div class="numeric-range">
+        <input
+          id="checkbox"
+          type="checkbox"
+          [checked]="noPriceFilter"
+          (click)="toggleNoPrice()"
+        />
+        <p>>500</p>
       </div>
-    </div>
-    
-    <div class="x">
-      <mat-slider [min]="0" [max]="500">
-        <input [value]="min" matSliderStartThumb class="disable-ripple" />
-        <input [value]="max" matSliderEndThumb class="disable-ripple" />
-      </mat-slider>
+    </div> -->
+  </div>
+
+  <div class="checkbox-item">
+    <div class="numeric-range flex">
+      <input id="checkbox" type="checkbox" [checked]="priceInterval" />
+      <p class="count">Price interval</p>
     </div>
   </div>
-  
+
+  <div class="x">
+    <mat-slider [min]="0" [max]="500">
+      <input [value]="min" matSliderStartThumb class="disable-ripple" />
+      <input [value]="max" matSliderEndThumb class="disable-ripple" />
+    </mat-slider>
+  </div>
+</div>

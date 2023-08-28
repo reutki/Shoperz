@@ -1,4 +1,5 @@
-import { Component, ViewEncapsulation } from '@angular/core';
+import { Component, ViewEncapsulation, OnInit } from '@angular/core';
+import { ProductsService } from 'src/app/Services/products.service';
 
 @Component({
   selector: 'app-filter-section-prices',
@@ -6,18 +7,55 @@ import { Component, ViewEncapsulation } from '@angular/core';
   styleUrls: ['./filter-section-prices.component.scss'],
   encapsulation: ViewEncapsulation.None,
 })
-export class FilterSectionPricesComponent {
-  checkboxStates: boolean[] = [false, false, false, false, false];
+export class FilterSectionPricesComponent implements OnInit {
+  checkboxStates: boolean[] = Array(6).fill(false);
+  // x = [50, 100, 200, 300, 400, 500];
 
-  maxPriceVal = false;
-
+  noPriceFilter = false;
   priceInterval = false;
   min = 0;
-  max = 500;
+  max = 40;
+  products: any[] = [];
+
+  constructor(private productService: ProductsService) {}
+
+  ngOnInit() {
+    this.productService.products$.subscribe((products) => {
+      this.products = products;
+    });
+  }
+
+  applyPriceFilter(min = this.min, max = this.max) {
+    const filteredProducts = this.products.filter((product) => {
+      return product.price >= min && product.price <= max;
+    });
+    this.productService.updateFilteredProducts(filteredProducts);
+
+    console.log(this.productService.filteredProducts$);
+  }
 
   toggleCheckbox(event: Event, index: number) {
     event.stopPropagation();
     event.preventDefault();
-    this.checkboxStates[index] = !this.checkboxStates[index];
+    let checked = this.checkboxStates[index];
+    this.checkboxStates = Array(6).fill(false);
+    this.checkboxStates[index] = !checked;
+    let min = 0,
+      max = Infinity;
+    if (index > 0 && index < 5 && !checked) {
+      min = index * 100;
+      max = (index + 1) * 100;
+    }
+    if (index === 0 && !checked) max = 50;
+    if (index === 5 && !checked) min = 500;
+    this.applyPriceFilter(min, max);
+  }
+
+  toggleNoPrice() {
+    if (!this.noPriceFilter) {
+      console.log(this.noPriceFilter);
+      this.checkboxStates = Array(5).fill(false);
+    }
+    this.noPriceFilter = !this.noPriceFilter;
   }
 }
