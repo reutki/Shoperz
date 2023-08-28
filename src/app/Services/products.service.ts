@@ -23,6 +23,7 @@ export class ProductsService {
 
         this.productsSubject.next(products);
         this.filteredProductsSubject.next([...products]);
+        console.log(products);
       });
   }
 

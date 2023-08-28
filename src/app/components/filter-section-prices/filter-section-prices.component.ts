@@ -1,5 +1,6 @@
-import { Component, ViewEncapsulation, OnInit } from '@angular/core';
+import { Component, ViewEncapsulation, OnInit, OnDestroy } from '@angular/core';
 import { ProductsService } from 'src/app/Services/products.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-filter-section-prices',
@@ -7,7 +8,7 @@ import { ProductsService } from 'src/app/Services/products.service';
   styleUrls: ['./filter-section-prices.component.scss'],
   encapsulation: ViewEncapsulation.None,
 })
-export class FilterSectionPricesComponent implements OnInit {
+export class FilterSectionPricesComponent implements OnDestroy {
   checkboxStates: boolean[] = Array(6).fill(false);
   // x = [50, 100, 200, 300, 400, 500];
 
@@ -16,13 +17,16 @@ export class FilterSectionPricesComponent implements OnInit {
   min = 0;
   max = 40;
   products: any[] = [];
+  private productsSubscription: Subscription | undefined;
 
   constructor(private productService: ProductsService) {}
 
   ngOnInit() {
-    this.productService.products$.subscribe((products) => {
-      this.products = products;
-    });
+    this.productsSubscription = this.productService.products$.subscribe(
+      (products) => {
+        this.products = products;
+      }
+    );
   }
 
   applyPriceFilter(min = this.min, max = this.max) {
@@ -57,5 +61,9 @@ export class FilterSectionPricesComponent implements OnInit {
       this.checkboxStates = Array(5).fill(false);
     }
     this.noPriceFilter = !this.noPriceFilter;
+  }
+
+  ngOnDestroy(): void {
+    this.productsSubscription && this.productsSubscription.unsubscribe();
   }
 }
