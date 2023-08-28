@@ -1,3 +1,6 @@
-<app-app-wrapper *ngIf="logged"></app-app-wrapper>
-
+<div *ngIf="token">
+  <app-top-header></app-top-header>
+  <app-header></app-header>
+  <app-categories-nav-bar></app-categories-nav-bar>
+</div>
 <router-outlet></router-outlet>

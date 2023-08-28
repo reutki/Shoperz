@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ApiService } from 'src/app/Services/api.service';
+import { ProductsService } from 'src/app/Services/products.service';
 
 @Component({
   selector: 'app-category',
@@ -8,25 +8,27 @@ import { ApiService } from 'src/app/Services/api.service';
   styleUrls: ['./category.component.scss'],
 })
 export class CategoryComponent implements OnInit {
-  constructor(private route: ActivatedRoute, private api: ApiService) {}
+  constructor(
+    private route: ActivatedRoute,
+    private productService: ProductsService
+  ) {}
 
   products: any[] = [];
   category: string | null = '';
+  minPrice: number = 0;
+  maxPrice: number = 100;
 
   ngOnInit() {
-    // Retrieve the category parameter from the URL
     this.route.paramMap.subscribe((params) => {
       this.category = params.get('categoryName');
-      this.getProducts();
+      this.fetchProducts();
     });
   }
 
-  getProducts() {
-    this.api
-      .request('GET', `products/category/${this.category}?limit=0`)
-      .subscribe((response: any) => {
-        this.products = response.products;
-        console.log(this.products);
-      });
+  fetchProducts() {
+    this.productService.fetchProducts(this.category!);
+    this.productService.filteredProducts$.subscribe((products) => {
+      this.products = products;
+    });
   }
 }

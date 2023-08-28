@@ -109,7 +109,7 @@ p {
 
 .row {
   @include flex-gap(20px, column);
-  justify-content: start;
+  justify-content: flex-start;
   padding: 20px;
 
   .delivery {
