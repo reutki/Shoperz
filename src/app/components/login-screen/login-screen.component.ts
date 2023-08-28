@@ -21,9 +21,6 @@ export class LoginScreenComponent {
         if (response.token) {
           this.authService.saveToken(response.token);
           this.authGuard.checkLoginAndNavigate();
-          if (this.authService.isLoggedIn()) {
-            this.authGuard.checkLoginAndNavigate();
-          }
         }
       });
   }

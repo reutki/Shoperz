@@ -46,11 +46,11 @@ import { ClientReviewComponent } from './components/client-review/client-review.
 import { ReviewModalComponent } from './components/review-modal/review-modal.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { CartComponent } from './components/cart/cart.component';
-import { AppWrapperComponent } from './components/app-wrapper/app-wrapper.component';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatDividerModule } from '@angular/material/divider';
 import { CategoryComponent } from './components/category/category.component';
 import { CartItemComponent } from './components/cart-item/cart-item.component';
+import { AppwrapperComponent } from './components/appwrapper/appwrapper.component';
 
 @NgModule({
   declarations: [
@@ -76,9 +76,9 @@ import { CartItemComponent } from './components/cart-item/cart-item.component';
     ClientReviewComponent,
     ReviewModalComponent,
     CartComponent,
-    AppWrapperComponent,
     CategoryComponent,
     CartItemComponent,
+    AppwrapperComponent,
   ],
   imports: [
     BrowserModule,

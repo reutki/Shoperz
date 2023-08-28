@@ -8,12 +8,9 @@ import { AuthService } from './Services/auth.service';
 })
 export class AppComponent {
   title = 'Shoperz';
-  logged = false;
 
-  constructor(private authGuard: AuthGuard, private authService: AuthService) {
-    this.authGuard.checkLoginAndNavigate();
-  }
+  constructor(private authGuard: AuthGuard, private authService: AuthService) {}
   ngOnInit() {
-    this.logged = this.authService.isLoggedIn();
+    this.authGuard.checkLoginAndNavigate();
   }
 }

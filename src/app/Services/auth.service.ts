@@ -20,6 +20,7 @@ export class AuthService {
 
   getToken(): string | null {
     const token = localStorage.getItem('authToken');
+
     return token;
   }
 

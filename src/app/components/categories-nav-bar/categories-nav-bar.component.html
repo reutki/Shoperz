@@ -1,8 +1,10 @@
 <div class="categories-nav">
   <div *ngFor="let category of mainCategories" class="container-categories">
-    <a [routerLink]="['/category', category]" class="category">{{
-      category
-    }}</a>
+    <a
+      [routerLink]="[{ outlets: { categories: ['category', category] } }]"
+      class="category"
+      >{{ category }}</a
+    >
   </div>
   <div *ngIf="dropdownCategories.length > 0" class="container-categories">
     <div class="dropdown">
@@ -18,7 +20,7 @@
         <a
           mat-menu-item
           *ngFor="let category of dropdownCategories"
-          [routerLink]="['/category', category]"
+          [routerLink]="[{ outlets: { categories: ['category', category] } }]"
           >{{ category }}</a
         >
       </mat-menu>
