@@ -1,0 +1,32 @@
+<div class="cart-item">
+  <div class="item-row">
+    <!-- <a routerLink="/product/{{ id }}">
+      <img src="{{ image }}" class="max-w-[80px]" />
+    </a> -->
+    <div class="item-content">
+      <div class="item-link-container">
+        <a routerLink="/product/{{ item.id }}" class="item-link-container-link">
+          {{ item.title }}
+        </a>
+        <div (click)="removeItem(item.id)" class="remove-from-cart">
+          <mat-icon>close</mat-icon>
+        </div>
+      </div>
+      <div class="amount-total">
+        <div class="decrease">
+          <div (click)="decreaseAmount(item.id)" class="operation-symbol">
+            <mat-icon>remove</mat-icon>
+          </div>
+          <div class="quantity">{{ item.quantity }}</div>
+          <div (click)="increaseAmount(item.id)" class="operation-symbol">
+            <mat-icon>add</mat-icon>
+          </div>
+        </div>
+        <div class="price">$ {{ item.price }}</div>
+        <div class="price-total-item">
+          {{ (item.price * item.quantity).toFixed(2) }}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

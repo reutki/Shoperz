@@ -6,27 +6,10 @@
     </div>
   </div>
   <div class="cart-items" *ngIf="cart">
-    <div *ngFor="let item of cart.products" class="cart-item">
-      <div class="item-row">
-        <a [routerLink]="['/game', item.id]">
-          <!-- <img
-            [src]="item.thumbnail"
-            [alt]="item.title"
-            class="item-row-image"
-          /> -->
-        </a>
-        <div class="item-link-container">
-          <div class="item-link">
-            <a [routerLink]="['/game', item.id]">
-              {{ item.title }}
-            </a>
-            <div (click)="removeItem(item.id)" class="remove-item">
-              <mat-icon>close</mat-icon>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    <app-cart-item
+      *ngFor="let item of cart.products"
+      [item]="item"
+    ></app-cart-item>
   </div>
   <div class="cart-summary">
     <div class="total">

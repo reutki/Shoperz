@@ -50,6 +50,7 @@ import { AppWrapperComponent } from './components/app-wrapper/app-wrapper.compon
 import { MatMenuModule } from '@angular/material/menu';
 import { MatDividerModule } from '@angular/material/divider';
 import { CategoryComponent } from './components/category/category.component';
+import { CartItemComponent } from './components/cart-item/cart-item.component';
 
 @NgModule({
   declarations: [
@@ -77,6 +78,7 @@ import { CategoryComponent } from './components/category/category.component';
     CartComponent,
     AppWrapperComponent,
     CategoryComponent,
+    CartItemComponent,
   ],
   imports: [
     BrowserModule,

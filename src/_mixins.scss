@@ -1,7 +1,7 @@
-@mixin flex-center {
+@mixin flex-center($justify: center, $align: center) {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: $justify;
+  align-items: $align;
 }
 
 @mixin flex-gap($gap: 10px, $direction: row) {
@@ -36,7 +36,7 @@
   object-fit: contain;
   filter: opacity($opacity);
 }
-
+// ! o sa-l sterg ca e mai concis prin css
 @mixin border($position: bottom, $color: black, $height: 1px) {
   @if $position == top {
     border-top: $height solid $color;

@@ -10,6 +10,6 @@ export class HeaderComponent {
   constructor(private cartService: CartService) {}
 
   toggleCart() {
-    this.cartService.handleClose();
+    this.cartService.toggleCart();
   }
 }

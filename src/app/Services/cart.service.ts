@@ -7,7 +7,7 @@ import { ApiService } from './api.service';
   providedIn: 'root',
 })
 export class CartService {
-  private isOpenSubject = new BehaviorSubject<boolean>(true);
+  private isOpenSubject = new BehaviorSubject<boolean>(false);
   isOpen$ = this.isOpenSubject.asObservable();
   private cartSubject = new BehaviorSubject<Cart>({
     id: 1,
@@ -19,27 +19,19 @@ export class CartService {
     totalQuantity: 0,
   });
   cart$: Observable<Cart> = this.cartSubject.asObservable();
-  private totalSubject = new BehaviorSubject<number>(0);
-  total$ = this.totalSubject.asObservable();
-
   constructor(private apiService: ApiService) {}
 
   fetchCartData(userId: number): void {
     this.apiService.request('GET', `carts/user/${userId}`).subscribe(
       (response: any) => {
         if (response.carts.length > 0) {
-          const cartData = response.carts[0];
-          this.cartSubject.next(cartData);
+          this.cartSubject.next(response.carts[0]);
         }
       },
       (error: any) => {
         console.error('Error fetching cart data:', error);
       }
     );
-  }
-
-  handleClose(): void {
-    this.isOpenSubject.next(!this.isOpenSubject.value);
   }
 
   clearCart(): void {
@@ -106,22 +98,36 @@ export class CartService {
   toggleCart(): void {
     this.isOpenSubject.next(!this.isOpenSubject.value);
   }
+
+  updateQuantity(id: number, operation: '-' | '+'): void {
+    const currentCart = this.cartSubject.value;
+    const updatedProducts = currentCart.products.map((item) => {
+      if (item.id === id && item.quantity > 1 && operation === '-') {
+        return { ...item, quantity: item.quantity - 1 };
+      }
+      if (item.id === id && item.quantity >= 1 && operation === '+') {
+        return { ...item, quantity: item.quantity + 1 };
+      }
+      return item;
+    });
+
+    const total = updatedProducts.reduce(
+      (acc, item) => acc + item.price * item.quantity,
+      0
+    );
+    const totalQuantity = updatedProducts.reduce(
+      (acc, item) => acc + item.quantity,
+      0
+    );
+
+    const updatedCart = {
+      ...currentCart,
+      products: updatedProducts,
+      total: total,
+      totalQuantity: totalQuantity,
+    };
+
+    this.cartSubject.next(updatedCart);
+    this.updateCart(currentCart.id, updatedProducts);
+  }
 }
-
-// removeItem(id: number): void {
-//   this.cartSubject.next(
-//     this.cartSubject.value.filter((item) => item.id !== id)
-//   );
-//   console.log(this.cartSubject);
-// }
-
-// addToCart = (item: Cart, id: number) => {
-//   const existingItem = this.cartSubject.value.find(
-//     (existingItem) => existingItem.id === id
-//   );
-
-//   if (!existingItem) {
-//     const updatedCart = [...this.cartSubject.value, item];
-//     this.cartSubject.next(updatedCart);
-//   }
-// };
