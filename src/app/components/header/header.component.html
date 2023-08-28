@@ -2,13 +2,38 @@
   <button mat-icon-button>
     <mat-icon>menu</mat-icon>
   </button>
-  <img src="../../../assets/logo.svg" alt="company logo" />
+  <a [routerLink]="['']"
+    ><img src="../../../assets/logo.svg" alt="company logo"
+  /></a>
   <div class="search">
-    <input matInput placeholder="Search for products..." />
-    <mat-select class="select" placeholder="All Categories">
-      <mat-option>Item here</mat-option>
+    <input
+      (input)="searchItem()"
+      [(ngModel)]="query"
+      matInput
+      [matAutocomplete]="auto"
+      placeholder="Search for products..."
+    />
+    <mat-autocomplete #auto="matAutocomplete">
+      <mat-option>
+        <app-bundle-card
+          *ngFor="let item of results"
+          [Title]="item.title"
+          [Category]="item.category"
+          [Image]="item.thumbnail"
+          [Price]="item.price"
+        />
+      </mat-option>
+    </mat-autocomplete>
+    <mat-select
+      class="select"
+      [(value)]="categorySelected"
+      placeholder="All Categories"
+    >
+      <mat-option [value]="category" *ngFor="let category of categories">{{
+        category
+      }}</mat-option>
     </mat-select>
-    <button class="search-button" mat-button>
+    <button (click)="searchItem()" class="search-button" mat-button>
       <mat-icon>search</mat-icon>
     </button>
   </div>

@@ -12,6 +12,8 @@ import { ShopFeaturesComponent } from './components/shop-features/shop-features.
 
 import { MatCardModule } from '@angular/material/card';
 //material imports
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+
 import { MatTabsModule } from '@angular/material/tabs';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { MatPaginatorModule } from '@angular/material/paginator';
@@ -105,6 +107,7 @@ import { AppwrapperComponent } from './components/appwrapper/appwrapper.componen
     MatDialogModule,
     MatMenuModule,
     MatDividerModule,
+    MatAutocompleteModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
