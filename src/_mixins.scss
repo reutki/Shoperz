@@ -36,6 +36,10 @@
   object-fit: contain;
   filter: opacity($opacity);
 }
+@mixin same-height-card($width: 420px, $aspect-ratio: 3/1) {
+  max-width: $width;
+  aspect-ratio: $aspect-ratio;
+}
 // ! o sa-l sterg ca e mai concis prin css
 @mixin border($position: bottom, $color: black, $height: 1px) {
   @if $position == top {
