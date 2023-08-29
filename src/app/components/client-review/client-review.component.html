@@ -3,25 +3,14 @@
     <div class="image-wrapper">
       <img src="../..//src/assets/logo.svg" alt="user picture" />
     </div>
-    <h5>UserName</h5>
-    <p>Date</p>
+    <h5>{{Username}}</h5>
+    <p>{{Date}}</p>
   </div>
   <div class="review-container">
-    <h5>Review name</h5>
-    <star-rating [readOnly]="true"></star-rating>
+    <h5>{{Title}}</h5>
+    <star-rating [readOnly]="true" [rating]="Rating"></star-rating>
     <p>
-      Lorem ipsum, dolor sit amet consectetur adipisicing elit. Natus
-      perferendis excepturi alias! In rerum quisquam dolore explicabo molestias
-      provident cumque voluptates, ab asperiores porro minus eius sunt quae
-      autem, optio architecto ad labore voluptatum ipsa, iusto sit illo! Fugiat,
-      architecto? Fugit repellendus blanditiis mollitia eaque voluptatum
-      inventore voluptate quaerat neque consequuntur tempora? Modi quidem
-      inventore dolore quae impedit placeat reiciendis mollitia illum ipsa
-      harum? Distinctio, facere dolorum laudantium doloremque incidunt corrupti
-      dolore voluptates excepturi dignissimos corporis ab sit porro id nulla
-      vitae. Voluptates expedita minima debitis saepe nobis voluptatibus iusto,
-      quas fugit quidem nostrum accusamus eum sint, doloribus repudiandae!
-      Cumque?
+      {{Description}}
     </p>
   </div>
 </div>

@@ -26,14 +26,10 @@
     <div class="reviews">
       <div class="top-container">
         <div class="ratings-container">
-          <h4>4.5 <span>(amount reviews)</span></h4>
+          <h4>{{rating}} <span>( {{amountOfRatings}} )</span></h4>
           <div class="rating-container" *ngFor="let item of ratings">
             <star-rating [readOnly]="true" [rating]="item"> </star-rating>
-            <mat-progress-bar
-              class="bar"
-              mode="determinate"
-              value="20"
-            ></mat-progress-bar>
+            <mat-progress-bar class="bar" mode="determinate" [value]="(ratingCounts[item] / reviews.length) * 100"></mat-progress-bar>
           </div>
         </div>
         <div class="call-to-action">
@@ -46,21 +42,8 @@
         </div>
       </div>
       <div class="user-reviews"></div>
-      <app-client-review></app-client-review>
-      <app-client-review></app-client-review>
-      <app-client-review></app-client-review>
-      <app-client-review></app-client-review>
-      <app-client-review></app-client-review>
-      <app-client-review></app-client-review>
-      <app-client-review></app-client-review>
-      <app-client-review></app-client-review>
-      <app-client-review></app-client-review>
-      <app-client-review></app-client-review>
-      <app-client-review></app-client-review>
-      <app-client-review></app-client-review>
-      <app-client-review></app-client-review>
-      <app-client-review></app-client-review>
+      <app-client-review *ngFor="let item of paginatedReviews" [Description]="item.body" [Rating]="item.rating" [Username]="item.user.username" [Title]="item.body" [Date]="item.user.username"></app-client-review>
     </div>
-    <app-pagination></app-pagination>
+    <app-pagination [itemsPerPage]="itemsPerPage" [array]="reviews" (pageChange)="onPageChange($event)"></app-pagination>
   </mat-tab>
 </mat-tab-group>
