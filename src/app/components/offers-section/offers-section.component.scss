@@ -1,0 +1,19 @@
+@import '/src/imports';
+
+
+.container{
+  display: flex;
+  width: 100%;
+  margin: 0 auto;
+  justify-content: center;
+  gap: 20px;
+  padding: 0 10%;
+}
+.column-conainter{
+display: flex;
+flex: 1;
+flex-direction: column;
+}
+h3{
+  @include h3-medium;
+  }

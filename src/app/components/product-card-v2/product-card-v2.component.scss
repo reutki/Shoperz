@@ -5,17 +5,22 @@
 mat-card {
   padding: 20px;
   overflow: hidden;
-  max-width: 427px;
   display: flex;
   flex-direction: row;
+  gap:20px;
+  margin-bottom: 10px;
+  @include same-height-card;
   p {
     @include text1-medium();
     color: $primary-700;
   }
+  h4 {
+    @include h4-bold();
+    color: $danger-600;
+  }
   h5 {
-    @include h5-bold();
+    @include h5-medium();
     color: $gray-900;
-    margin-top: 25px;
   }
 }
 .image-container {
