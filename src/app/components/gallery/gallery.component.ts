@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { GalleryItem, ImageItem } from 'ng-gallery';
 import { CartService } from 'src/app/Services/cart.service';
 import { CartItem } from 'src/types/cart.interface';
@@ -10,7 +10,7 @@ import { Product } from 'src/types/item.interface';
   templateUrl: './gallery.component.html',
   styleUrls: ['./gallery.component.scss'],
 })
-export class GalleryComponent implements OnInit {
+export class GalleryComponent implements OnDestroy {
   productId = window.location.href
     .slice(window.location.href.lastIndexOf('/') + 1)
     .replace(/\)/gi, '');
@@ -28,8 +28,8 @@ export class GalleryComponent implements OnInit {
     thumbnail: '...',
     images: ['https://www.farmaku.com/assets/images/no-img-frame.png'],
   };
-
-  productCount = 1;
+  cartServiceSubscription;
+  productCount = 0;
 
   modifyProductCount(operation: string) {
     if (operation === '-' && this.productCount > 0) {
@@ -40,7 +40,9 @@ export class GalleryComponent implements OnInit {
     }
   }
 
-  constructor(private cartService: CartService) {}
+  constructor(private cartService: CartService) {
+    this.cartServiceSubscription = this.cartService.cart$;
+  }
 
   addToCart(item: Product, id: number): void {
     const cartItem: CartItem = {
@@ -65,30 +67,9 @@ export class GalleryComponent implements OnInit {
           (image) => new ImageItem({ src: image, thumb: image })
         );
       });
+  }
 
-    // this.images = [
-    //   new ImageItem({
-    //     src: 'https://media.croma.com/image/upload/v1664009609/Croma%20Assets/Communication/Mobiles/Images/243463_0_qtsxpd.png',
-    //     thumb:
-    //       'https://media.croma.com/image/upload/v1664009609/Croma%20Assets/Communication/Mobiles/Images/243463_0_qtsxpd.png',
-    //   }),
-    //   new ImageItem({
-    //     src: 'https://images.macrumors.com/t/rVFMv95D6F0qtw436lHIuu0-p4I=/1600x/article-new/2020/10/iphone-13-models.jpg',
-    //     thumb:
-    //       'https://images.macrumors.com/t/rVFMv95D6F0qtw436lHIuu0-p4I=/1600x/article-new/2020/10/iphone-13-models.jpg',
-    //   }),
-    //   new ImageItem({
-    //     src: '../../../assets/card.svg',
-    //     thumb: '../../../assets/card.svg',
-    //   }),
-    //   new ImageItem({
-    //     src: '../../../assets/payments.svg',
-    //     thumb: '../../../assets/payments.svg',
-    //   }),
-    //   new ImageItem({
-    //     src: '../../../assets/truck.svg',
-    //     thumb: '../../../assets/truck.svg',
-    //   }),
-    // ];
+  ngOnDestroy(): void {
+    this.cartServiceSubscription && this.cartServiceSubscription;
   }
 }

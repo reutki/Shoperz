@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Cart, CartItem } from '../../types/cart.interface';
 import { ApiService } from './api.service';
-// todo fix total
+// todo fix total`
 @Injectable({
   providedIn: 'root',
 })
@@ -70,38 +70,40 @@ export class CartService {
     const existingItem = this.cartSubject.value.products.find(
       (existingItem) => existingItem.id === id
     );
-
+    let updatedCart = { ...this.cartSubject.value };
     if (!existingItem) {
-      const updatedProducts = [...this.cartSubject.value.products, item];
-      const updatedCart = {
-        ...this.cartSubject.value,
-        products: updatedProducts,
-      };
-      this.cartSubject.next(updatedCart);
-      this.updateCart(this.cartSubject.value.id, updatedProducts);
+      updatedCart.products = [...this.cartSubject.value.products, item];
+      // this.cartSubject.next(updatedCart);
+      // this.updateCart(this.cartSubject.value.id, updatedProducts);
       console.log('addToCart', existingItem, updatedCart);
     } else {
-      let products = this.cartSubject.value.products;
-      products = products.map((item) => {
+      let updatedProducts = [...this.cartSubject.value.products];
+      updatedCart.products = updatedProducts.map((item) => {
         if (item.id === id) {
           item.quantity++;
         }
         return item;
       });
-      this.cartSubject.next({ ...this.cartSubject.value, products });
+      // this.cartSubject.next({ ...this.cartSubject.value, products });
+      // this.updateCart(this.cartSubject.value.id, products);
     }
+    this.cartSubject.next(updatedCart);
+    this.updateCart(this.cartSubject.value.id, updatedCart.products);
   }
 
   updateCart(cartId: number, products: CartItem[]) {
-    const body = {
-      merge: true,
-      products,
-    };
-
-    this.apiService
-      .request('PUT', `carts/${cartId}`, body)
-      .subscribe((response: any) => console.log(response));
-    console.log(this.cart$);
+    fetch(`https://dummyjson.com/carts/${cartId}`, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        merge: true,
+        products,
+      }),
+    })
+      .then((res) => res.json())
+      .then((res) => this.cartSubject.next(res))
+      .catch(console.log)
+      .finally(() => console.log(this.cartSubject.value, 'finally updt crt'));
   }
 
   toggleCart(): void {
