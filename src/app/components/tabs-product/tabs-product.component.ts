@@ -16,6 +16,8 @@ export class TabsProductComponent implements OnInit {
   activePage: number = 0;
   ratingCounts: { [key: number]: number } = {};
   amountOfRatings:number =0
+  rating:number = 0
+
   constructor(public dialog: MatDialog,private reviewsService:ReviewsService) {}
   ngOnInit() {
     this.reviewsService.getReviews();
@@ -24,9 +26,9 @@ export class TabsProductComponent implements OnInit {
       this.paginatedReviews = this.reviews.slice(0, this.itemsPerPage);
       this.ratings.forEach((rating) => {
         this.ratingCounts[rating] = this.reviews.filter((review) => Math.round(review.rating) === rating).length;
-        console.log(this.ratingCounts)
-
+        this.rating=(this.rating + rating)
       });
+      this.amountOfRatings=this.reviews.length
     });
   }
   onPageChange(paginatedReviews: any[]) {
