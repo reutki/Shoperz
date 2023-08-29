@@ -1,4 +1,10 @@
-import { Component, ViewEncapsulation, OnInit, OnDestroy } from '@angular/core';
+import {
+  Component,
+  ViewEncapsulation,
+  OnDestroy,
+  ViewChild,
+  ElementRef,
+} from '@angular/core';
 import { ProductsService } from 'src/app/Services/products.service';
 import { Subscription } from 'rxjs';
 
@@ -9,13 +15,14 @@ import { Subscription } from 'rxjs';
   encapsulation: ViewEncapsulation.None,
 })
 export class FilterSectionPricesComponent implements OnDestroy {
+  @ViewChild('minInput') minInput!: ElementRef<HTMLInputElement>;
+  @ViewChild('maxInput') maxInput!: ElementRef<HTMLInputElement>;
   checkboxStates: boolean[] = Array(6).fill(false);
-  // x = [50, 100, 200, 300, 400, 500];
 
   noPriceFilter = false;
   priceInterval = false;
   min = 0;
-  max = 40;
+  max = 500;
   products: any[] = [];
   private productsSubscription: Subscription | undefined;
 
@@ -25,6 +32,7 @@ export class FilterSectionPricesComponent implements OnDestroy {
     this.productsSubscription = this.productService.products$.subscribe(
       (products) => {
         this.products = products;
+        this.max = Math.max(...products.map((prod) => prod.price));
       }
     );
   }
@@ -61,6 +69,19 @@ export class FilterSectionPricesComponent implements OnDestroy {
       this.checkboxStates = Array(5).fill(false);
     }
     this.noPriceFilter = !this.noPriceFilter;
+  }
+
+  logMinMax() {
+    const newMin = parseFloat(this.minInput.nativeElement.value);
+    const newMax = parseFloat(this.maxInput.nativeElement.value);
+
+    this.applyPriceFilter(newMin, newMax);
+    this.priceInterval = true;
+  }
+
+  togglePriceInterval() {
+    this.priceInterval = !this.priceInterval;
+    this.checkboxStates = Array(6).fill(false);
   }
 
   ngOnDestroy(): void {

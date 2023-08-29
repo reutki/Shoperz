@@ -8,7 +8,7 @@
           id="checkbox"
           type="checkbox"
           [checked]="state"
-          [disabled]="noPriceFilter"
+          [disabled]="priceInterval"
         />
         <div class="numeric-range">
           <p>
@@ -20,31 +20,31 @@
         </div>
       </div>
     </ng-container>
-
-    <!-- <div class="checkbox-item">
-      <div class="numeric-range">
-        <input
-          id="checkbox"
-          type="checkbox"
-          [checked]="noPriceFilter"
-          (click)="toggleNoPrice()"
-        />
-        <p>>500</p>
-      </div>
-    </div> -->
   </div>
 
   <div class="checkbox-item">
-    <div class="numeric-range flex">
+    <div class="numeric-range flex" (click)="togglePriceInterval()">
       <input id="checkbox" type="checkbox" [checked]="priceInterval" />
       <p class="count">Price interval</p>
     </div>
   </div>
-
   <div class="x">
-    <mat-slider [min]="0" [max]="500">
-      <input [value]="min" matSliderStartThumb class="disable-ripple" />
-      <input [value]="max" matSliderEndThumb class="disable-ripple" />
+    <mat-slider
+      [disableRipple]="true"
+      [min]="0"
+      [max]="max"
+      (change)="logMinMax()"
+      discrete="true"
+      [disabled]="!priceInterval"
+    >
+      <input
+        #minInput
+        [value]="min"
+        matSliderStartThumb
+        class="disable-ripple"
+        disableRipple="true"
+      />
+      <input #maxInput [value]="max" matSliderEndThumb class="disable-ripple" />
     </mat-slider>
   </div>
 </div>

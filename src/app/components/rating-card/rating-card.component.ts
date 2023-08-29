@@ -13,9 +13,11 @@ export class RatingCardComponent {
   toggleCheckbox(event: Event, index: number) {
     event.stopPropagation();
     event.preventDefault();
-    this.checkboxStates[index] = !this.checkboxStates[index];
+    let checked = this.checkboxStates[index];
     this.applyPriceFilter(index);
-    console.log(index);
+    console.log(5 - index);
+    this.checkboxStates = Array(6).fill(false);
+    this.checkboxStates[index] = !checked;
   }
   constructor(private productService: ProductsService) {}
 
@@ -27,7 +29,7 @@ export class RatingCardComponent {
 
   applyPriceFilter(index: number) {
     const filteredProducts = this.products.filter((product) => {
-      return Math.ceil(product.rating) === index + 1;
+      return Math.ceil(product.rating) === 5 - index;
     });
     this.productService.updateFilteredProducts(filteredProducts);
     console.log(filteredProducts);
