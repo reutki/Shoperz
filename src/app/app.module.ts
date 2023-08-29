@@ -53,6 +53,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import { CategoryComponent } from './components/category/category.component';
 import { CartItemComponent } from './components/cart-item/cart-item.component';
 import { AppwrapperComponent } from './components/appwrapper/appwrapper.component';
+import { OffersSectionComponent } from './components/offers-section/offers-section.component';
 import { ProductPageComponent } from './routes/product-page/product-page.component';
 
 @NgModule({
@@ -82,6 +83,7 @@ import { ProductPageComponent } from './routes/product-page/product-page.compone
     CategoryComponent,
     CartItemComponent,
     AppwrapperComponent,
+    OffersSectionComponent,
     ProductPageComponent,
   ],
   imports: [

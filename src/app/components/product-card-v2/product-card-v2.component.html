@@ -1,11 +1,13 @@
 <mat-card>
   <div class="image-container">
-    <img src="../../../assets/guard.svg" alt="" />
+    <img src="{{Image}}" alt="" />
   </div>
   <div class="data-container">
-    <p>Product name here</p>
-    <star-rating [starType]="'svg'" [rating]="5"></star-rating>
-    <h5>$1200.00</h5>
+    <p>{{Title}}</p>
+    <star-rating [starType]="'svg'" [rating]="Rating"></star-rating>
+
+    <h4>{{Discount>0? '%'+Discount:null}}</h4>
+    <h5>${{Price}}</h5>
     <div class="button-container">
       <button
         matTooltipPosition="left"
