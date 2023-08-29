@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Cart, CartItem } from '../../types/cart.interface';
 import { ApiService } from './api.service';
-
+// todo fix total
 @Injectable({
   providedIn: 'root',
 })
@@ -78,8 +78,17 @@ export class CartService {
         products: updatedProducts,
       };
       this.cartSubject.next(updatedCart);
-      this.updateCart(id, updatedProducts);
+      this.updateCart(this.cartSubject.value.id, updatedProducts);
       console.log('addToCart', existingItem, updatedCart);
+    } else {
+      let products = this.cartSubject.value.products;
+      products = products.map((item) => {
+        if (item.id === id) {
+          item.quantity++;
+        }
+        return item;
+      });
+      this.cartSubject.next({ ...this.cartSubject.value, products });
     }
   }
 

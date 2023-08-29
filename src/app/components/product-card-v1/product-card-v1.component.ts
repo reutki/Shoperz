@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-product-card-v1',
@@ -11,4 +12,11 @@ export class ProductCardV1Component {
   @Input() Discount? = 0;
   @Input() Image = '';
   @Input() Title = '';
+  @Input() Id = null;
+
+  constructor(private router: Router) {}
+
+  goToProduct() {
+    this.router.navigate(['/', 'product', 1]);
+  }
 }

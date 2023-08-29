@@ -1,14 +1,17 @@
 @import "/src/imports";
 
 .root {
+  width: 100%;
   display: grid;
   grid-template-columns: 1fr 2fr 1fr;
   padding: 20px 0;
+  box-shadow: none;
 
   mat-card {
     display: flex;
     flex-direction: row;
     width: 100%;
+    box-shadow: none;
   }
 }
 

@@ -32,14 +32,14 @@
       </button>
       <button mat-button disableRipple matTooltip="Whishlist">
         <div class="btn-center">
-          <span id="x">Compare</span>
+          <span id="x">Save</span>
           <img src="../../../assets/favorite-s.svg" alt="add to cart" />
         </div>
       </button>
     </div>
     <div class="price">
       <h1 [ngClass]="{ 'red-text': product.discountPercentage }">
-        {{ formattedPrice }}
+        {{ product.price | currency : "USD" : "symbol" : "1.2-2" }}
       </h1>
       <p *ngIf="product.discountPercentage">
         {{
@@ -53,6 +53,7 @@
       matTooltipPosition="left"
       mat-button
       matTooltip="Add to cart"
+      (click)="addToCart(product)"
     >
       <span>Add to Cart</span>
       <img

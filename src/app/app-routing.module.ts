@@ -9,7 +9,7 @@ import { ProductPageComponent } from './routes/product-page/product-page.compone
 
 const routes: Routes = [
   { path: 'login', component: LoginScreenComponent },
-
+  // { path: 'product/:id', component: ProductPageComponent },
   {
     path: '',
     component: AppwrapperComponent,
@@ -22,8 +22,9 @@ const routes: Routes = [
       {
         path: 'product/:id',
         component: ProductPageComponent,
-        outlet: 'products',
+        outlet: 'categories',
       },
+
       {
         path: '',
         component: AppwrapperComponent,

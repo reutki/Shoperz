@@ -11,24 +11,23 @@ import { Product } from 'src/types/item.interface';
   styleUrls: ['./gallery.component.scss'],
 })
 export class GalleryComponent implements OnInit {
-  images: GalleryItem[];
+  productId = window.location.href
+    .slice(window.location.href.lastIndexOf('/') + 1)
+    .replace(/\)/gi, '');
+  images!: GalleryItem[];
   product: Product = {
     id: 1,
-    title: 'iPhone 14 Pro, LTPO Super Retina XDR OLED 6.1"',
-    description: 'An apple mobile which is nothing like apple',
-    price: 549,
-    discountPercentage: 12.96,
+    title: '',
+    description: '',
+    price: 0,
+    discountPercentage: 0,
     rating: 4.69,
     stock: 94,
-    brand: 'Apple',
-    category: 'smartphones',
+    brand: '',
+    category: '',
     thumbnail: '...',
-    images: [
-      'https://www.reliancedigital.in/medias/Apple-MLPF3HN-A-Smart-Phone-491997699-i-1-1200Wx1200H?context=bWFzdGVyfGltYWdlc3wyNTU5NTZ8aW1hZ2UvanBlZ3xpbWFnZXMvaDU5L2hlOC85ODc4MDkwMDg4NDc4LmpwZ3wxNGQzODYyZWJiYjYwZDVjZjNhM2Q5YzQ4ZmE5OTljMmZiYmM2MDE0ZjE1YzhhMTRmYjM2ZDkzZGEyODcxNTU2',
-    ],
+    images: ['https://www.farmaku.com/assets/images/no-img-frame.png'],
   };
-
-  formattedPrice: string;
 
   productCount = 1;
 
@@ -41,50 +40,55 @@ export class GalleryComponent implements OnInit {
     }
   }
 
-  constructor(private cartService: CartService) {
-    this.images = [];
-    this.formattedPrice = new Intl.NumberFormat('en-US', {
-      style: 'currency',
-      currency: 'USD',
-    }).format(this.product.price);
-  }
+  constructor(private cartService: CartService) {}
 
-  addToCart(item: Product): void {
-      const cartItem: CartItem = {
-        id: item.id,
-        title: item.title,
-        price: item.price,
-        total: item.price,
-        discountPercentage: item.discountPercentage,
-        discountedPrice: item.price * (item.discountPercentage / 100),
-        quantity: 1,
-      };
-      this.cartService.addToCart(cartItem, 5); // Assuming user id is 5
+  addToCart(item: Product, id: number): void {
+    const cartItem: CartItem = {
+      id: item.id,
+      title: item.title,
+      price: item.price,
+      total: item.price,
+      discountPercentage: item.discountPercentage,
+      discountedPrice: item.price * (item.discountPercentage / 100),
+      quantity: 1,
+    };
+    this.cartService.addToCart(cartItem, id); // Assuming user id is 5
   }
-  
 
   ngOnInit() {
-    this.images = [
-      new ImageItem({
-        src: 'https://media.croma.com/image/upload/v1664009609/Croma%20Assets/Communication/Mobiles/Images/243463_0_qtsxpd.png',
-        thumb: 'https://media.croma.com/image/upload/v1664009609/Croma%20Assets/Communication/Mobiles/Images/243463_0_qtsxpd.png',
-      }),
-      new ImageItem({
-        src: 'https://images.macrumors.com/t/rVFMv95D6F0qtw436lHIuu0-p4I=/1600x/article-new/2020/10/iphone-13-models.jpg',
-        thumb: 'https://images.macrumors.com/t/rVFMv95D6F0qtw436lHIuu0-p4I=/1600x/article-new/2020/10/iphone-13-models.jpg',
-      }),
-      new ImageItem({
-        src: '../../../assets/card.svg',
-        thumb: '../../../assets/card.svg',
-      }),
-      new ImageItem({
-        src: '../../../assets/payments.svg',
-        thumb: '../../../assets/payments.svg',
-      }),
-      new ImageItem({
-        src: '../../../assets/truck.svg',
-        thumb: '../../../assets/truck.svg',
-      }),
-    ];
+    fetch(`https://dummyjson.com/products/${this.productId}`)
+      .then((res) => res.json())
+      .then((product) => (this.product = product))
+      .catch(console.log)
+      .finally(() => {
+        this.images = this.product.images.map(
+          (image) => new ImageItem({ src: image, thumb: image })
+        );
+      });
+
+    // this.images = [
+    //   new ImageItem({
+    //     src: 'https://media.croma.com/image/upload/v1664009609/Croma%20Assets/Communication/Mobiles/Images/243463_0_qtsxpd.png',
+    //     thumb:
+    //       'https://media.croma.com/image/upload/v1664009609/Croma%20Assets/Communication/Mobiles/Images/243463_0_qtsxpd.png',
+    //   }),
+    //   new ImageItem({
+    //     src: 'https://images.macrumors.com/t/rVFMv95D6F0qtw436lHIuu0-p4I=/1600x/article-new/2020/10/iphone-13-models.jpg',
+    //     thumb:
+    //       'https://images.macrumors.com/t/rVFMv95D6F0qtw436lHIuu0-p4I=/1600x/article-new/2020/10/iphone-13-models.jpg',
+    //   }),
+    //   new ImageItem({
+    //     src: '../../../assets/card.svg',
+    //     thumb: '../../../assets/card.svg',
+    //   }),
+    //   new ImageItem({
+    //     src: '../../../assets/payments.svg',
+    //     thumb: '../../../assets/payments.svg',
+    //   }),
+    //   new ImageItem({
+    //     src: '../../../assets/truck.svg',
+    //     thumb: '../../../assets/truck.svg',
+    //   }),
+    // ];
   }
 }

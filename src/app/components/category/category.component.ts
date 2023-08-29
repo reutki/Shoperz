@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProductsService } from 'src/app/Services/products.service';
 
@@ -7,12 +7,12 @@ import { ProductsService } from 'src/app/Services/products.service';
   templateUrl: './category.component.html',
   styleUrls: ['./category.component.scss'],
 })
-export class CategoryComponent implements OnInit {
+export class CategoryComponent implements OnDestroy {
   constructor(
     private route: ActivatedRoute,
     private productService: ProductsService
   ) {}
-
+  filteredProductsSubscription: any;
   products: any[] = [];
   category: string | null = '';
   minPrice: number = 0;
@@ -27,8 +27,14 @@ export class CategoryComponent implements OnInit {
 
   fetchProducts() {
     this.productService.fetchProducts(this.category!);
-    this.productService.filteredProducts$.subscribe((products) => {
-      this.products = products;
-    });
+    this.filteredProductsSubscription =
+      this.productService.filteredProducts$.subscribe((products) => {
+        this.products = products;
+      });
+  }
+  ngOnDestroy() {
+    if (this.filteredProductsSubscription) {
+      this.filteredProductsSubscription.unsubscribe();
+    }
   }
 }

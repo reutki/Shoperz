@@ -1,13 +1,29 @@
 @import "/src/imports";
-.root {
+.page-root {
   width: 100%;
   height: auto;
-  background-color: antiquewhite;
-  @include flex-gap(20px, column);
+  background-color: white;
+  @include flex-gap(40px, column);
   justify-content: center;
+
+  .product {
+    width: 100%;
+    height: auto;
+    padding: 0 10%;
+    @media (max-width: 910px) {
+      padding: 0 2% 0 0;
+    }
+  }
+
   .bundles {
     width: 100%;
     height: 389px;
     background-color: $gray-100;
+    @include flex-center;
+  }
+
+  .offers {
+    width: 100%;
+    height: auto;
   }
 }

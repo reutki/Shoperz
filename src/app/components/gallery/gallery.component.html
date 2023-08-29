@@ -46,7 +46,7 @@
         class="h1-medium"
         [ngClass]="{ 'red-text': product.discountPercentage }"
       >
-        {{ formattedPrice }}
+        {{ product.price | currency : "USD" : "symbol" : "1.2-2" }}
       </h1>
       <p *ngIf="product.discountPercentage">
         {{
@@ -71,7 +71,7 @@
     </div>
 
     <button
-      (click)="addToCart(product)"
+      (click)="addToCart(product, product.id)"
       disableRipple
       class="add-btn"
       matTooltipPosition="left"
