@@ -5,9 +5,11 @@ import { LoginScreenComponent } from './components/login-screen/login-screen.com
 import { CategoryComponent } from './components/category/category.component';
 import { AppComponent } from './app.component';
 import { AppwrapperComponent } from './components/appwrapper/appwrapper.component';
+import { ProductPageComponent } from './routes/product-page/product-page.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginScreenComponent },
+
   {
     path: '',
     component: AppwrapperComponent,
@@ -16,6 +18,11 @@ const routes: Routes = [
         path: 'category/:categoryName',
         component: CategoryComponent,
         outlet: 'categories',
+      },
+      {
+        path: 'product/:id',
+        component: ProductPageComponent,
+        outlet: 'products',
       },
       {
         path: '',

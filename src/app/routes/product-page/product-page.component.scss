@@ -1,0 +1,13 @@
+@import "/src/imports";
+.root {
+  width: 100%;
+  height: auto;
+  background-color: antiquewhite;
+  @include flex-gap(20px, column);
+  justify-content: center;
+  .bundles {
+    width: 100%;
+    height: 389px;
+    background-color: $gray-100;
+  }
+}

@@ -1,5 +1,15 @@
 <app-top-header></app-top-header>
 <app-header></app-header>
 <app-categories-nav-bar></app-categories-nav-bar>
+<button
+  [routerLink]="[{ outlets: { products: ['product', 1] } }]"
+  style="display: none"
+>
+  Router
+</button>
+<div style="width: 100%">
+  <app-product-page></app-product-page>
+</div>
 <router-outlet name="categories"></router-outlet>
+<router-outlet name="products"></router-outlet>
 <app-footer></app-footer>
