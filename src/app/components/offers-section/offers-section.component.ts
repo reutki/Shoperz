@@ -21,7 +21,6 @@ export class OffersSectionComponent implements OnInit {
       this.filterBestsellers();
       this.filterTopRated();
       this.filterMegaOffers();
-      console.log(products);
     });
   }
 

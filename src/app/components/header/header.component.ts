@@ -41,7 +41,6 @@ export class HeaderComponent implements OnInit {
       .pipe(debounceTime(debounceTimeValue))
       .subscribe((result: any[]) => {
         this.results = result;
-        console.log(this.results);
       });
 
     // Trigger the search immediately

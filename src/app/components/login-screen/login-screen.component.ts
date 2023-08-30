@@ -19,7 +19,7 @@ export class LoginScreenComponent {
       .subscribe((response) => {
         console.log(response);
         if (response.token) {
-          this.authService.saveToken(response.token);
+          this.authService.saveToken(response.token,response.id);
           this.authGuard.checkLoginAndNavigate();
         }
       });

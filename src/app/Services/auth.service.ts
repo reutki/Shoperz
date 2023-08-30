@@ -14,8 +14,9 @@ export class AuthService {
   }
 
   //stores the token in the localStorage
-  saveToken(token: string): void {
+  saveToken(token: string,userId:string): void {
     localStorage.setItem('authToken', token);
+    localStorage.setItem('userId', userId);
   }
 
   getToken(): string | null {
