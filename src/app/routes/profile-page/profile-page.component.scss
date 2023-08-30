@@ -1,0 +1,96 @@
+@import "/src/imports";
+
+.profile-root {
+  //   background-color: $gray-100;
+  width: 100%;
+  min-height: 80vh;
+  display: flex;
+
+  .personal-info {
+    padding: 0.2% 1%;
+    background-color: white;
+    width: 400px;
+
+    h3 {
+      @include h4-medium;
+      background: $primary-600;
+      color: white;
+      margin-top: 20px;
+    }
+    .row {
+      @include flex-center(space-between, center);
+      p {
+        @include h6-regular;
+        color: $gray-600;
+      }
+      p:nth-of-type(2) {
+        @include h6-medium;
+        color: $gray-700;
+      }
+    }
+  }
+}
+
+.photo-name {
+  padding: 15px 0;
+  display: flex;
+
+  img {
+    border: 1px solid red;
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
+    margin-right: 10px;
+  }
+  .name-email {
+    @include flex-center(center, inherit);
+    flex-direction: column;
+    padding-top: 1%;
+    h2 {
+      margin: 0;
+      @include h6-medium;
+      color: $gray-700;
+    }
+    p {
+      @include h6-medium;
+      color: $gray-500;
+      margin: 0;
+    }
+  }
+}
+
+.mid {
+  width: 100%;
+  @include flex-gap(2%);
+
+  .mid-one-row {
+    width: 100%;
+    @include flex-gap(2%);
+
+    .flex {
+      width: 100%;
+    }
+  }
+}
+
+.cart {
+  width: 100%;
+  padding: 2% 1%;
+
+  h1 {
+    @include h3-medium;
+    color: $gray-700;
+  }
+  app-product-card-list-view-v1 {
+    display: none;
+    @media (min-width: 1190px) {
+      display: block;
+    }
+  }
+  app-product-card-v2 {
+    display: block;
+    @media (min-width: 1190px) {
+      display: none;
+    }
+  }
+}

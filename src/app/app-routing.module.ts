@@ -6,6 +6,7 @@ import { CategoryComponent } from './components/category/category.component';
 import { AppComponent } from './app.component';
 import { AppwrapperComponent } from './components/appwrapper/appwrapper.component';
 import { ProductPageComponent } from './routes/product-page/product-page.component';
+import { ProfilePageComponent } from './routes/profile-page/profile-page.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginScreenComponent },
@@ -24,7 +25,11 @@ const routes: Routes = [
         component: ProductPageComponent,
         outlet: 'categories',
       },
-
+      {
+        path: 'profile',
+        component: ProfilePageComponent,
+        outlet: 'categories',
+      },
       {
         path: '',
         component: AppwrapperComponent,

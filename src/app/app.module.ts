@@ -56,6 +56,7 @@ import { CartItemComponent } from './components/cart-item/cart-item.component';
 import { AppwrapperComponent } from './components/appwrapper/appwrapper.component';
 import { OffersSectionComponent } from './components/offers-section/offers-section.component';
 import { ProductPageComponent } from './routes/product-page/product-page.component';
+import { ProfilePageComponent } from './routes/profile-page/profile-page.component';
 
 @NgModule({
   declarations: [
@@ -86,6 +87,7 @@ import { ProductPageComponent } from './routes/product-page/product-page.compone
     AppwrapperComponent,
     OffersSectionComponent,
     ProductPageComponent,
+    ProfilePageComponent,
   ],
   imports: [
     BrowserModule,
