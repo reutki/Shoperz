@@ -17,18 +17,23 @@ export class TabsProductComponent implements OnInit {
   ratingCounts: { [key: number]: number } = {};
   amountOfRatings:number =0
   rating:number = 0
-
+  weightedRatingSum: number = 0;
   constructor(public dialog: MatDialog,private reviewsService:ReviewsService) {}
   ngOnInit() {
     this.reviewsService.getReviews();
     this.reviewsService.reviews$.subscribe((review) => {
       this.reviews = review;
       this.paginatedReviews = this.reviews.slice(0, this.itemsPerPage);
+      this.amountOfRatings = this.reviews.length;
+
       this.ratings.forEach((rating) => {
         this.ratingCounts[rating] = this.reviews.filter((review) => Math.round(review.rating) === rating).length;
-        this.rating=(this.rating + rating)
+        this.weightedRatingSum += rating * this.ratingCounts[rating];
       });
-      this.amountOfRatings=this.reviews.length
+
+      if (this.amountOfRatings > 0) {
+        this.rating = (this.weightedRatingSum / this.amountOfRatings);
+      }
     });
   }
   onPageChange(paginatedReviews: any[]) {

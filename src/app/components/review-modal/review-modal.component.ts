@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { ReviewsService } from 'src/app/Services/reviews.service';
 
 @Component({
   selector: 'app-review-modal',
@@ -7,5 +8,8 @@ import { MatDialog, MatDialogModule } from '@angular/material/dialog';
   styleUrls: ['./review-modal.component.scss'],
 })
 export class ReviewModalComponent {
-  constructor(public dialog: MatDialog) {}
+  constructor(public dialog: MatDialog, private reviewsService:ReviewsService) {}
+
+
+
 }
