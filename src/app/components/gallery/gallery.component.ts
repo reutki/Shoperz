@@ -1,21 +1,21 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { GalleryItem, ImageItem } from 'ng-gallery';
 import { CartService } from 'src/app/Services/cart.service';
 import { CartItem } from 'src/types/cart.interface';
 import { Product } from 'src/types/item.interface';
-// import "../../../assets/bag-b.svg"
 
 @Component({
   selector: 'app-gallery',
   templateUrl: './gallery.component.html',
   styleUrls: ['./gallery.component.scss'],
 })
-export class GalleryComponent implements OnDestroy {
+export class GalleryComponent {
   productId = window.location.href
     .slice(window.location.href.lastIndexOf('/') + 1)
     .replace(/\)/gi, '');
   images!: GalleryItem[];
   product: Product = {
+    quantity: 0,
     id: 1,
     title: '',
     description: '',
@@ -28,21 +28,20 @@ export class GalleryComponent implements OnDestroy {
     thumbnail: '...',
     images: ['https://www.farmaku.com/assets/images/no-img-frame.png'],
   };
-  cartServiceSubscription;
-  productCount = 0;
 
-  modifyProductCount(operation: string) {
-    if (operation === '-' && this.productCount > 0) {
-      this.productCount--;
+  modifyProductCount(operation: '+' | '-') {
+    const quantity = this.product.quantity;
+    if (operation === '-' && quantity !== undefined && quantity > 0) {
+      this.product.quantity !== undefined && this.product.quantity--;
+      this.cartService.updateQuantity(this.product.id, '-');
     }
     if (operation === '+') {
-      this.productCount++;
+      this.product.quantity !== undefined && this.product.quantity++;
+      this.cartService.updateQuantity(this.product.id, '+');
     }
   }
 
-  constructor(private cartService: CartService) {
-    this.cartServiceSubscription = this.cartService.cart$;
-  }
+  constructor(private cartService: CartService) {}
 
   addToCart(item: Product, id: number): void {
     const cartItem: CartItem = {
@@ -55,12 +54,13 @@ export class GalleryComponent implements OnDestroy {
       quantity: 1,
     };
     this.cartService.addToCart(cartItem, id); // Assuming user id is 5
+    if (this.product.quantity !== undefined) this.product.quantity++;
   }
 
   ngOnInit() {
     fetch(`https://dummyjson.com/products/${this.productId}`)
       .then((res) => res.json())
-      .then((product) => (this.product = product))
+      .then((product) => (this.product = { ...product, quantity: 0 }))
       .catch(console.log)
       .finally(() => {
         this.images = this.product.images.map(
@@ -69,7 +69,32 @@ export class GalleryComponent implements OnDestroy {
       });
   }
 
-  ngOnDestroy(): void {
-    this.cartServiceSubscription && this.cartServiceSubscription;
-  }
+  colors = [
+    'black',
+    'aliceblue',
+    '#319DFF',
+    '#FFDE31',
+    '#FF316A',
+    '#0DA678',
+    '#9E13F3',
+    '#FFAA04',
+    '#FF64DD',
+    '#17D1DD',
+  ];
+  categories = [
+    'smartphones',
+    'laptops',
+    'furniture',
+    'tops',
+    'womens-dresses',
+    'womens-shoes',
+    'mens-shirts',
+    'mens-shoes',
+    'mens-watches',
+    'womens-watches',
+    'womens-bags',
+    'sunglasses',
+    'automotive',
+    'motorcycle',
+  ];
 }

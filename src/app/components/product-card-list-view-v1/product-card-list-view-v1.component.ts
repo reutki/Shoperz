@@ -22,6 +22,7 @@ export class ProductCardListViewV1Component {
     thumbnail: '...',
     images: ['https://www.farmaku.com/assets/images/no-img-frame.png'],
   };
+  productCount = 0;
   productId = window.location.href
     .slice(window.location.href.lastIndexOf('/') + 1)
     .replace(/\)/gi, '');
@@ -36,16 +37,8 @@ export class ProductCardListViewV1Component {
       total: item.price,
       discountPercentage: item.discountPercentage,
       discountedPrice: item.price * (item.discountPercentage / 100),
-      quantity: 1,
+      quantity: ++this.productCount,
     };
-    this.cartService.addToCart(cartItem, 5); // Assuming user id is 5
-  }
-
-  ngOnInit() {
-    // fetch(`https://dummyjson.com/products/${this.productId}`)
-    //   .then((res) => res.json())
-    //   .then((product) => (this.product = product))
-    //   .catch(console.log)
-    //   .finally(() => console.log(this.product, 5678));
+    this.cartService.addToCart(cartItem, this.product.id);
   }
 }
