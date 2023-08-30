@@ -14,6 +14,9 @@ export class ReviewsService {
   private reviewsSubject = new BehaviorSubject<any[]>([]);
   reviews$: Observable<any[]> = this.reviewsSubject.asObservable();
 
+  private generateRandomRating(): number {
+    return Math.random() * 5;
+  }
   getReviews() {
     this.api.request('GET', `comments`).subscribe((response: any) => {
       const comments = response.comments.map((comment: any) => {
@@ -27,9 +30,21 @@ export class ReviewsService {
       console.log( comments);
     });
   }
+  addReview(newReview:any):Observable<any>{
 
-  private generateRandomRating(): number {
 
-    return Math.random() * 5;
+    return this.api.request('POST', `comments/add`, newReview);
+
   }
+  updateReviews(newReview:any):void{
+    const updatedReviews = [newReview,...this.commentsSubject.value];
+
+    this.commentsSubject.next(updatedReviews);
+    this.reviewsSubject.next([...updatedReviews]);
+    console.log(this.commentsSubject);
+
+
+  }
+
+
 }

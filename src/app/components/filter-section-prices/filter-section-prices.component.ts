@@ -43,7 +43,6 @@ export class FilterSectionPricesComponent implements OnDestroy {
     });
     this.productService.updateFilteredProducts(filteredProducts);
 
-    console.log(this.productService.filteredProducts$);
   }
 
   toggleCheckbox(event: Event, index: number) {
@@ -65,7 +64,6 @@ export class FilterSectionPricesComponent implements OnDestroy {
 
   toggleNoPrice() {
     if (!this.noPriceFilter) {
-      console.log(this.noPriceFilter);
       this.checkboxStates = Array(5).fill(false);
     }
     this.noPriceFilter = !this.noPriceFilter;
