@@ -72,22 +72,17 @@ export class CartService {
     );
     let updatedCart = { ...this.cartSubject.value };
     if (!existingItem) {
-      updatedCart.products = [...this.cartSubject.value.products, item];
-      // this.cartSubject.next(updatedCart);
-      // this.updateCart(this.cartSubject.value.id, updatedProducts);
-      console.log('addToCart', existingItem, updatedCart);
+      updatedCart.products = [item, ...updatedCart.products];
     } else {
-      let updatedProducts = [...this.cartSubject.value.products];
+      let updatedProducts = updatedCart.products;
       updatedCart.products = updatedProducts.map((item) => {
         if (item.id === id) {
           item.quantity++;
         }
         return item;
       });
-      // this.cartSubject.next({ ...this.cartSubject.value, products });
-      // this.updateCart(this.cartSubject.value.id, products);
     }
-    this.cartSubject.next(updatedCart);
+    // this.cartSubject.next(updatedCart);
     this.updateCart(this.cartSubject.value.id, updatedCart.products);
   }
 

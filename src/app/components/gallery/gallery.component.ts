@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { GalleryItem, ImageItem } from 'ng-gallery';
+import { Subscription } from 'rxjs';
 import { CartService } from 'src/app/Services/cart.service';
 import { CartItem } from 'src/types/cart.interface';
 import { Product } from 'src/types/item.interface';
@@ -9,11 +10,12 @@ import { Product } from 'src/types/item.interface';
   templateUrl: './gallery.component.html',
   styleUrls: ['./gallery.component.scss'],
 })
-export class GalleryComponent {
+export class GalleryComponent implements OnDestroy {
   productId = window.location.href
     .slice(window.location.href.lastIndexOf('/') + 1)
     .replace(/\)/gi, '');
   images!: GalleryItem[];
+  productQuantity: number | undefined = 0;
   product: Product = {
     quantity: 0,
     id: 1,
@@ -28,6 +30,7 @@ export class GalleryComponent {
     thumbnail: '...',
     images: ['https://www.farmaku.com/assets/images/no-img-frame.png'],
   };
+  cartSubscription: any;
 
   modifyProductCount(operation: '+' | '-') {
     const quantity = this.product.quantity;
@@ -41,7 +44,7 @@ export class GalleryComponent {
     }
   }
 
-  constructor(private cartService: CartService) {}
+  constructor(public cartService: CartService) {}
 
   addToCart(item: Product, id: number): void {
     const cartItem: CartItem = {
@@ -53,7 +56,7 @@ export class GalleryComponent {
       discountedPrice: item.price * (item.discountPercentage / 100),
       quantity: 1,
     };
-    this.cartService.addToCart(cartItem, id); // Assuming user id is 5
+    this.cartService.addToCart(cartItem, id);
     if (this.product.quantity !== undefined) this.product.quantity++;
   }
 
@@ -67,6 +70,12 @@ export class GalleryComponent {
           (image) => new ImageItem({ src: image, thumb: image })
         );
       });
+    this.cartSubscription = this.cartService.cart$.subscribe((cart) => {
+      const product = cart.products.find(
+        (product) => product.id === Number(this.productId)
+      );
+      this.productQuantity = product?.quantity;
+    });
   }
 
   colors = [
@@ -97,4 +106,8 @@ export class GalleryComponent {
     'automotive',
     'motorcycle',
   ];
+
+  ngOnDestroy(): void {
+    this.cartSubscription = this.cartSubscription.unsubscribe();
+  }
 }

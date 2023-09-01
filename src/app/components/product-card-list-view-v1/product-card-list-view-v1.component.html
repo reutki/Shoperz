@@ -15,6 +15,9 @@
       <ul>
         <li>{{ product.description }}</li>
       </ul>
+      <p class="h6-regular" *ngIf="inProfilePage">
+        Count: {{ productQuantity }}
+      </p>
     </div>
   </div>
   <div class="row">
@@ -53,9 +56,10 @@
       matTooltipPosition="left"
       mat-button
       matTooltip="Add to cart"
-      (click)="addToCart(product)"
+      (click)="inProfilePage ? removeItem() : addToCart(product)"
+      [ngClass]="{ danger: inProfilePage }"
     >
-      <span>Add to Cart</span>
+      <span>{{ inProfilePage ? "Remove from Cart" : "Add to Cart" }}</span>
       <img
         src="../../../assets/bag-s.svg"
         matTooltip="Add to cart"

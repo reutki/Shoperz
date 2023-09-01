@@ -78,7 +78,7 @@
       >
         <div class="btn-center">
           <button (click)="modifyProductCount('-')">−</button>
-          <span id="mid-span">{{ product.quantity }}</span>
+          <span id="mid-span">{{ productQuantity ?? 0 }}</span>
           <button (click)="modifyProductCount('+')">+</button>
         </div>
       </div>

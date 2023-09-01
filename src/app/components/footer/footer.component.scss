@@ -42,14 +42,14 @@ footer {
 @media (max-width: 700px) {
   footer {
     display: grid;
-    grid-template-columns: 1fr 1fr; 
+    grid-template-columns: 1fr 1fr;
     padding: 20px 0 40px 15px;
     justify-content: center;
     grid-gap: 20px;
   }
 
   .info-column {
-    grid-column: span 2; 
+    grid-column: span 2;
   }
 }
 

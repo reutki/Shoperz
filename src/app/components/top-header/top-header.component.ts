@@ -24,16 +24,16 @@ export class TopHeaderComponent {
   utils = [
     {
       img: 'location_on',
-      text: "Track Order"
+      text: 'Track',
     },
     {
       img: 'shopping_basket',
-      text: "Shop"
+      text: 'Shop',
     },
     {
       img: 'settings',
-      text: "Settings"
-    }
+      text: 'Settings',
+    },
   ];
 
   languages: Language[] = [

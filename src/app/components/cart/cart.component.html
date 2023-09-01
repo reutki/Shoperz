@@ -1,11 +1,14 @@
-<div class="cart" [ngClass]="cartIsOpen ? 'right-0' : '-right-full'">
+<div
+  class="cart"
+  [ngClass]="(cartService.isOpen$ | async) ? 'right-0' : '-right-full'"
+>
   <div class="header">
     <div class="title">Shopping Bag</div>
     <div class="close-icon" (click)="toggleCart()">
       <mat-icon>arrow_forward</mat-icon>
     </div>
   </div>
-  <div class="cart-items" *ngIf="cart">
+  <div class="cart-items" *ngIf="cartService.cart$ | async as cart">
     <app-cart-item
       *ngFor="let item of cart.products"
       [item]="item"
@@ -13,7 +16,7 @@
   </div>
   <div class="cart-summary">
     <div class="total">
-      <span>Total: ${{ cart?.total }}</span>
+      <span>Total: ${{ (cartService.cart$ | async)?.total }}</span>
       <div (click)="clearCart()" class="clear-cart">
         <mat-icon>delete</mat-icon>
       </div>
