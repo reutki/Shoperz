@@ -62,7 +62,10 @@
       width: 100%;
       text-transform: uppercase;
       font-weight: 600;
-
+      div{
+        display: flex;
+        gap:10px;
+      }
       span {
         @include h6-bold;
       }
@@ -127,4 +130,16 @@
   bottom: 0;
   background-color: rgba(168, 203, 233, 0.377);
   z-index: -1;
+}
+.save-pdf{
+    cursor: pointer;
+    padding: 3px;
+    background-color: $success-600;
+    color: white;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
 }

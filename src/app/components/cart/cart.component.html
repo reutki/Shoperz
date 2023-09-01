@@ -8,7 +8,7 @@
       <mat-icon>arrow_forward</mat-icon>
     </div>
   </div>
-  <div class="cart-items" *ngIf="cartService.cart$ | async as cart">
+  <div id="cart-items" class="cart-items" *ngIf="cartService.cart$ | async as cart">
     <app-cart-item
       *ngFor="let item of cart.products"
       [item]="item"
@@ -17,9 +17,16 @@
   <div class="cart-summary">
     <div class="total">
       <span>Total: ${{ (cartService.cart$ | async)?.total }}</span>
-      <div (click)="clearCart()" class="clear-cart">
-        <mat-icon>delete</mat-icon>
+      <div>
+
+        <div (click)="generatePDF()" class='save-pdf'>
+          <mat-icon>save_alt</mat-icon>
+        </div>
+        <div (click)="clearCart()" class="clear-cart">
+          <mat-icon>delete</mat-icon>
+        </div>
       </div>
+
     </div>
     <div class="checkout">
       <a routerLink="cart" class="cart-links view-cart btn"> View Cart </a>
