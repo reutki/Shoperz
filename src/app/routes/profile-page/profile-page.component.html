@@ -1,10 +1,14 @@
-<div class="photo-name">
-  <img [src]="user.image" alt="user image" />
-  <div class="name-email">
-    <h2>{{ user.firstName + " " + user.lastName }}</h2>
-    <p>{{ user.email }}</p>
+<div class="photo-name-container">
+  <div class="photo-name">
+    <img [src]="user.image" alt="user image" />
+    <div class="name-email">
+      <h2>{{ user.firstName + " " + user.lastName }}</h2>
+      <p>{{ user.email }}</p>
+    </div>
   </div>
+  <button (click)="logOut()">Log Out</button>
 </div>
+
 <div class="profile-root">
   <div class="personal-info">
     <h3>Personal Information</h3>
@@ -102,14 +106,7 @@
     <app-product-card-list-view-v1
       *ngFor="let product of visibleCart"
       [product]="product"
+      [inProfilePage]="true"
     ></app-product-card-list-view-v1>
-    <app-product-card-v2
-      *ngFor="let product of visibleCart"
-      [Price]="product.price"
-      [Discount]="product.discountPercentage"
-      [Image]="product.thumbnail"
-      [Title]="product.title"
-      [Id]="product.id"
-    ></app-product-card-v2>
   </div>
 </div>

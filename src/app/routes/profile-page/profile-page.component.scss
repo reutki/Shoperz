@@ -6,16 +6,26 @@
   min-height: 80vh;
   display: flex;
 
+  @media (max-width: 811px) {
+    flex-direction: column;
+  }
+
   .personal-info {
-    padding: 0.2% 1%;
+    padding: 0 1%;
     background-color: white;
     width: 400px;
 
+    @media (max-width: 811px) {
+      width: 100%;
+    }
     h3 {
       @include h4-medium;
       background: $primary-600;
       color: white;
       margin-top: 20px;
+      padding: 5px;
+      text-align: center;
+      margin: 0;
     }
     .row {
       @include flex-center(space-between, center);
@@ -31,31 +41,44 @@
   }
 }
 
-.photo-name {
-  padding: 15px 0;
-  display: flex;
+.photo-name-container {
+  @include flex-center(space-between);
+  padding: 15px;
 
-  img {
-    border: 1px solid red;
-    width: 65px;
-    height: 65px;
-    border-radius: 50%;
-    margin-right: 10px;
+  .photo-name {
+    display: flex;
+
+    img {
+      border: 1px solid red;
+      width: 65px;
+      height: 65px;
+      border-radius: 50%;
+      margin-right: 10px;
+    }
+    .name-email {
+      @include flex-center(center, inherit);
+      flex-direction: column;
+      padding-top: 1%;
+      h2 {
+        margin: 0;
+        @include h6-medium;
+        color: $gray-700;
+      }
+      p {
+        @include h6-medium;
+        color: $gray-500;
+        margin: 0;
+      }
+    }
   }
-  .name-email {
-    @include flex-center(center, inherit);
-    flex-direction: column;
-    padding-top: 1%;
-    h2 {
-      margin: 0;
-      @include h6-medium;
-      color: $gray-700;
-    }
-    p {
-      @include h6-medium;
-      color: $gray-500;
-      margin: 0;
-    }
+
+  button {
+    background-color: $primary-600;
+    color: white;
+    padding: 7px 13px;
+    border: none;
+    border-radius: 999px;
+    @include h6-medium;
   }
 }
 
@@ -75,22 +98,34 @@
 
 .cart {
   width: 100%;
-  padding: 2% 1%;
+  padding: 0 1%;
 
   h1 {
-    @include h3-medium;
-    color: $gray-700;
+    @include h4-medium;
+    background: $primary-600;
+    color: white;
+    padding: 5px;
+    text-align: center;
+    margin: 0;
   }
-  app-product-card-list-view-v1 {
-    display: none;
-    @media (min-width: 1190px) {
-      display: block;
+  @media (max-width: 1250px) {
+    &::ng-deep app-product-card-list-view-v1 mat-card {
+      grid-template-columns: 1fr 1fr;
+      .row:nth-child(1) {
+        display: none;
+      }
     }
   }
-  app-product-card-v2 {
-    display: block;
-    @media (min-width: 1190px) {
-      display: none;
+  &::ng-deep app-product-card-list-view-v1 mat-card {
+    .row:nth-child(2) {
+      .mid {
+        p:nth-of-type(1) {
+          display: none;
+        }
+        ul {
+          display: none;
+        }
+      }
     }
   }
 }

@@ -1,4 +1,5 @@
 import { Component, OnDestroy } from '@angular/core';
+import { AuthService } from 'src/app/Services/auth.service';
 import { CartService } from 'src/app/Services/cart.service';
 
 @Component({
@@ -92,8 +93,10 @@ export class ProfilePageComponent implements OnDestroy {
 
     return titleCaseWords.join(' ');
   }
-  constructor(private cartService: CartService) {
-    console.log(this.personalInfo);
+  constructor(
+    private cartService: CartService,
+    private authService: AuthService
+  ) {
     this.personalInfo.splice(10, 1);
   }
 
@@ -102,6 +105,11 @@ export class ProfilePageComponent implements OnDestroy {
       this.cart = cart;
       this.loadVisibleCart();
     });
+  }
+
+  logOut(): void {
+    this.authService.logout();
+    window.location.reload();
   }
 
   loadVisibleCart() {
@@ -117,7 +125,6 @@ export class ProfilePageComponent implements OnDestroy {
     )
       .then(() => {
         this.visibleCart = visibleCart;
-        console.log(this.cart, this.visibleCart, 234);
       })
       .catch(console.log);
   }

@@ -28,6 +28,7 @@
 
     h1 {
       color: $primary-700;
+      margin: 0;
     }
   }
 }
@@ -133,4 +134,8 @@ ul {
 
 .red-text {
   color: $danger-600 !important;
+}
+
+.danger {
+  background-color: $danger-700 !important;
 }

@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnDestroy } from '@angular/core';
 import { CartService } from 'src/app/Services/cart.service';
 import { CartItem } from 'src/types/cart.interface';
 import { Product } from 'src/types/item.interface';
@@ -8,7 +8,8 @@ import { Product } from 'src/types/item.interface';
   templateUrl: './product-card-list-view-v1.component.html',
   styleUrls: ['./product-card-list-view-v1.component.scss'],
 })
-export class ProductCardListViewV1Component {
+export class ProductCardListViewV1Component implements OnDestroy {
+  @Input() inProfilePage = false;
   @Input() product = {
     id: 0,
     title: '',
@@ -22,12 +23,20 @@ export class ProductCardListViewV1Component {
     thumbnail: '...',
     images: ['https://www.farmaku.com/assets/images/no-img-frame.png'],
   };
-  productCount = 0;
-  productId = window.location.href
-    .slice(window.location.href.lastIndexOf('/') + 1)
-    .replace(/\)/gi, '');
+  productQuantity: number | undefined = 0;
+  cartSubscription: any;
 
   constructor(private cartService: CartService) {}
+
+  ngOnInit() {
+    this.cartSubscription = this.cartService.cart$.subscribe((cart) => {
+      const product = cart.products.find(
+        (product) => product.id === Number(this.product.id)
+      );
+      this.productQuantity = product?.quantity;
+      console.log(product, 123, cart);
+    });
+  }
 
   addToCart(item: Product): void {
     const cartItem: CartItem = {
@@ -37,11 +46,19 @@ export class ProductCardListViewV1Component {
       total: item.price,
       discountPercentage: item.discountPercentage,
       discountedPrice: item.price * (item.discountPercentage / 100),
-      quantity: ++this.productCount,
+      quantity: this.productQuantity ? ++this.productQuantity : 1,
     };
     this.cartService.addToCart(
       cartItem,
-      this.product.id || Number(this.productId)
+      this.product.id || Number(this.product.id)
     );
+  }
+
+  removeItem() {
+    this.cartService.removeItem(this.product.id);
+  }
+
+  ngOnDestroy(): void {
+    this.cartSubscription = this.cartSubscription.unsubscribe();
   }
 }
