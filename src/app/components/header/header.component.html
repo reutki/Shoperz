@@ -13,7 +13,7 @@
       [matAutocomplete]="auto"
       placeholder="Search for products..."
     />
-    <mat-autocomplete #auto="matAutocomplete">
+    <mat-autocomplete #auto="matAutocomplete" id="autocomplete">
       <mat-option>
         <app-bundle-card
           *ngFor="let item of results"
@@ -37,7 +37,7 @@
       <mat-icon>search</mat-icon>
     </button>
   </div>
-  <div class="icon-buttons">
+  <div class="icon-buttons" *ngIf="cartService.cart$ | async as cart">
     <button
       mat-icon-button
       matTooltip="My Account"
@@ -45,18 +45,27 @@
     >
       <mat-icon>account_circle</mat-icon>
     </button>
-    <button *ngIf="admin" [routerLink]="[{outlets: { categories: ['admin'] } }]"  mat-icon-button matTooltip="Compare">
+    <button
+      *ngIf="admin"
+      [routerLink]="[{ outlets: { categories: ['admin'] } }]"
+      mat-icon-button
+      matTooltip="Compare"
+    >
       <mat-icon>settings</mat-icon>
     </button>
     <!-- todo add wishlist page  -->
     <button mat-icon-button matTooltip="Wishlist">
       <mat-icon>favorite</mat-icon>
     </button>
-    <button mat-icon-button matTooltip="My Cart" (click)="toggleCart()">
+    <button
+      mat-icon-button
+      matTooltip="My Cart"
+      (click)="cartService.toggleCart()"
+    >
       <mat-icon>shopping_basket</mat-icon>
     </button>
-        <!-- todo add total amount here  -->
-    <span>$0.00</span>
+    <!-- todo add total amount here  -->
+    <span>${{ cart.total }}</span>
   </div>
 </mat-toolbar>
 <app-cart></app-cart>

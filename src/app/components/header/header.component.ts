@@ -15,9 +15,9 @@ export class HeaderComponent implements OnInit {
   categorySelected: string = '';
   categories: string[] = [];
   results: any[] = [];
-  admin:boolean = this.authService.admin;
+  admin: boolean = this.authService.admin;
   constructor(
-    private cartService: CartService,
+    public cartService: CartService,
     private searchService: SearchService,
     private authService: AuthService
   ) {}
@@ -26,24 +26,21 @@ export class HeaderComponent implements OnInit {
       this.categories = categories;
     });
     this.searchService.getCategories();
+    this.results = JSON.parse(localStorage.getItem('prevSearchRes') || '[]');
   }
-  toggleCart() {
-    this.cartService.toggleCart();
-  }
+
   searchItem() {
     // Unsubscribe from previous search request
     if (this.searchSubscription) {
       this.searchSubscription.unsubscribe();
     }
 
-    // Debounce time (milliseconds)
-    const debounceTimeValue = 400;
-
     // Subscribe to search action after debounce time
     this.searchSubscription = this.searchService.searchResults$
-      .pipe(debounceTime(debounceTimeValue))
+      .pipe(debounceTime(400))
       .subscribe((result: any[]) => {
         this.results = result;
+        localStorage.setItem('prevSearchRes', JSON.stringify(result));
       });
 
     // Trigger the search immediately

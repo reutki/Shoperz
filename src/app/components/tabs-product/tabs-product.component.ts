@@ -1,5 +1,5 @@
 import { ReviewsService } from './../../Services/reviews.service';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { ReviewModalComponent } from '../review-modal/review-modal.component';
 
@@ -10,15 +10,23 @@ import { ReviewModalComponent } from '../review-modal/review-modal.component';
 })
 export class TabsProductComponent implements OnInit {
   ratings: Array<number> = [5, 4, 3, 2, 1];
-  reviews: any[]=[]
-  paginatedReviews: any[]=[]
-  itemsPerPage:number=5;
+  reviews: any[] = [];
+  paginatedReviews: any[] = [];
+  itemsPerPage: number = 5;
   activePage: number = 0;
   ratingCounts: { [key: number]: number } = {};
-  amountOfRatings:number =0
-  rating:number = 0
+  amountOfRatings: number = 0;
+  @Output() rating: number = 0;
   weightedRatingSum: number = 0;
-  constructor(public dialog: MatDialog,private reviewsService:ReviewsService) {}
+  @Output() ratingChanged = new EventEmitter<number>();
+  emitRatingChange() {
+    this.ratingChanged.emit(this.rating);
+  }
+
+  constructor(
+    public dialog: MatDialog,
+    private reviewsService: ReviewsService
+  ) {}
   ngOnInit() {
     this.reviewsService.getReviews();
     this.reviewsService.reviews$.subscribe((review) => {
@@ -27,19 +35,21 @@ export class TabsProductComponent implements OnInit {
       this.amountOfRatings = this.reviews.length;
 
       this.ratings.forEach((rating) => {
-        this.ratingCounts[rating] = this.reviews.filter((review) => Math.round(review.rating) === rating).length;
+        this.ratingCounts[rating] = this.reviews.filter(
+          (review) => Math.round(review.rating) === rating
+        ).length;
         this.weightedRatingSum += rating * this.ratingCounts[rating];
       });
 
       if (this.amountOfRatings > 0) {
-        this.rating = (this.weightedRatingSum / this.amountOfRatings);
+        this.rating = this.weightedRatingSum / this.amountOfRatings;
+        this.emitRatingChange();
       }
     });
   }
   onPageChange(paginatedReviews: any[]) {
     this.paginatedReviews = paginatedReviews;
-  console.log(paginatedReviews);
-
+    console.log(paginatedReviews);
   }
 
   openDialog() {

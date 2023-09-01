@@ -1,4 +1,7 @@
-<mat-card class="container" [routerLink]="['/', { outlets: { categories: ['product', Id] } }]">
+<mat-card
+  class="container"
+  [routerLink]="['/', { outlets: { categories: ['product', Id] } }]"
+>
   <mat-card-header>
     <mat-card-subtitle>Category</mat-card-subtitle>
   </mat-card-header>
@@ -13,7 +16,7 @@
         matTooltipPosition="left"
         mat-icon-button
         matTooltip="Add to cart"
-        (click)="addToCart()"
+        (click)="addToCart($event)"
       >
         <img
           src="../../../assets/bag-s.svg"

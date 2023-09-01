@@ -23,7 +23,9 @@ export class ProductCardV1Component {
     this.router.navigate(['/', 'product', this.Id]); // * changed id
   }
 
-  addToCart() {
+  addToCart(e: Event) {
+    e.stopPropagation();
+
     const item = {
       id: this.Id,
       title: this.Title,

@@ -25,7 +25,9 @@
       margin-top: 20px;
       padding: 5px;
       text-align: center;
-      margin: 0;
+    }
+    h3:nth-of-type(1) {
+      margin-top: 0;
     }
     .row {
       @include flex-center(space-between, center);
@@ -49,7 +51,7 @@
     display: flex;
 
     img {
-      border: 1px solid red;
+      border: 1px solid $gray-200;
       width: 65px;
       height: 65px;
       border-radius: 50%;

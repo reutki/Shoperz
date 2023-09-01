@@ -1,4 +1,4 @@
-import { Component, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, Input } from '@angular/core';
 import { GalleryItem, ImageItem } from 'ng-gallery';
 import { Subscription } from 'rxjs';
 import { CartService } from 'src/app/Services/cart.service';
@@ -11,6 +11,7 @@ import { Product } from 'src/types/item.interface';
   styleUrls: ['./gallery.component.scss'],
 })
 export class GalleryComponent implements OnDestroy {
+  @Input() rating = 69;
   productId = window.location.href
     .slice(window.location.href.lastIndexOf('/') + 1)
     .replace(/\)/gi, '');
@@ -63,7 +64,10 @@ export class GalleryComponent implements OnDestroy {
   ngOnInit() {
     fetch(`https://dummyjson.com/products/${this.productId}`)
       .then((res) => res.json())
-      .then((product) => (this.product = { ...product, quantity: 0 }))
+      .then(
+        (product) =>
+          (this.product = { ...product, quantity: 0, rating: this.rating })
+      )
       .catch(console.log)
       .finally(() => {
         this.images = this.product.images.map(
@@ -75,6 +79,9 @@ export class GalleryComponent implements OnDestroy {
         (product) => product.id === Number(this.productId)
       );
       this.productQuantity = product?.quantity;
+      setTimeout(() => {
+        this.product.rating = Number(this.rating.toPrecision(2));
+      }, 400);
     });
   }
 
