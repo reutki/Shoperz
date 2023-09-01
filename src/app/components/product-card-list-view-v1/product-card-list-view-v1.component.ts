@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { CartService } from 'src/app/Services/cart.service';
 import { CartItem } from 'src/types/cart.interface';
 import { Product } from 'src/types/item.interface';
@@ -9,8 +9,8 @@ import { Product } from 'src/types/item.interface';
   styleUrls: ['./product-card-list-view-v1.component.scss'],
 })
 export class ProductCardListViewV1Component {
-  product = {
-    id: 1,
+  @Input() product = {
+    id: 0,
     title: '',
     description: '',
     price: 0,
@@ -39,6 +39,9 @@ export class ProductCardListViewV1Component {
       discountedPrice: item.price * (item.discountPercentage / 100),
       quantity: ++this.productCount,
     };
-    this.cartService.addToCart(cartItem, this.product.id);
+    this.cartService.addToCart(
+      cartItem,
+      this.product.id || Number(this.productId)
+    );
   }
 }

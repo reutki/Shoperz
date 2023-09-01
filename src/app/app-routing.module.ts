@@ -9,6 +9,8 @@ import { ProductPageComponent } from './routes/product-page/product-page.compone
 import { AdminComponent } from './components/admin/admin.component';
 import { AdminUserFormComponent } from './components/admin-user-form/admin-user-form.component';
 import { AdminProductFormComponent } from './components/admin-product-form/admin-product-form.component';
+import { ProfilePageComponent } from './routes/profile-page/profile-page.component';
+
 const routes: Routes = [
   { path: 'login', component: LoginScreenComponent },
   // { path: 'product/:id', component: ProductPageComponent },
@@ -48,7 +50,11 @@ const routes: Routes = [
           },
         ],
       },
-
+{
+        path: 'profile',
+        component: ProfilePageComponent,
+        outlet: 'categories',
+      },
       {
         path: '',
         component: AppwrapperComponent,

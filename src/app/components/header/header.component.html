@@ -38,7 +38,11 @@
     </button>
   </div>
   <div class="icon-buttons">
-    <button mat-icon-button matTooltip="My Account">
+    <button
+      mat-icon-button
+      matTooltip="My Account"
+      [routerLink]="[{ outlets: { categories: ['profile'] } }]"
+    >
       <mat-icon>account_circle</mat-icon>
     </button>
     <button [routerLink]="[{outlets: { categories: ['admin'] } }]"  mat-icon-button matTooltip="Compare">

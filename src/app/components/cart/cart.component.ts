@@ -25,7 +25,7 @@ export class CartComponent implements OnDestroy {
       this.cartIsOpen = isOpen;
     });
 
-    this.cartService.fetchCartData(5);
+    this.cartService.fetchCartData(Number(localStorage.getItem('userId')));
   }
 
   removeItem(id: number): void {

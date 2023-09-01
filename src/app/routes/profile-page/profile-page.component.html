@@ -1,0 +1,115 @@
+<div class="photo-name">
+  <img [src]="user.image" alt="user image" />
+  <div class="name-email">
+    <h2>{{ user.firstName + " " + user.lastName }}</h2>
+    <p>{{ user.email }}</p>
+  </div>
+</div>
+<div class="profile-root">
+  <div class="personal-info">
+    <h3>Personal Information</h3>
+    <div class="row" *ngFor="let arr of personalInfo">
+      <p>{{ arr[0] }}:</p>
+      <p>{{ arr[1] }}</p>
+    </div>
+    <div class="row">
+      <p>Hair</p>
+      <p>{{ user.hair.color + " " + user.hair.type }}</p>
+    </div>
+    <div class="row">
+      <p>University</p>
+      <p>{{ user.university }}</p>
+    </div>
+    <div class="row">
+      <p>User Agent</p>
+      <p>{{ user.userAgent }}</p>
+    </div>
+    <h3>Primary Address</h3>
+    <div class="row">
+      <p>Address</p>
+      <p>{{ user.address.address }}</p>
+    </div>
+    <div class="row">
+      <p>City</p>
+      <p>{{ user.address.city }}</p>
+    </div>
+    <div class="row">
+      <p>Postal Code</p>
+      <p>{{ user.address.postalCode }}</p>
+    </div>
+    <div class="row">
+      <p>Mac Address</p>
+      <p>{{ user.macAddress }}</p>
+    </div>
+    <div class="row">
+      <p>State</p>
+      <p>{{ user.address.state }}</p>
+    </div>
+    <div class="mid">
+      <div class="personal-info">
+        <div class="flex">
+          <h3>Bank</h3>
+          <div class="row" *ngFor="let arr of bank">
+            <p>{{ arr[0] }}:</p>
+            <p>{{ arr[1] }}</p>
+          </div>
+          <div class="row">
+            <p>Ein:</p>
+            <p>{{ user.ein }}</p>
+          </div>
+          <div class="row">
+            <p>Ssn:</p>
+            <p>{{ user.ssn }}</p>
+          </div>
+        </div>
+        <div class="flex">
+          <h3>Company</h3>
+          <div class="row">
+            <p>Address:</p>
+            <p>{{ user.company.address.address }}</p>
+          </div>
+          <div class="row">
+            <p>City:</p>
+            <p>{{ user.company.address.city }}</p>
+          </div>
+          <div class="row">
+            <p>Postal Code:</p>
+            <p>{{ user.company.address.postalCode }}</p>
+          </div>
+          <div class="row">
+            <p>State:</p>
+            <p>{{ user.company.address.state }}</p>
+          </div>
+          <div class="row">
+            <p>Department:</p>
+            <p>{{ user.company.department }}</p>
+          </div>
+          <div class="row">
+            <p>Name:</p>
+            <p>{{ user.company.name }}</p>
+          </div>
+          <div class="row">
+            <p>title:</p>
+            <p>{{ user.company.title }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cart">
+    <h1>Cart</h1>
+    <app-product-card-list-view-v1
+      *ngFor="let product of visibleCart"
+      [product]="product"
+    ></app-product-card-list-view-v1>
+    <app-product-card-v2
+      *ngFor="let product of visibleCart"
+      [Price]="product.price"
+      [Discount]="product.discountPercentage"
+      [Image]="product.thumbnail"
+      [Title]="product.title"
+      [Id]="product.id"
+    ></app-product-card-v2>
+  </div>
+</div>

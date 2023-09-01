@@ -62,6 +62,7 @@ import { AdminComponent } from './components/admin/admin.component';
 import { AdminMenuComponent } from './components/admin-menu/admin-menu.component';
 import { AdminProductFormComponent } from './components/admin-product-form/admin-product-form.component';
 import { AdminUserFormComponent } from './components/admin-user-form/admin-user-form.component';
+import { ProfilePageComponent } from './routes/profile-page/profile-page.component';
 
 @NgModule({
   declarations: [
@@ -96,6 +97,7 @@ import { AdminUserFormComponent } from './components/admin-user-form/admin-user-
     AdminMenuComponent,
     AdminProductFormComponent,
     AdminUserFormComponent,
+    ProfilePageComponent,
   ],
   imports: [
     MatListModule,
