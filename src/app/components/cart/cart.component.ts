@@ -1,3 +1,4 @@
+import { PdfGeneratorService } from './../../Services/pdfGenerator.service';
 import { Component } from '@angular/core';
 import { CartService } from 'src/app/Services/cart.service';
 import { CartItem } from '../../../types/cart.interface';
@@ -8,7 +9,7 @@ import { CartItem } from '../../../types/cart.interface';
   styleUrls: ['./cart.component.scss'],
 })
 export class CartComponent {
-  constructor(public cartService: CartService) {}
+  constructor(public cartService: CartService,private pdfGeneratorService:PdfGeneratorService) {}
 
   ngOnInit(): void {
     this.cartService.fetchCartData(Number(localStorage.getItem('userId')));
@@ -28,5 +29,9 @@ export class CartComponent {
 
   toggleCart() {
     this.cartService.toggleCart();
+  }
+
+  generatePDF(){
+    this.pdfGeneratorService.generatePDF('cart-items')
   }
 }
