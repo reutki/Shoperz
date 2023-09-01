@@ -17,15 +17,12 @@ export class ApiService {
 
   private handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {
-      // A client-side or network error occurred
       console.error('An error occurred:', error.error.message);
     } else {
-      // The backend returned an unsuccessful response code
       console.error(
         `Backend returned code ${error.status}, body was: ${error.error}`
       );
     }
-    // Return an observable with a user-facing error message
     return throwError('Something bad happened; please try again later.');
   }
 
@@ -33,7 +30,6 @@ export class ApiService {
     const url = `${this.apiUrl}/${endpoint}`;
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
-      //more headers can be added here
     });
 
     switch (method.toUpperCase()) {

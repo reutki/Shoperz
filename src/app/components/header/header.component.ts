@@ -1,3 +1,4 @@
+import { AuthService } from 'src/app/Services/auth.service';
 import { SearchService } from './../../Services/search.service';
 import { Component, OnInit } from '@angular/core';
 import { Subscription, debounceTime } from 'rxjs';
@@ -14,9 +15,11 @@ export class HeaderComponent implements OnInit {
   categorySelected: string = '';
   categories: string[] = [];
   results: any[] = [];
+  admin:boolean = this.authService.admin;
   constructor(
     private cartService: CartService,
-    private searchService: SearchService
+    private searchService: SearchService,
+    private authService: AuthService
   ) {}
   ngOnInit() {
     this.searchService.categories$.subscribe((categories) => {

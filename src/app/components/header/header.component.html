@@ -45,7 +45,7 @@
     >
       <mat-icon>account_circle</mat-icon>
     </button>
-    <button [routerLink]="[{outlets: { categories: ['admin'] } }]"  mat-icon-button matTooltip="Compare">
+    <button *ngIf="admin" [routerLink]="[{outlets: { categories: ['admin'] } }]"  mat-icon-button matTooltip="Compare">
       <mat-icon>settings</mat-icon>
     </button>
     <!-- todo add wishlist page  -->
