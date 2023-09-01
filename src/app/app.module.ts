@@ -14,6 +14,8 @@ import { ShopFeaturesComponent } from './components/shop-features/shop-features.
 import { MatCardModule } from '@angular/material/card';
 //material imports
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import {MatExpansionModule} from '@angular/material/expansion';
+import {MatListModule} from '@angular/material/list';
 
 import { MatTabsModule } from '@angular/material/tabs';
 import { NgxPaginationModule } from 'ngx-pagination';
@@ -56,6 +58,10 @@ import { CartItemComponent } from './components/cart-item/cart-item.component';
 import { AppwrapperComponent } from './components/appwrapper/appwrapper.component';
 import { OffersSectionComponent } from './components/offers-section/offers-section.component';
 import { ProductPageComponent } from './routes/product-page/product-page.component';
+import { AdminComponent } from './components/admin/admin.component';
+import { AdminMenuComponent } from './components/admin-menu/admin-menu.component';
+import { AdminProductFormComponent } from './components/admin-product-form/admin-product-form.component';
+import { AdminUserFormComponent } from './components/admin-user-form/admin-user-form.component';
 
 @NgModule({
   declarations: [
@@ -86,8 +92,14 @@ import { ProductPageComponent } from './routes/product-page/product-page.compone
     AppwrapperComponent,
     OffersSectionComponent,
     ProductPageComponent,
+    AdminComponent,
+    AdminMenuComponent,
+    AdminProductFormComponent,
+    AdminUserFormComponent,
   ],
   imports: [
+    MatListModule,
+    MatExpansionModule,
     BrowserModule,
     ReactiveFormsModule,
     AppRoutingModule,

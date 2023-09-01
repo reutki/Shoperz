@@ -6,7 +6,7 @@ import { Observable, BehaviorSubject, map } from 'rxjs';
   providedIn: 'root',
 })
 export class ProductsService {
-  private productsSubject = new BehaviorSubject<any[]>([]);
+  public productsSubject = new BehaviorSubject<any[]>([]);
   products$: Observable<any[]> = this.productsSubject.asObservable();
 
   private filteredProductsSubject = new BehaviorSubject<any[]>([]);

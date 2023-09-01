@@ -1,0 +1,57 @@
+<form (submit)="addProduct()">
+  <mat-form-field>
+    <mat-label>ID</mat-label>
+    <input matInput type="number" name="id" [(ngModel)]="productData.id">
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Title</mat-label>
+    <input matInput type="text" name="title" [(ngModel)]="productData.title">
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Description</mat-label>
+    <textarea matInput rows="4" name="description" [(ngModel)]="productData.description"></textarea>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Price</mat-label>
+    <input matInput type="number" name="price" [(ngModel)]="productData.price">
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Discount Percentage</mat-label>
+    <input matInput type="number" name="discountPercentage" [(ngModel)]="productData.discountPercentage">
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Rating</mat-label>
+    <input matInput type="number" name="rating" [(ngModel)]="productData.rating">
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Stock</mat-label>
+    <input matInput type="number" name="stock" [(ngModel)]="productData.stock">
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Brand</mat-label>
+    <input matInput type="text" name="brand" [(ngModel)]="productData.brand">
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Category</mat-label>
+    <input matInput type="text" name="category" [(ngModel)]="productData.category">
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Thumbnail URL</mat-label>
+    <input matInput type="text" name="thumbnail" [(ngModel)]="productData.thumbnail">
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Image URLs</mat-label>
+    <textarea matInput rows="4" name="images" [(ngModel)]="productData.images"></textarea>
+  </mat-form-field>
+
+  <button mat-raised-button color="primary" type="submit">Add Product</button></form>

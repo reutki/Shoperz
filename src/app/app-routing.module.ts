@@ -6,7 +6,9 @@ import { CategoryComponent } from './components/category/category.component';
 import { AppComponent } from './app.component';
 import { AppwrapperComponent } from './components/appwrapper/appwrapper.component';
 import { ProductPageComponent } from './routes/product-page/product-page.component';
-
+import { AdminComponent } from './components/admin/admin.component';
+import { AdminUserFormComponent } from './components/admin-user-form/admin-user-form.component';
+import { AdminProductFormComponent } from './components/admin-product-form/admin-product-form.component';
 const routes: Routes = [
   { path: 'login', component: LoginScreenComponent },
   // { path: 'product/:id', component: ProductPageComponent },
@@ -23,6 +25,28 @@ const routes: Routes = [
         path: 'product/:id',
         component: ProductPageComponent,
         outlet: 'categories',
+      },
+      {
+        path: 'admin',
+        component: AdminComponent,
+        outlet: 'categories',
+        children: [
+          {
+            path: 'addUser',
+            component: AdminUserFormComponent,
+            outlet: 'admin',
+          },
+          {
+            path: 'addProduct',
+            component: AdminProductFormComponent,
+            outlet: 'admin',
+          },
+
+          {
+            path: '',
+            component: AppwrapperComponent,
+          },
+        ],
       },
 
       {

@@ -1,0 +1,16 @@
+<mat-card class="menu">
+  <mat-accordion >
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>Products</mat-panel-title>
+      </mat-expansion-panel-header>
+      <button [routerLink]="[ { outlets: { admin: ['addProduct'] } }]" mat-button>Add a product</button>
+    </mat-expansion-panel>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>Users</mat-panel-title>
+      </mat-expansion-panel-header>
+      <button [routerLink]="[{ outlets: { admin: ['addUser'] } }]" mat-button>Add an admin</button>
+    </mat-expansion-panel>
+  </mat-accordion>
+</mat-card>

@@ -41,15 +41,17 @@
     <button mat-icon-button matTooltip="My Account">
       <mat-icon>account_circle</mat-icon>
     </button>
-    <button mat-icon-button matTooltip="Compare">
-      <mat-icon>shuffle</mat-icon>
+    <button [routerLink]="[{outlets: { categories: ['admin'] } }]"  mat-icon-button matTooltip="Compare">
+      <mat-icon>settings</mat-icon>
     </button>
+    <!-- todo add wishlist page  -->
     <button mat-icon-button matTooltip="Wishlist">
       <mat-icon>favorite</mat-icon>
     </button>
     <button mat-icon-button matTooltip="My Cart" (click)="toggleCart()">
       <mat-icon>shopping_basket</mat-icon>
     </button>
+        <!-- todo add total amount here  -->
     <span>$0.00</span>
   </div>
 </mat-toolbar>

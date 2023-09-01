@@ -1,0 +1,15 @@
+@import '/src/imports';
+form{
+  padding: 20px;
+  display: flex;
+  gap: 20px;
+  width: 100%;
+
+  div{
+    flex:1;
+  }
+  button{
+    background-color: $primary-600;
+    color: white;
+  }
+}
