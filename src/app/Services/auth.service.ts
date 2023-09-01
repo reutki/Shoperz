@@ -7,17 +7,19 @@ import { ApiService } from './api.service';
   providedIn: 'root',
 })
 export class AuthService {
-  admin:boolean=false
+  admin: boolean = false;
   constructor(private api: ApiService) {}
 
   login(username: string, password: string): Observable<any> {
     const loginData = { username, password };
-    this.isAdmin(username)?this.admin=true:this.admin=false;
+    username === 'kminchelle' &&
+      localStorage.setItem('admins', JSON.stringify(['kminchelle']));
+    this.isAdmin(username) ? (this.admin = true) : (this.admin = false);
     return this.api.request('POST', 'auth/login', loginData);
   }
 
   //stores the token in the localStorage
-  saveToken(token: string,userId:string): void {
+  saveToken(token: string, userId: string): void {
     localStorage.setItem('authToken', token);
     localStorage.setItem('userId', userId);
   }
@@ -45,5 +47,4 @@ export class AuthService {
   logout(): void {
     localStorage.removeItem('authToken');
   }
-
 }
