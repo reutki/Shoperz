@@ -9,7 +9,7 @@ import { ApiService } from './api.service';
 export class CartService {
   private isOpenSubject = new BehaviorSubject<boolean>(false);
   isOpen$ = this.isOpenSubject.asObservable();
-  private cartSubject = new BehaviorSubject<Cart>({
+  public cartSubject = new BehaviorSubject<Cart>({
     id: 1,
     products: [],
     total: 0,

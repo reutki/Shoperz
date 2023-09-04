@@ -31,7 +31,9 @@ export class CartComponent {
     this.cartService.toggleCart();
   }
 
-  generatePDF(){
-    this.pdfGeneratorService.generatePDF('cart-items')
+  generatePDF() {
+
+
+    this.pdfGeneratorService.generatePDF('cart-items',this.cartService.cartSubject.value.products );
   }
 }

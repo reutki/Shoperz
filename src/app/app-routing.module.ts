@@ -10,6 +10,7 @@ import { AdminComponent } from './components/admin/admin.component';
 import { AdminUserFormComponent } from './components/admin-user-form/admin-user-form.component';
 import { AdminProductFormComponent } from './components/admin-product-form/admin-product-form.component';
 import { ProfilePageComponent } from './routes/profile-page/profile-page.component';
+import { AdminProductsViewComponent } from './components/admin-products-view/admin-products-view.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginScreenComponent },
@@ -41,6 +42,11 @@ const routes: Routes = [
           {
             path: 'addProduct',
             component: AdminProductFormComponent,
+            outlet: 'admin',
+          },
+          {
+            path: 'showProducts',
+            component: AdminProductsViewComponent,
             outlet: 'admin',
           },
 
