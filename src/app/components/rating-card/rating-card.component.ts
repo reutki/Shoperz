@@ -15,7 +15,6 @@ export class RatingCardComponent {
     event.preventDefault();
     let checked = this.checkboxStates[index];
     this.applyPriceFilter(index);
-    console.log(5 - index);
     this.checkboxStates = Array(6).fill(false);
     this.checkboxStates[index] = !checked;
   }
@@ -32,6 +31,5 @@ export class RatingCardComponent {
       return Math.ceil(product.rating) === 5 - index;
     });
     this.productService.updateFilteredProducts(filteredProducts);
-    console.log(filteredProducts);
   }
 }

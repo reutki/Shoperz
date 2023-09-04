@@ -14,8 +14,16 @@ export class ProductCardV1Component {
   @Input() Image: string = '';
   @Input() Title: string = '';
   @Input() Id: number = 0;
+  loadingImg = '../../../assets/loading_icon.gif';
 
   quantity = 0;
+
+  // loading = true;
+  // imageUrl = 'https://example.com/your-real-image.jpg';
+
+  // onImageLoad() {
+  //   this.loading = false; 
+  // }
 
   constructor(private router: Router, private cartService: CartService) {}
 

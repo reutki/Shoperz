@@ -22,7 +22,6 @@ export class ReviewModalComponent {
   onClick = ($event: ClickEvent) => {
     this.onClickResult = $event;
     this.ratingValue = this.onClickResult.rating;
-    console.log(this.ratingValue);
   };
   submitReview() {
     const newReview = {
@@ -32,11 +31,8 @@ export class ReviewModalComponent {
       postId: this.postId,
     };
 
-    console.log(newReview);
-
     this.reviewsService.addReview(newReview).subscribe((response) => {
       this.reviewsService.updateReviews(response);
-      console.log(response);
 
       this.dialogRef.close();
     });

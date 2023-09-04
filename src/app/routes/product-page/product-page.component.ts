@@ -8,7 +8,9 @@ import { Component } from '@angular/core';
 export class ProductPageComponent {
   ratingFromTabsProduct: number = 420;
 
-  onRatingChange(newRating: number) {
+  constructor() {}
+
+  onRatingFromTabs(newRating: number) {
     this.ratingFromTabsProduct = newRating;
   }
 }

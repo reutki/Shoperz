@@ -2,7 +2,8 @@
   <button mat-icon-button>
     <mat-icon>menu</mat-icon>
   </button>
-  <a [routerLink]="['']"
+  <!-- <a [routerLink]="['']" -->
+  <a [routerLink]="[{ outlets: { categories: ['landing'] } }]"
     ><img src="../../../assets/logo.svg" alt="company logo"
   /></a>
   <div class="search">
@@ -64,7 +65,6 @@
     >
       <mat-icon>shopping_basket</mat-icon>
     </button>
-    <!-- todo add total amount here  -->
     <span>${{ cart.total }}</span>
   </div>
 </mat-toolbar>

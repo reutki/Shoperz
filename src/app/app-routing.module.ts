@@ -13,11 +13,15 @@ import { ProfilePageComponent } from './routes/profile-page/profile-page.compone
 
 const routes: Routes = [
   { path: 'login', component: LoginScreenComponent },
-  // { path: 'product/:id', component: ProductPageComponent },
   {
     path: '',
     component: AppwrapperComponent,
     children: [
+      {
+        path: 'landing',
+        component: CategoryComponent,
+        outlet: 'categories',
+      },
       {
         path: 'category/:categoryName',
         component: CategoryComponent,
@@ -50,7 +54,7 @@ const routes: Routes = [
           },
         ],
       },
-{
+      {
         path: 'profile',
         component: ProfilePageComponent,
         outlet: 'categories',

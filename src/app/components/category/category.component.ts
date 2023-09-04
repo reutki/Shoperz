@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProductsService } from 'src/app/Services/products.service';
 
@@ -20,13 +20,13 @@ export class CategoryComponent implements OnDestroy {
 
   ngOnInit() {
     this.route.paramMap.subscribe((params) => {
-      this.category = params.get('categoryName');
-      this.fetchProducts();
+      const category = params.get('categoryName');
+      this.fetchProducts(category ?? '');
     });
   }
 
-  fetchProducts() {
-    this.productService.fetchProducts(this.category!);
+  fetchProducts(category: string) {
+    this.productService.fetchProducts(category);
     this.filteredProductsSubscription =
       this.productService.filteredProducts$.subscribe((products) => {
         this.products = products;

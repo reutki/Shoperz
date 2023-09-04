@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Cart, CartItem } from '../../types/cart.interface';
 import { ApiService } from './api.service';
-// todo fix total`
+
 @Injectable({
   providedIn: 'root',
 })
@@ -51,8 +51,7 @@ export class CartService {
           this.cartSubject.next(emptyCart);
         }
       },
-      (error: any) => console.log(error),
-      () => console.log(1)
+      (error: any) => console.log(error)
     );
   }
 
@@ -63,7 +62,6 @@ export class CartService {
     );
     const updatedCart = { ...currentCart, products: updatedProducts };
     this.cartSubject.next(updatedCart);
-    console.log(this.cartSubject);
   }
 
   addToCart(item: CartItem, id: number): void {
@@ -87,18 +85,19 @@ export class CartService {
   }
 
   updateCart(cartId: number, products: CartItem[]) {
-    fetch(`https://dummyjson.com/carts/${cartId}`, {
-      method: 'PUT',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        merge: true,
-        products,
-      }),
-    })
-      .then((res) => res.json())
-      .then((res) => this.cartSubject.next(res))
-      .catch(console.log)
-      .finally(() => console.log(this.cartSubject.value, 'finally updt crt'));
+    const body = {
+      merge: true,
+      products,
+    };
+
+    this.apiService.request<Cart>('PUT', `carts/${cartId}`, body).subscribe(
+      (res) => {
+        this.cartSubject.next(res);
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
   }
 
   toggleCart(): void {

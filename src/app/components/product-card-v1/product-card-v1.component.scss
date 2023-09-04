@@ -36,10 +36,23 @@ mat-card-content {
   @include same-height-images(100%, 1);
   padding: 0;
   img {
-    @include same-height-images(100%, 1);
+    width: 210px;
+    height: 210px;
+    aspect-ratio: 3/2;
+    object-fit: contain;
     margin: 20px 0;
     padding: 0;
     aspect-ratio: 1/1;
+    position: relative;
+  }
+  .cover-image-skeleton {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    width: 210px;
+    height: 210px;
+    background-size: 200% 100%;
+    border-radius: 8px;
   }
 }
 

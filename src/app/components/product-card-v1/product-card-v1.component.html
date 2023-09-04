@@ -6,7 +6,8 @@
     <mat-card-subtitle>Category</mat-card-subtitle>
   </mat-card-header>
   <mat-card-content>
-    <img src="{{ Image }}" alt="Product Image" />
+    <img [src]="loadingImg" class="cover-image-skeleton"/>
+    <img src="{{ Image }}" alt="Product Image"/>
     <mat-card-title>{{ Title }}</mat-card-title>
   </mat-card-content>
   <mat-card-footer>

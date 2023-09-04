@@ -34,7 +34,6 @@ export class ProductCardListViewV1Component implements OnDestroy {
         (product) => product.id === Number(this.product.id)
       );
       this.productQuantity = product?.quantity;
-      console.log(product, 123, cart);
     });
   }
 

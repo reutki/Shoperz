@@ -12,7 +12,6 @@ constructor(private api: ApiService, private productsService:ProductsService) {}
 
 addProduct(productData: any): Observable<any> {
   this.productsService.productsSubject.next([...this.productsService.productsSubject.value,productData])
-  console.log( this.productsService.productsSubject.value);
   return this.api.request('POST', 'products/add', productData);
 }
 addAdmin(username: string): void {

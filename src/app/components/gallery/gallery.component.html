@@ -29,12 +29,14 @@
 
   <div class="row">
     <div class="delivery">
-      <p>Delivery:</p>
-      <p>Free</p>
+      <p class="green">Delivery:</p>
+      <p class="red">Free</p>
     </div>
     <div class="delivery">
       <p>Stock:</p>
-      <p>26</p>
+      <p [ngClass]="{ 'low-stock': product.stock <= 30 }">
+        {{ product.stock }}
+      </p>
     </div>
     <div class="button-container">
       <button

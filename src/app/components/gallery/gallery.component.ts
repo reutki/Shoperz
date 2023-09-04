@@ -1,6 +1,6 @@
 import { Component, OnDestroy, Input } from '@angular/core';
 import { GalleryItem, ImageItem } from 'ng-gallery';
-import { Subscription } from 'rxjs';
+import { ApiService } from 'src/app/Services/api.service';
 import { CartService } from 'src/app/Services/cart.service';
 import { CartItem } from 'src/types/cart.interface';
 import { Product } from 'src/types/item.interface';
@@ -45,7 +45,10 @@ export class GalleryComponent implements OnDestroy {
     }
   }
 
-  constructor(public cartService: CartService) {}
+  constructor(
+    public cartService: CartService,
+    private apiService: ApiService
+  ) {}
 
   addToCart(item: Product, id: number): void {
     const cartItem: CartItem = {
@@ -62,18 +65,21 @@ export class GalleryComponent implements OnDestroy {
   }
 
   ngOnInit() {
-    fetch(`https://dummyjson.com/products/${this.productId}`)
-      .then((res) => res.json())
-      .then(
-        (product) =>
-          (this.product = { ...product, quantity: 0, rating: this.rating })
-      )
-      .catch(console.log)
-      .finally(() => {
-        this.images = this.product.images.map(
-          (image) => new ImageItem({ src: image, thumb: image })
-        );
-      });
+    this.apiService
+      .request<Product>('GET', `products/${this.productId}`)
+      .subscribe(
+        (product) => {
+          this.product = { ...product, quantity: 0, rating: this.rating };
+        },
+        (error) => {
+          console.log(error);
+        },
+        () => {
+          this.images = this.product.images.map(
+            (image) => new ImageItem({ src: image, thumb: image })
+          );
+        }
+      );
     this.cartSubscription = this.cartService.cart$.subscribe((cart) => {
       const product = cart.products.find(
         (product) => product.id === Number(this.productId)
@@ -81,7 +87,7 @@ export class GalleryComponent implements OnDestroy {
       this.productQuantity = product?.quantity;
       setTimeout(() => {
         this.product.rating = Number(this.rating.toPrecision(2));
-      }, 400);
+      }, 800);
     });
   }
 

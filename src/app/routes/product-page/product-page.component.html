@@ -3,7 +3,7 @@
     <h1 style="display: none">{{ ratingFromTabsProduct }}</h1>
     <app-gallery [rating]="ratingFromTabsProduct"></app-gallery>
     <app-tabs-product
-      (ratingChanged)="onRatingChange($event)"
+      (ratingChanged)="onRatingFromTabs($event)"
     ></app-tabs-product>
   </div>
   <div class="offers">

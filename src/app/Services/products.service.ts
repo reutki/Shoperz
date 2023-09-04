@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { ApiService } from './api.service'; // Import your API service
-import { Observable, BehaviorSubject, map } from 'rxjs';
+import { ApiService } from './api.service'; 
+import { Observable, BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -16,15 +16,15 @@ export class ProductsService {
   constructor(private api: ApiService) {}
 
   fetchProducts(category: string): void {
-    this.api
-      .request('GET', `products/category/${category}?limit=0`)
-      .subscribe((response: any) => {
-        const products = response.products;
+    const path = category
+      ? `products/category/${category}?limit=0`
+      : 'products';
+    this.api.request('GET', path).subscribe((response: any) => {
+      const products = response.products;
 
-        this.productsSubject.next(products);
-        this.filteredProductsSubject.next([...products]);
-        console.log(products);
-      });
+      this.productsSubject.next(products);
+      this.filteredProductsSubject.next([...products]);
+    });
   }
 
   updateFilteredProducts(filteredProducts: any[]) {

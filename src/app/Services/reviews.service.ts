@@ -27,24 +27,15 @@ export class ReviewsService {
 
       this.commentsSubject.next(comments);
       this.reviewsSubject.next([...comments]);
-      console.log( comments);
     });
   }
-  addReview(newReview:any):Observable<any>{
-
-
+  addReview(newReview: any): Observable<any> {
     return this.api.request('POST', `comments/add`, newReview);
-
   }
-  updateReviews(newReview:any):void{
-    const updatedReviews = [newReview,...this.commentsSubject.value];
+  updateReviews(newReview: any): void {
+    const updatedReviews = [newReview, ...this.commentsSubject.value];
 
     this.commentsSubject.next(updatedReviews);
     this.reviewsSubject.next([...updatedReviews]);
-    console.log(this.commentsSubject);
-
-
   }
-
-
 }
