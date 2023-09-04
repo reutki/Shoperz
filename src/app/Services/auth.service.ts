@@ -1,20 +1,24 @@
-import { AdminService } from './admin.service';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, BehaviorSubject } from 'rxjs';
 import { ApiService } from './api.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  admin: boolean = false;
+  adminSubject = new BehaviorSubject<boolean>(false);
+  admin$ = this.adminSubject.asObservable();
   constructor(private api: ApiService) {}
 
   login(username: string, password: string): Observable<any> {
     const loginData = { username, password };
     username === 'kminchelle' &&
       localStorage.setItem('admins', JSON.stringify(['kminchelle']));
-    this.isAdmin(username) ? (this.admin = true) : (this.admin = false);
+    localStorage.setItem('username', username);
+
+    this.isAdmin(username)
+      ? this.adminSubject.next(true)
+      : this.adminSubject.next(false);
     return this.api.request('POST', 'auth/login', loginData);
   }
 
@@ -35,8 +39,8 @@ export class AuthService {
     if (admins === null) {
       return false; // No admins in localStorage
     }
-
-    return admins.includes(username);
+    this.adminSubject.next(admins.includes(username));
+    return this.adminSubject.value;
   }
 
   //if the token is not anymore he same, it will log out

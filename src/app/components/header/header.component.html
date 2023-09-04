@@ -47,7 +47,7 @@
       <mat-icon>account_circle</mat-icon>
     </button>
     <button
-      *ngIf="admin"
+      *ngIf="authService.adminSubject | async"
       [routerLink]="[{ outlets: { categories: ['admin'] } }]"
       mat-icon-button
       matTooltip="Compare"

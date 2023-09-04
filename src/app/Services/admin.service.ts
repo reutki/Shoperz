@@ -4,24 +4,28 @@ import { ApiService } from './api.service';
 import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AdminService {
-constructor(private api: ApiService, private productsService:ProductsService) {}
+  constructor(
+    private api: ApiService,
+    private productsService: ProductsService
+  ) {}
 
-
-addProduct(productData: any): Observable<any> {
-  this.productsService.productsSubject.next([...this.productsService.productsSubject.value,productData])
-  return this.api.request('POST', 'products/add', productData);
-}
-addAdmin(username: string): void {
-  let admins: string[] = JSON.parse(localStorage.getItem('admins') || '[]');
-  admins.push(username);
-  localStorage.setItem('admins', JSON.stringify(admins));
-}
+  addProduct(productData: any): Observable<any> {
+    this.productsService.productsSubject.next([
+      ...this.productsService.productsSubject.value,
+      productData,
+    ]);
+    return this.api.request('POST', 'products/add', productData);
+  }
+  addAdmin(username: string): void {
+    let admins: string[] = JSON.parse(localStorage.getItem('admins') || '[]');
+    admins.push(username);
+    localStorage.setItem('admins', JSON.stringify(admins));
+  }
 
   getAdmins(): string[] {
-
     return JSON.parse(localStorage.getItem('admins') || '[]');
   }
 }
