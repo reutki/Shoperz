@@ -42,6 +42,7 @@ import { ProfilePageComponent } from './routes/profile-page/profile-page.compone
 import { NgxPaginationModule } from 'ngx-pagination';
 
 import { AngularMaterialModule } from './angular-material/angular-material.module';
+import { AdminProductsViewComponent } from './components/admin-products-view/admin-products-view.component';
 
 @NgModule({
   declarations: [
@@ -77,6 +78,7 @@ import { AngularMaterialModule } from './angular-material/angular-material.modul
     AdminProductFormComponent,
     AdminUserFormComponent,
     ProfilePageComponent,
+    AdminProductsViewComponent,
   ],
   imports: [
     AngularMaterialModule,

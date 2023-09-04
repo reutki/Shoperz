@@ -1,0 +1,37 @@
+<div>
+
+  <h1>Select a category</h1>
+  <mat-select
+  class="select"
+  [(value)]="categorySelected"
+  placeholder="All Categories"
+  (valueChange)="getTable()"
+  >
+  <mat-option [value]="category"  *ngFor="let category of categories">{{
+    category
+  }}</mat-option>
+</mat-select>
+<table id="products-list" title="Products">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Stock</th>
+      <th>Rating</th>
+      <th>Discount</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of productsService.productsSubject | async">
+      <td>{{ item.id }}</td>
+      <td>{{ item.title }}</td>
+      <td>{{ item.description }}</td>
+      <td>{{ item.stock }}</td>
+      <td>{{ item.rating }}</td>
+      <td>{{ item.discount }}</td>
+    </tr>
+  </tbody>
+</table>
+<button mat-button (click)="generatePdf()" >Print</button>
+</div>
