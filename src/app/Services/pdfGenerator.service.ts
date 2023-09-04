@@ -4,14 +4,16 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class PdfGeneratorService {
-  generatePDF(elementId: string): void {
+  generatePDF(
+    elementId: string,
+    data: any[],
+    columns=Object.keys(data[0]),
+  ): void {
     const element = document.getElementById(elementId);
 
     if (element) {
-      // Extract specific elements (e.g., .cart-item) from the cart content
-      const itemElements = Array.from(element.querySelectorAll('.cart-item'));
 
-      if (itemElements.length === 0) {
+      if (data.length === 0) {
         console.error('No items found to include in the PDF.');
         return;
       }
@@ -20,34 +22,35 @@ export class PdfGeneratorService {
       printWindow?.document.open();
 
       printWindow?.document.write(`
-        <html>
+        <html style='width:100%'>
           <head>
-            <title>Products</title>
-            </head>
+            <title>${element.getAttribute('title')}</title>
+          </head>
           <body>
-      `);
-
-      itemElements.forEach((itemElement) => {
-        const h4Element = itemElement.querySelector('h4');
-        const spanElements = Array.from(itemElement.querySelectorAll('span'));
-
-        printWindow?.document.write(` <div class='row-container' style="display: flex; border-bottom: 1px solid black; font-size: 14px; margin-bottom: 10px;"`);
-        if (h4Element) {
-          printWindow?.document.write(h4Element.outerHTML);
-        }
-        spanElements.forEach((spanElement, index) => {
-          // Determine whether to add "Price" or "Quantity" based on the index
-          const labelText = index % 2 === 0 ? 'Price' : 'Quantity';
-          printWindow?.document.write(`<span style="margin-left:10px">${labelText}: ${spanElement.innerHTML}</span>`);
-        });
-
-        printWindow?.document.write(` </div>`);
+          <table style='margin-top: 20px; border-collapse: collapse;border: 1px solid black;'>
+            <thead>
+              <tr>
+                ${columns.map((item) => `<th style='border: 1px solid black;padding: 5px; '>${item}</th>`).join('')}
+              </tr>
+            </thead>
+            <tbody>
+            ${data.map((item) => {
+              console.log(data);
+              console.log(item);
 
 
-      });
+             return `<tr  >
+             ${Object.values(item).map(value=>`<td style='border: 1px solid black;padding: 5px;   '>${value}</td>`)}
 
-      // Close the HTML document
-      printWindow?.document.write(`
+             </tr>`
+            }
+            ).join('')}
+          `);
+
+
+          printWindow?.document.write(`
+            </tbody>
+          </table>
           </body>
         </html>
       `);

@@ -12,5 +12,11 @@
       </mat-expansion-panel-header>
       <button [routerLink]="[{ outlets: { admin: ['addUser'] } }]" mat-button>Add an admin</button>
     </mat-expansion-panel>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>PDF</mat-panel-title>
+      </mat-expansion-panel-header>
+      <button [routerLink]="[{ outlets: { admin: ['showProducts'] } }]" mat-button>Print Products</button>
+    </mat-expansion-panel>
   </mat-accordion>
 </mat-card>
