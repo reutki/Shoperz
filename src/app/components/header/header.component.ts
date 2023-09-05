@@ -1,6 +1,7 @@
+import { AppwrapperComponent } from './../appwrapper/appwrapper.component';
 import { AuthService } from 'src/app/Services/auth.service';
 import { SearchService } from './../../Services/search.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit  } from '@angular/core';
 import { Subscription, debounceTime } from 'rxjs';
 import { CartService } from 'src/app/Services/cart.service';
 
@@ -10,11 +11,14 @@ import { CartService } from 'src/app/Services/cart.service';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
+  @Input() toggle: (() => void) = function x(){return}
+
   query: string = '';
   categorySelected: string = '';
   categories: string[] = [];
   results: any[] = [];
   constructor(
+    public AppwrapperComponent:AppwrapperComponent,
     public cartService: CartService,
     private searchService: SearchService,
     public authService: AuthService
@@ -26,6 +30,14 @@ export class HeaderComponent implements OnInit {
     this.searchService.getCategories();
     this.results = JSON.parse(localStorage.getItem('prevSearchRes') || '[]');
   }
+
+  childToggle(){
+    this.toggle()
+
+
+  }
+
+
 
   searchItem() {
     // Unsubscribe from previous search request

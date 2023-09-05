@@ -1,5 +1,11 @@
-<app-top-header></app-top-header>
-<app-header></app-header>
-<app-categories-nav-bar></app-categories-nav-bar>
-<router-outlet name="categories"></router-outlet>
-<app-footer></app-footer>
+<div class="container">
+  <app-side-nav-menu class="mobile-menu" #drawer></app-side-nav-menu>
+  <div id="app" *ngIf="isVisible">
+    <app-top-header></app-top-header>
+    <app-header [toggle]="toggle"></app-header>
+    <app-categories-nav-bar></app-categories-nav-bar>
+    <router-outlet name="categories"></router-outlet>
+    <app-footer></app-footer>
+  </div>
+
+</div>

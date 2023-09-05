@@ -1,7 +1,10 @@
 <mat-toolbar class="header">
-  <button mat-icon-button>
-    <mat-icon>menu</mat-icon>
-  </button>
+
+    <div class="example-sidenav-content">
+      <button type="button" mat-button (click)="toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+    </div>
   <!-- <a [routerLink]="['']" -->
   <a [routerLink]="[{ outlets: { categories: ['landing'] } }]"
     ><img src="../../../assets/logo.svg" alt="company logo"
