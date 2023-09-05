@@ -1,7 +1,38 @@
 <mat-drawer-container autosize class="drawer-container">
   <mat-drawer #drawer mode="side" class="drawer">
     <div class="drawer-title">
-      <h1>Welcome</h1>
+      <div class="icon-buttons" *ngIf="cartService.cart$ | async as cart">
+        <button
+          mat-icon-button
+          matTooltip="My Account"
+          (click)="toggleDrawer()"
+          [routerLink]="[{ outlets: { categories: ['profile'] } }]"
+        >
+          <mat-icon>account_circle</mat-icon>
+        </button>
+        <button
+          *ngIf="authService.adminSubject | async"
+          [routerLink]="[{ outlets: { categories: ['admin'] } }]"
+          mat-icon-button
+          (click)="toggleDrawer()"
+          matTooltip="Compare"
+        >
+          <mat-icon>settings</mat-icon>
+        </button>
+        <!-- todo add wishlist page  -->
+        <button mat-icon-button matTooltip="Wishlist">
+          <mat-icon>favorite</mat-icon>
+        </button>
+        <button
+          mat-icon-button
+          (click)="toggleDrawer()"
+          matTooltip="My Cart"
+          (click)="cartService.toggleCart()"
+        >
+          <mat-icon>shopping_basket</mat-icon>
+        </button>
+        <span>${{ cart.total }}</span>
+      </div>
       <button mat-icon-button (click)="toggleDrawer()">
         <mat-icon>close</mat-icon>
       </button>

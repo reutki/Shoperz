@@ -1,3 +1,6 @@
+import { AuthService } from 'src/app/Services/auth.service';
+import { SearchService } from './../../Services/search.service';
+import { CartService } from 'src/app/Services/cart.service';
 import { Component, ViewChild,OnInit } from '@angular/core';
 import { MatDrawer } from '@angular/material/sidenav';
 import { ApiService } from 'src/app/Services/api.service';
@@ -14,6 +17,8 @@ export class SideNavMenuComponent implements OnInit {
 
   constructor(private api: ApiService,
     public AppwrapperComponent:AppwrapperComponent,
+    public cartService: CartService,
+    public authService: AuthService
 
     ) {}
   @ViewChild('drawer') drawer?: MatDrawer;

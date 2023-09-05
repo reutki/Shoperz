@@ -36,7 +36,7 @@
   object-fit: contain;
   filter: opacity($opacity);
 }
-@mixin same-height-card($width: 420px, $aspect-ratio: 3/1) {
+@mixin same-height-card($width: 100%, $aspect-ratio: 3/1) {
   max-width: $width;
   aspect-ratio: $aspect-ratio;
 }
@@ -55,4 +55,34 @@
       @content;
     }
   }
+}
+
+@mixin media($breakpoint) {
+
+  @if $breakpoint == "phone" {
+
+    @media (max-width: 600px) {
+
+      @content;
+
+    }
+
+  } @else if $breakpoint == "tablet" {
+
+    @media (max-width: 900px) {
+
+      @content;
+
+    }
+
+  } @else if $breakpoint == "desktop" {
+
+    @media (min-width: 901px) {
+
+      @content;
+
+    }
+
+  }
+
 }
