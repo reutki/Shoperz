@@ -1,6 +1,7 @@
 .drawer-container {
   height: 100%;
   position: absolute;
+  text-align: center;
 }
 
 .drawer {
@@ -14,7 +15,10 @@
     flex-direction: column;
 
   }
-
+.icon-buttons{
+  display: flex;
+  align-items: center;
+}
   a {
     font-weight: 600;
     font-size: 20px;

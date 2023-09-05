@@ -17,8 +17,6 @@
 
   .offers {
     background-color: $gray-100;
-    width: 100%;
-    height: auto;
-    padding: 30px 0;
+    max-width: 100%;
   }
 }

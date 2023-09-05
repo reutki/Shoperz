@@ -2,17 +2,23 @@
 
 
 .container{
+
   display: flex;
+  flex-wrap: wrap;
   width: 100%;
   margin: 0 auto;
   justify-content: center;
   gap: 20px;
   padding: 0 10%;
+  flex: 1;
+
 }
 .column-conainter{
 display: flex;
 flex: 1;
 flex-direction: column;
+width: fit-content;
+
 }
 h3{
   @include h3-medium;

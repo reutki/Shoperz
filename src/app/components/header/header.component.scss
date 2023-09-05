@@ -1,12 +1,27 @@
-@import "/src/typography";
+@import "/src/imports";
 
 .header {
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
+  @include media("tablet") {
+    justify-content: space-between;
+  }
+  a{
+    @include media("tablet") {
+      display: none;
+    }
+  }
 }
 
+.side-nav {
+  display: none;
+
+  @include media("tablet") {
+    display: block;
+  }
+}
 
 .search {
   width: 40%;
@@ -17,25 +32,36 @@
   padding: 0 0 0 10px;
   align-items: center;
 
+  @include media("tablet") {
+    flex: 1;
+  }
   #autocomplete {
     display: none !important;
   }
+
   ::ng-deep mat-autocomplete {
     display: none;
   }
 }
-.search > input {
+.icon-buttons{
+  @include media("tablet") {
+    display: none;
+  }
+}
+.search>input {
   flex: 1;
   border: none;
   outline: none;
   padding: 10px;
   background: none;
 }
+
 .search .select {
   max-width: 30%;
   padding: 0 10px;
   position: relative;
 }
+
 .select::before {
   content: "";
   height: 100%;
@@ -46,11 +72,13 @@
   background-color: #eef0f4;
   z-index: 1;
 }
+
 .search .search-button {
   color: white;
   background-color: #319dff;
   justify-self: flex-end;
 }
+
 h1 {
   @include h1-bold;
 }

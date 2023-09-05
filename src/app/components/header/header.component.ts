@@ -33,11 +33,7 @@ export class HeaderComponent implements OnInit {
 
   childToggle(){
     this.toggle()
-
-
   }
-
-
 
   searchItem() {
     // Unsubscribe from previous search request

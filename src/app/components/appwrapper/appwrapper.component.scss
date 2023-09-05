@@ -1,9 +1,13 @@
+@import 'src/_imports.scss';
 
 .container{
   position: relative;
   height: 100%;
   width: 100%;
-
+  app-categories-nav-bar{
+    @include media("tablet"){
+  display: none;
+    }}
 }
 
 .mobile-menu{
@@ -14,3 +18,4 @@
   width: 100% !important;
 
 }
+
