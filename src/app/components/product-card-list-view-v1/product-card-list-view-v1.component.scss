@@ -34,14 +34,14 @@
 }
 
 .img-container {
-  width: 80%;
+  width: 100%;
   height: auto;
   @include flex-center;
   overflow: hidden;
-  padding: 5px;
+  // padding: 5px;
 
   img {
-    width: 100%;
+    @include same-height-images(100%, 1);
     height: inherit;
   }
 }

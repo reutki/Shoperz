@@ -3,7 +3,6 @@ import { AuthGuard } from './Services/authGuard.service';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginScreenComponent } from './components/login-screen/login-screen.component';
 import { CategoryComponent } from './components/category/category.component';
-import { AppComponent } from './app.component';
 import { AppwrapperComponent } from './components/appwrapper/appwrapper.component';
 import { ProductPageComponent } from './routes/product-page/product-page.component';
 import { AdminComponent } from './components/admin/admin.component';

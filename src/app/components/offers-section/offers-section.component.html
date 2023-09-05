@@ -1,17 +1,20 @@
 <div class="container">
   <div class="column-container">
     <h3>Top Rated</h3>
-    <app-product-card-v2 *ngFor="let item of bestSellerProducts" [Title]="item.title" [Rating]="item.rating" [Price]="item.price" [Image]="item.thumbnail" />
+    <app-product-card-v2
+      *ngFor="let item of bestSellerProducts"
+      [Product]="item"
+    />
   </div>
   <div class="column-container">
     <h3>Bestsellers</h3>
-    <app-product-card-v2 *ngFor="let item of topRatedProducts" [Title]="item.title" [Rating]="item.rating" [Price]="item.price" [Image]="item.thumbnail" />
-
+    <app-product-card-v2
+      *ngFor="let item of topRatedProducts"
+      [Product]="item"
+    />
   </div>
   <div class="column-container">
     <h3>Mega Offers</h3>
-    <app-product-card-v2 *ngFor="let item of megaOffers" [Title]="item.title" [Rating]="item.rating" [Price]="item.price" [Image]="item.thumbnail" [Discount]="item.discountPercentage"/>
-
+    <app-product-card-v2 *ngFor="let item of megaOffers" [Product]="item" />
   </div>
-
 </div>

@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { CartService } from 'src/app/Services/cart.service';
+import { Product } from 'src/types/item.interface';
 
 @Component({
   selector: 'app-product-card-v2',
@@ -7,25 +8,35 @@ import { CartService } from 'src/app/Services/cart.service';
   styleUrls: ['./product-card-v2.component.scss'],
 })
 export class ProductCardV2Component {
-  @Input() Title = '';
-  @Input() Rating = 0;
-  @Input() Price = 0;
-  @Input() Image = '';
-  @Input() Discount = 0;
-  @Input() Id = 0; // * i added the id
-  quantity = 0;
+  @Input() Product: Product = {
+    id: 0,
+    title: '',
+    description: '',
+    price: 0,
+    discountPercentage: 0,
+    rating: 0,
+    stock: 0,
+    brand: '',
+    category: '',
+    thumbnail: '',
+    images: [''],
+    quantity: 0,
+  };
 
   constructor(private cartService: CartService) {}
   addToCart() {
+    const quantity = this.Product.quantity ?? 1;
     const item = {
-      id: this.Id,
-      title: this.Title,
-      price: this.Price,
-      quantity: ++this.quantity,
-      total: this.quantity * this.Price,
-      discountPercentage: this.Discount,
-      discountedPrice: this.Price * (this.Discount / 100),
+      id: this.Product.id,
+      title: this.Product.title,
+      price: this.Product.price,
+      quantity,
+      total: quantity * this.Product.price,
+      discountPercentage: this.Product.discountPercentage,
+      discountedPrice:
+        this.Product.price * (this.Product.discountPercentage / 100),
     };
-    this.cartService.addToCart(item, this.Id);
+
+    this.cartService.addToCart(item, item.id);
   }
 }

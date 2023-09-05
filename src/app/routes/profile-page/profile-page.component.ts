@@ -8,6 +8,11 @@ import { CartService } from 'src/app/Services/cart.service';
   styleUrls: ['./profile-page.component.scss'],
 })
 export class ProfilePageComponent implements OnDestroy {
+  cartSubscription: any;
+  cart: any;
+  visibleCart: any;
+  bank: any;
+  personalInfo: any;
   user = {
     id: 1,
     firstName: 'Terry',
@@ -69,19 +74,29 @@ export class ProfilePageComponent implements OnDestroy {
     ssn: '661-64-2976',
     userAgent: 'Mozilla/5.0 ...',
   };
-  cartSubscription: any;
-  cart: any;
-  visibleCart: any;
 
-  personalInfo = Object.entries(this.user)
-    .slice(1, 15)
-    .map((arr) => {
-      return [this.camelCaseToTitleCase(arr[0]), arr[1]];
+  ngOnInit() {
+    this.cartSubscription = this.cartService.cart$.subscribe((cart) => {
+      this.cart = cart;
+      this.loadVisibleCart();
     });
+    fetch('https://dummyjson.com/users/2')
+      .then((res) => res.json())
+      .then((user) => (this.user = user))
+      .catch(console.log)
+      .finally(() => {
+        this.personalInfo = Object.entries(this.user)
+          .slice(1, 15)
+          .map((arr) => {
+            return [this.camelCaseToTitleCase(arr[0]), arr[1]];
+          });
 
-  bank = Object.entries(this.user.bank).map((arr) => {
-    return [this.camelCaseToTitleCase(arr[0]), arr[1]];
-  });
+        this.bank = Object.entries(this.user.bank).map((arr) => {
+          return [this.camelCaseToTitleCase(arr[0]), arr[1]];
+        });
+        this.personalInfo.splice(10, 1);
+      });
+  }
 
   camelCaseToTitleCase(str: string) {
     if (str === '') return '';
@@ -93,19 +108,11 @@ export class ProfilePageComponent implements OnDestroy {
 
     return titleCaseWords.join(' ');
   }
+
   constructor(
     private cartService: CartService,
     private authService: AuthService
-  ) {
-    this.personalInfo.splice(10, 1);
-  }
-
-  ngOnInit() {
-    this.cartSubscription = this.cartService.cart$.subscribe((cart) => {
-      this.cart = cart;
-      this.loadVisibleCart();
-    });
-  }
+  ) {}
 
   logOut(): void {
     this.authService.logout();

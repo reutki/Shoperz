@@ -1,19 +1,22 @@
 <mat-card>
   <div class="image-container">
-    <img src="{{ Image }}" alt="" />
+    <img src="{{ Product.images[0] }}" alt="" />
   </div>
   <div class="data-container">
-    <p>{{ Title }}</p>
-    <star-rating [starType]="'svg'" [rating]="Rating"></star-rating>
+    <p>{{ Product.title }}</p>
+    <star-rating [starType]="'svg'" [rating]="Product.rating"></star-rating>
 
-    <h4>{{ Discount > 0 ? "%" + Discount : null }}</h4>
-    <h5>${{ Price }}</h5>
-    <div class="button-container">
+    <h4>
+      {{
+        Product.discountPercentage > 0 ? "%" + Product.discountPercentage : null
+      }}
+    </h4>
+    <h5>${{ Product.price }}</h5>
+    <div class="button-container" (click)="addToCart()">
       <button
         matTooltipPosition="left"
         mat-icon-button
         matTooltip="Add to cart"
-        (click)="addToCart()"
       >
         <img
           src="../../../assets/bag-s.svg"
