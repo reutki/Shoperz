@@ -1,9 +1,27 @@
+@import "src/imports";
+
 .container {
   display: grid;
   grid-template-columns: max-content 1fr;
   max-width: 80%;
   margin: 0 auto;
   gap: 20px;
+  @include media("phone") {
+    grid-template-columns: none;
+    grid-template-rows: max-content 1fr;
+  }
+  .ratings {
+    display: block;
+    @include media("phone") {
+      display: none;
+    }
+  }
+  .menu {
+    display: none;
+    @include media("phone") {
+      display: block;
+    }
+  }
 }
 .products {
   display: flex;
@@ -11,4 +29,9 @@
   width: 100%;
   flex-wrap: wrap;
   gap: 20px;
+
+  @include media("phone") {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
 }

@@ -1,7 +1,25 @@
 <div class="container">
   <div class="filters">
-    <app-filter-section-prices></app-filter-section-prices>
-    <app-rating-card></app-rating-card>
+    <div class="ratings">
+      <app-filter-section-prices></app-filter-section-prices>
+      <app-rating-card></app-rating-card>
+    </div>
+    <mat-card class="menu">
+      <mat-accordion>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>Sort by Prices</mat-panel-title>
+          </mat-expansion-panel-header>
+          <app-filter-section-prices></app-filter-section-prices>
+        </mat-expansion-panel>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>Sort by Ratings</mat-panel-title>
+          </mat-expansion-panel-header>
+          <app-rating-card></app-rating-card>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </mat-card>
   </div>
   <div class="products">
     <app-product-card-v1

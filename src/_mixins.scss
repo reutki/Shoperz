@@ -40,17 +40,19 @@
   max-width: $width;
   aspect-ratio: $aspect-ratio;
 }
-// ! o sa-l sterg ca e mai concis prin css
-@mixin border($position: bottom, $color: black, $height: 1px) {
-  @if $position == top {
-    border-top: $height solid $color;
-  } @else if $position == right {
-    border-right: $height solid $color;
-  } @else if $position == bottom {
-    border-bottom: $height solid $color;
-  } @else if $position == left {
-    border-left: $height solid $color;
-  } @else {
-    @error "Invalid border position: #{$position}. Choose from top, right, bottom, or left.";
+
+@mixin media($breakpoint) {
+  @if $breakpoint == "phone" {
+    @media (max-width: 600px) {
+      @content;
+    }
+  } @else if $breakpoint == "tablet" {
+    @media (max-width: 900px) {
+      @content;
+    }
+  } @else if $breakpoint == "desktop" {
+    @media (min-width: 901px) {
+      @content;
+    }
   }
 }
