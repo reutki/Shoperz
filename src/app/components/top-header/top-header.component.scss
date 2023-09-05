@@ -1,4 +1,4 @@
-@import "/src/mixins";
+@import "/src/imports";
 
 #top-header {
   display: flex;
@@ -8,7 +8,6 @@
   width: 100%;
 
   @media (max-width: 600px) {
-    // flex-direction: column-reverse;
     display: none;
   }
 }
@@ -80,5 +79,11 @@
     margin: 1px 0 0 10px;
     font-size: medium;
     color: gray;
+  }
+
+  @include media("tablet") {
+    p {
+      display: none;
+    }
   }
 }

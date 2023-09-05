@@ -24,11 +24,7 @@
   <div class="products">
     <app-product-card-v1
       *ngFor="let item of products"
-      [Price]="item.price"
-      [Discount]="item.discount"
-      [Image]="item.thumbnail"
-      [Title]="item.title"
-      [Id]="item.id"
+      [Product]="item"
     ></app-product-card-v1>
   </div>
 </div>

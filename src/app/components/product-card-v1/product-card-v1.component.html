@@ -1,20 +1,20 @@
 <mat-card
   class="container"
-  [routerLink]="['/', { outlets: { categories: ['product', Id] } }]"
+  [routerLink]="['/', { outlets: { categories: ['product', Product.id] } }]"
 >
   <mat-card-header>
-    <mat-card-subtitle>Category</mat-card-subtitle>
+    <mat-card-subtitle>{{ Product.category }}</mat-card-subtitle>
   </mat-card-header>
   <mat-card-content>
     <img
       src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif?20151024034921"
       class="cover-image-skeleton"
     />
-    <img src="{{ Image }}" alt="Product Image" />
-    <mat-card-title>{{ Title }}</mat-card-title>
-  </mat-card-content>
+    <img src="{{ Product.images[0] }}" alt="Product Image" />
+    <mat-card-title>{{ Product.title }}</mat-card-title> </mat-card-content
+  >`
   <mat-card-footer>
-    <h5>$ {{ Price }}</h5>
+    <h5>$ {{ Product.price }}</h5>
     <div class="button-container">
       <button
         matTooltipPosition="left"

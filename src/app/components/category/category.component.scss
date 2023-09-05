@@ -17,6 +17,7 @@
     }
   }
   .menu {
+    margin-top: 20px;
     display: none;
     @include media("phone") {
       display: block;
@@ -33,5 +34,6 @@
   @include media("phone") {
     display: grid;
     grid-template-columns: 1fr;
+    gap: 25px;
   }
 }

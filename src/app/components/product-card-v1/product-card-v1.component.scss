@@ -1,6 +1,6 @@
 @import "/src/imports";
 .container {
-  // @include same-height-card(100%, 1.5/2);
+  @include same-height-card(100%, 1.5/2);
   justify-content: center;
   background-color: white;
   padding: 20px;
@@ -8,14 +8,9 @@
   position: relative;
   flex-grow: 1 !important;
   width: calc(100% - 1px);
-
-  justify-content: center;
-  background-color: white;
-  padding: 20px;
-  overflow: hidden;
-  position: relative;
   @include media("phone") {
     flex-grow: 1 !important;
+    @include same-height-card(100%, 1);
   }
 }
 mat-card:hover .button-container {
@@ -30,6 +25,11 @@ h5 {
 mat-card-subtitle {
   @include text3-regular;
   color: $gray-700;
+
+  @include media("phone") {
+    @include text1-regular;
+    padding: 0 !important;
+  }
 }
 
 mat-card-title {
@@ -54,10 +54,9 @@ mat-card-content {
     padding: 0;
     aspect-ratio: 1/1;
     position: relative;
-    background-color: white;
     @include media("phone") {
       width: -webkit-fill-available;
-      height: 245px;
+      height: 320px;
     }
   }
   .cover-image-skeleton {
@@ -68,6 +67,7 @@ mat-card-content {
     height: 210px;
     background-size: 200% 100%;
     border-radius: 8px;
+
     @include media("phone") {
       width: -webkit-fill-available;
       height: 245px;

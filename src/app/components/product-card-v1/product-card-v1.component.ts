@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { CartService } from 'src/app/Services/cart.service';
+import { Product } from 'src/types/item.interface';
 
 @Component({
   selector: 'app-product-card-v1',
@@ -8,14 +9,7 @@ import { CartService } from 'src/app/Services/cart.service';
   styleUrls: ['./product-card-v1.component.scss'],
 })
 export class ProductCardV1Component {
-  @Input() Category: string | undefined = '';
-  @Input() Price: number = 0;
-  @Input() Discount: number = 0;
-  @Input() Image: string = '';
-  @Input() Title: string = '';
-  @Input() Id: number = 0;
-
-  @Input() product = {
+  @Input() Product: Product = {
     id: 0,
     title: '',
     description: '',
@@ -34,21 +28,24 @@ export class ProductCardV1Component {
   constructor(private router: Router, private cartService: CartService) {}
 
   goToProduct() {
-    this.router.navigate(['/', 'product', this.Id]); // * changed id
+    this.router.navigate(['/', 'product', this.Product.id]);
   }
 
   addToCart(e: Event) {
     e.stopPropagation();
 
+    const quantity = this.Product.quantity ?? 1;
     const item = {
-      id: this.Id,
-      title: this.Title,
-      price: this.Price,
-      quantity: ++this.quantity,
-      total: this.quantity * this.Price,
-      discountPercentage: this.Discount,
-      discountedPrice: this.Price * (this.Discount / 100),
+      id: this.Product.id,
+      title: this.Product.title,
+      price: this.Product.price,
+      quantity,
+      total: quantity * this.Product.price,
+      discountPercentage: this.Product.discountPercentage,
+      discountedPrice:
+        this.Product.price * (this.Product.discountPercentage / 100),
     };
-    this.cartService.addToCart(item, this.Id);
+
+    this.cartService.addToCart(item, item.id);
   }
 }
