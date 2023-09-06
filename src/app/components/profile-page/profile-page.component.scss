@@ -47,6 +47,10 @@
   @include flex-center(space-between);
   padding: 15px;
 
+  button {
+    cursor: pointer;
+  }
+
   .photo-name {
     display: flex;
 
