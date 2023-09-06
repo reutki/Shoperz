@@ -33,9 +33,10 @@ export class HeaderComponent implements OnInit {
       } else if (this.prevScrollpos > this.currentScrollPos) {
         this.isHidden = false;
       }
+      console.log(this.currentScrollPos);
 
       this.prevScrollpos = this.currentScrollPos;
-    }, 100);
+    }, 19);
   }
 
   query: string = '';

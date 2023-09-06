@@ -4,6 +4,7 @@
     *ngFor="let item of list"
     [href]="'/' + item"
     class="link-as-text text1-regular"
+    [routerLink]="[{ outlets: { categories: ['category', item] } }]"
     >{{ item }}</a
   >
 </div>

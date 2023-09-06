@@ -1,9 +1,21 @@
-form{
+@import "src/imports";
+
+form {
   padding: 20px;
   display: flex;
   flex-wrap: wrap;
-  gap:20px;
-  mat-form-field{
+  gap: 20px;
+  mat-form-field {
     max-height: fit-content;
+
+    @include media("phone") {
+      width: 100%;
+    }
+  }
+
+  button {
+    @include media("phone") {
+      width: 100%;
+    }
   }
 }
