@@ -3,34 +3,33 @@
       <button type="button" class="side-nav" mat-button (click)="toggle()">
         <mat-icon>menu</mat-icon>
       </button>
-  <!-- <a [routerLink]="['']" -->
   <a [routerLink]="[{ outlets: { categories: ['landing'] } }]"
     ><img src="../../../assets/logo.svg" alt="company logo"
   /></a>
   <div class="search">
     <input
-      (input)="searchItem()"
-      [(ngModel)]="query"
+    (input)="searchItem()"
+    [(ngModel)]="query"
       matInput
       [matAutocomplete]="auto"
       placeholder="Search for products..."
-    />
-    <mat-autocomplete #auto="matAutocomplete" id="autocomplete">
+      />
+      <mat-autocomplete #auto="matAutocomplete" id="autocomplete">
       <mat-option>
         <app-bundle-card
-          *ngFor="let item of results"
-          [Title]="item.title"
+        *ngFor="let item of results"
+        [Title]="item.title"
           [Category]="item.category"
           [Image]="item.thumbnail"
           [Price]="item.price"
         />
       </mat-option>
     </mat-autocomplete>
-    <mat-select
+      <mat-select
       class="select"
       [(value)]="categorySelected"
       placeholder="All Categories"
-    >
+      >
       <mat-option [value]="category" *ngFor="let category of categories">{{
         category
       }}</mat-option>
