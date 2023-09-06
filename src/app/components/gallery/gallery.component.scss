@@ -12,6 +12,9 @@ p {
 .root {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  @include media("phone") {
+    grid-template-columns: 1fr;
+  }
   width: 100%;
 
   gallery {

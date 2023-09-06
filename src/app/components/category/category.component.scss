@@ -17,7 +17,8 @@
     }
   }
   .ratings {
-    display: block;
+    @include flex-gap(20px, column);
+    padding-top: 20px;
     @include media("phone") {
       display: none;
     }
