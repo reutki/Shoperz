@@ -4,6 +4,14 @@
       <div class="icon-buttons" *ngIf="cartService.cart$ | async as cart">
         <button
           mat-icon-button
+          matTooltip="Go Home"
+          (click)="toggleDrawer()"
+          [routerLink]="['', { outlets: { categories: ['landing'] } }]"
+        >
+          <mat-icon>home</mat-icon>
+        </button>
+        <button
+          mat-icon-button
           matTooltip="My Account"
           (click)="toggleDrawer()"
           [routerLink]="[{ outlets: { categories: ['profile'] } }]"
@@ -39,11 +47,11 @@
     </div>
     <div class="category-container">
       <a
-          *ngFor="let category of categories"
-          [routerLink]="[{ outlets: { categories: ['category', category] } }]"
-          (click)="toggleDrawer()"
-          >{{ category }}</a
-        >
+        *ngFor="let category of categories"
+        [routerLink]="[{ outlets: { categories: ['category', category] } }]"
+        (click)="toggleDrawer()"
+        >{{ category }}</a
+      >
     </div>
   </mat-drawer>
 </mat-drawer-container>

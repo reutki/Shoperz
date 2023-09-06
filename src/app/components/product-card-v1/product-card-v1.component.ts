@@ -27,6 +27,18 @@ export class ProductCardV1Component {
 
   constructor(private router: Router, private cartService: CartService) {}
 
+  redirectTo(id: number) {
+    this.router
+      .navigateByUrl('/', { skipLocationChange: true })
+      .then(() =>
+        this.router.navigate([
+          '/',
+          { outlets: { categories: ['product', id] } },
+        ])
+      );
+    window.scrollTo(0, 0);
+  }
+
   goToProduct() {
     this.router.navigate(['/', 'product', this.Product.id]);
   }

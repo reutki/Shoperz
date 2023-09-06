@@ -4,11 +4,11 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginScreenComponent } from './components/login-screen/login-screen.component';
 import { CategoryComponent } from './components/category/category.component';
 import { AppwrapperComponent } from './components/appwrapper/appwrapper.component';
-import { ProductPageComponent } from './routes/product-page/product-page.component';
+import { ProductPageComponent } from './components/product-page/product-page.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { AdminUserFormComponent } from './components/admin-user-form/admin-user-form.component';
 import { AdminProductFormComponent } from './components/admin-product-form/admin-product-form.component';
-import { ProfilePageComponent } from './routes/profile-page/profile-page.component';
+import { ProfilePageComponent } from './components/profile-page/profile-page.component';
 import { AdminProductsViewComponent } from './components/admin-products-view/admin-products-view.component';
 
 const routes: Routes = [

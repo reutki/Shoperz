@@ -7,7 +7,7 @@ mat-card {
   flex-direction: row;
   gap: 20px;
   margin-bottom: 10px;
-  @include same-height-card();
+  @include same-height-card(100%, 3/1.5);
   height: 145px;
   overflow: hidden;
 
@@ -18,6 +18,7 @@ mat-card {
   h4 {
     @include h4-bold();
     color: $danger-600;
+    margin: 0;
   }
   h5 {
     @include h5-medium();

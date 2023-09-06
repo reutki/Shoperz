@@ -1,7 +1,7 @@
 import { AppwrapperComponent } from './../appwrapper/appwrapper.component';
 import { AuthService } from 'src/app/Services/auth.service';
 import { SearchService } from './../../Services/search.service';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, HostListener, Input, OnInit } from '@angular/core';
 import { Subscription, debounceTime } from 'rxjs';
 import { CartService } from 'src/app/Services/cart.service';
 import { Router } from '@angular/router';
@@ -15,6 +15,28 @@ export class HeaderComponent implements OnInit {
   @Input() toggle: () => void = function x() {
     return;
   };
+
+  isHidden: boolean = true;
+  prevScrollpos = window.pageYOffset;
+  currentScrollPos = window.pageYOffset;
+  scrollTimeout: any;
+
+  @HostListener('window:scroll', ['$event'])
+  onScroll(event: any): void {
+    this.currentScrollPos = window.pageYOffset;
+    clearTimeout(this.scrollTimeout);
+    this.scrollTimeout = setTimeout(() => {
+      this.isHidden = window.scrollY > 0;
+
+      if (this.prevScrollpos < this.currentScrollPos) {
+        this.isHidden = true;
+      } else if (this.prevScrollpos > this.currentScrollPos) {
+        this.isHidden = false;
+      }
+
+      this.prevScrollpos = this.currentScrollPos;
+    }, 100);
+  }
 
   query: string = '';
   categorySelected: string = '';

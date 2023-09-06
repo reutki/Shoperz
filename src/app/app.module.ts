@@ -33,12 +33,12 @@ import { CategoryComponent } from './components/category/category.component';
 import { CartItemComponent } from './components/cart-item/cart-item.component';
 import { AppwrapperComponent } from './components/appwrapper/appwrapper.component';
 import { OffersSectionComponent } from './components/offers-section/offers-section.component';
-import { ProductPageComponent } from './routes/product-page/product-page.component';
+import { ProductPageComponent } from './components/product-page/product-page.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { AdminMenuComponent } from './components/admin-menu/admin-menu.component';
 import { AdminProductFormComponent } from './components/admin-product-form/admin-product-form.component';
 import { AdminUserFormComponent } from './components/admin-user-form/admin-user-form.component';
-import { ProfilePageComponent } from './routes/profile-page/profile-page.component';
+import { ProfilePageComponent } from './components/profile-page/profile-page.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 
 import { AngularMaterialModule } from './angular-material/angular-material.module';
