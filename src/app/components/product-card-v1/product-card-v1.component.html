@@ -10,11 +10,11 @@
       src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif?20151024034921"
       class="cover-image-skeleton"
     />
-    <img src="{{ Product.images[0] }}" alt="Product Image" />
-    <mat-card-title>{{ Product.title }}</mat-card-title> </mat-card-content
-  >`
-  <mat-card-footer>
+    <img src="{{ Product.images[0] }}" />
+    <mat-card-title>{{ Product.title }}</mat-card-title>
     <h5>$ {{ Product.price }}</h5>
+  </mat-card-content>
+  <mat-card-footer>
     <div class="button-container">
       <button
         matTooltipPosition="left"

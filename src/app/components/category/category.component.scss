@@ -10,6 +10,12 @@
     grid-template-columns: none;
     grid-template-rows: max-content 1fr;
   }
+  .filters {
+    @include media("phone") {
+      margin: 0 auto;
+      max-width: 80vw;
+    }
+  }
   .ratings {
     display: block;
     @include media("phone") {
