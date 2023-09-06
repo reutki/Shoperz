@@ -10,23 +10,22 @@ import { SideNavMenuComponent } from '../side-nav-menu/side-nav-menu.component';
 })
 export class AppwrapperComponent implements OnInit, AfterViewInit {
   constructor(private router: Router, private authService: AuthService) {}
-  toggle: (() => void) = function x(){return}
-  public isVisible:boolean=true
+  toggle: () => void = function x() {
+    return;
+  };
+  public isVisible: boolean = true;
 
   @ViewChild(SideNavMenuComponent)
   private sideNav: SideNavMenuComponent | undefined;
 
   ngOnInit(): void {
     this.authService.isAdmin(localStorage.getItem('username') || '');
-    console.log(this.authService.isAdmin(localStorage.getItem('username') || ''));
 
     this.router.navigate(['', { outlets: { categories: ['landing'] } }]);
   }
 
-
   ngAfterViewInit() {
     this.toggle = () => this.parentToggle();
-
   }
 
   parentToggle() {

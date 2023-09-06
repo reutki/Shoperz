@@ -1,31 +1,24 @@
+@import "/src/imports";
 
-@import '/src/imports';
-
-.container{
+.container {
   width: 100%;
   height: 100%;
   display: flex;
 
-  @include media('phone'){
-  display: flex;
+  @include media("phone") {
+    display: flex;
 
     flex-direction: column;
   }
-  .menu{
+  .menu {
     width: 20%;
     padding: 20px;
 
-  @include media('phone'){
-    width: 100%;
-
-
+    @include media("phone") {
+      width: 100%;
+    }
   }
-  }
-  h4{
+  h4 {
     @include h4-bold;
-  }
-  .outlet{
-    width: 100%;
-    padding:0 10%;
   }
 }

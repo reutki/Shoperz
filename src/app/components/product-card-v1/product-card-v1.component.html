@@ -1,7 +1,4 @@
-<mat-card
-  class="container"
-  [routerLink]="['/', { outlets: { categories: ['product', Product.id] } }]"
->
+<mat-card class="container" (click)="redirectTo(Product.id)">
   <mat-card-header>
     <mat-card-subtitle>{{ Product.category }}</mat-card-subtitle>
   </mat-card-header>

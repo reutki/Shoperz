@@ -1,15 +1,7 @@
-<mat-toolbar class="header">
-  <<<<<<< HEAD
+<mat-toolbar class="header" [ngClass]="{ hiden: isHidden }">
   <button type="button" class="side-nav" mat-button (click)="toggle()">
     <mat-icon>menu</mat-icon>
   </button>
-  <!-- <a [routerLink]="['']" -->
-  =======
-
-  <button type="button" class="side-nav" mat-button (click)="toggle()">
-    <mat-icon>menu</mat-icon>
-  </button>
-  >>>>>>> 585badac428790a07e51e1dbe3edb2b8fe61b7fc
   <a [routerLink]="[{ outlets: { categories: ['landing'] } }]"
     ><img src="../../../assets/logo.svg" alt="company logo"
   /></a>

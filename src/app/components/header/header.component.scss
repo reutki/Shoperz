@@ -1,19 +1,30 @@
 @import "/src/imports";
 
 .header {
-  width: 100%;
-  padding:  0 10%;
+  transition: all 0.3s cubic-bezier(0.39, 0.575, 0.565, 1);
+  position: sticky;
+  inset: 0;
+  z-index: 100;
+  padding: 0 10%;
   display: flex;
   justify-content: center;
   align-items: center;
+
+  &.sticky-hidden {
+    top: -100px;
+  }
   @include media("tablet") {
     justify-content: space-between;
   }
-  a{
+  a {
     @include media("tablet") {
       display: none;
     }
   }
+}
+
+.hiden {
+  top: -100px;
 }
 
 .side-nav {
@@ -33,22 +44,20 @@
   align-items: center;
   flex: 1;
 
-
-  mat-select{
+  mat-select {
     width: max-content;
   }
 
   @include media("tablet") {
     flex: 1;
   }
-
 }
-.icon-buttons{
+.icon-buttons {
   @include media("tablet") {
     display: none;
   }
 }
-.search>input {
+.search > input {
   width: 100%;
   border: none;
   outline: none;
@@ -87,9 +96,9 @@ h1 {
 }
 ::ng-deep .cdk-overlay-pane {
   @include media("phone") {
-
-  width: 100% !important;
-  height: 70% !important;
-  left: 0 !important;
-  padding: 5px;}
+    width: 100% !important;
+    height: 70% !important;
+    left: 0 !important;
+    padding: 5px;
+  }
 }
