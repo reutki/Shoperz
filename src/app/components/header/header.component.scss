@@ -2,6 +2,7 @@
 
 .header {
   width: 100%;
+  padding:  0 10%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -24,24 +25,23 @@
 }
 
 .search {
-  width: 40%;
   border: 1px solid #319dff;
   border-radius: 20px;
   overflow: hidden;
   display: flex;
   padding: 0 0 0 10px;
   align-items: center;
+  flex: 1;
+
+
+  mat-select{
+    width: max-content;
+  }
 
   @include media("tablet") {
     flex: 1;
   }
-  #autocomplete {
-    display: none !important;
-  }
 
-  ::ng-deep mat-autocomplete {
-    display: none;
-  }
 }
 .icon-buttons{
   @include media("tablet") {
@@ -49,7 +49,7 @@
   }
 }
 .search>input {
-  flex: 1;
+  width: 100%;
   border: none;
   outline: none;
   padding: 10px;
@@ -57,9 +57,12 @@
 }
 
 .search .select {
-  max-width: 30%;
+  width: 30%;
   padding: 0 10px;
   position: relative;
+  @include media("phone") {
+    display: none;
+  }
 }
 
 .select::before {
@@ -81,4 +84,12 @@
 
 h1 {
   @include h1-bold;
+}
+::ng-deep .cdk-overlay-pane {
+  @include media("phone") {
+
+  width: 100% !important;
+  height: 70% !important;
+  left: 0 !important;
+  padding: 5px;}
 }

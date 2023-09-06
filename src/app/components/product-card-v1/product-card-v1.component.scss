@@ -2,17 +2,14 @@
 .container {
   @include same-height-card(100%, 1.5/2);
   cursor: pointer;
+  display: flex;
   justify-content: center;
   background-color: white;
   padding: 20px;
   overflow: hidden;
   position: relative;
-  flex-grow: 1 !important;
-  width: calc(100% - 1px);
-  // height: 200px;
   @include media("phone") {
     flex-grow: 1 !important;
-    @include same-height-card(100%, 0.95);
   }
 }
 mat-card:hover .button-container {
@@ -47,13 +44,10 @@ mat-card-content {
   @include same-height-images(100%, 1);
   padding: 0;
   width: 100%;
-  @include media("phone") {
-    height: 70%;
-  }
+
   img,
   .cover-image-skeleton {
-    @include same-height-images(100%, 1);
-    // width: 100%;
+    @include same-height-images(fit-content, 1);
     height: 210px;
     aspect-ratio: 3/2;
     object-fit: contain;
@@ -63,7 +57,6 @@ mat-card-content {
     position: relative;
     @include media("phone") {
       width: -webkit-fill-available;
-      height: inherit;
     }
   }
 
