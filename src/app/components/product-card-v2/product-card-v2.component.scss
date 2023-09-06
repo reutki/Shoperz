@@ -1,6 +1,7 @@
 @import "src/imports";
 
 mat-card {
+  cursor: pointer;
   padding: 20px 20px 30px;
   display: flex;
   flex-direction: row;
@@ -37,6 +38,7 @@ mat-card {
 }
 
 .button-container {
+  z-index: 10;
   transform: translateY(180%);
   transition: transform 0.3s ease;
   position: absolute;

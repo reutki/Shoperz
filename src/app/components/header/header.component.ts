@@ -1,9 +1,10 @@
 import { AppwrapperComponent } from './../appwrapper/appwrapper.component';
 import { AuthService } from 'src/app/Services/auth.service';
 import { SearchService } from './../../Services/search.service';
-import { Component, Input, OnInit  } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Subscription, debounceTime } from 'rxjs';
 import { CartService } from 'src/app/Services/cart.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -11,17 +12,20 @@ import { CartService } from 'src/app/Services/cart.service';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
-  @Input() toggle: (() => void) = function x(){return}
+  @Input() toggle: () => void = function x() {
+    return;
+  };
 
   query: string = '';
   categorySelected: string = '';
   categories: string[] = [];
   results: any[] = [];
   constructor(
-    public AppwrapperComponent:AppwrapperComponent,
+    public AppwrapperComponent: AppwrapperComponent,
     public cartService: CartService,
     private searchService: SearchService,
-    public authService: AuthService
+    public authService: AuthService,
+    private router: Router
   ) {}
   ngOnInit() {
     this.searchService.categories$.subscribe((categories) => {
@@ -31,8 +35,19 @@ export class HeaderComponent implements OnInit {
     this.results = JSON.parse(localStorage.getItem('prevSearchRes') || '[]');
   }
 
-  childToggle(){
-    this.toggle()
+  redirectTo(id: number) {
+    this.router
+      .navigateByUrl('/', { skipLocationChange: true })
+      .then(() =>
+        this.router.navigate([
+          '/',
+          { outlets: { categories: ['product', id] } },
+        ])
+      );
+  }
+
+  childToggle() {
+    this.toggle();
   }
 
   searchItem() {

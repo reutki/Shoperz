@@ -1,11 +1,9 @@
 @import "/src/imports";
 
 .root {
-  flex-direction: column;
   color: $gray-700;
   width: 272px;
   padding: 20px;
-  border-radius: 5%;
   @include text1-regular;
 
   h2 {

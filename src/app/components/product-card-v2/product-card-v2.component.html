@@ -1,4 +1,4 @@
-<mat-card>
+<mat-card (click)="redirectTo(Product.id)">
   <div class="image-container">
     <img src="{{ Product.images[0] }}" alt="" />
   </div>
@@ -12,7 +12,7 @@
       }}
     </h4>
     <h5>${{ Product.price }}</h5>
-    <div class="button-container" (click)="addToCart()">
+    <div class="button-container" (click)="addToCart($event)">
       <button
         matTooltipPosition="left"
         mat-icon-button

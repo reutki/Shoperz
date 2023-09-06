@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { Router } from '@angular/router';
 import { CartService } from 'src/app/Services/cart.service';
 import { Product } from 'src/types/item.interface';
 
@@ -23,8 +24,21 @@ export class ProductCardV2Component {
     quantity: 0,
   };
 
-  constructor(private cartService: CartService) {}
-  addToCart() {
+  constructor(private cartService: CartService, private router: Router) {}
+  redirectTo(id: number) {
+    this.router
+      .navigateByUrl('/', { skipLocationChange: true })
+      .then(() =>
+        this.router.navigate([
+          '/',
+          { outlets: { categories: ['product', id] } },
+        ])
+      );
+    window.scrollTo(0, 0);
+  }
+
+  addToCart(event: Event) {
+    event.stopPropagation();
     const quantity = this.Product.quantity ?? 1;
     const item = {
       id: this.Product.id,

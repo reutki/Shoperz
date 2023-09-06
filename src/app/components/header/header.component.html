@@ -1,8 +1,7 @@
 <mat-toolbar class="header">
-
-      <button type="button" class="side-nav" mat-button (click)="toggle()">
-        <mat-icon>menu</mat-icon>
-      </button>
+  <button type="button" class="side-nav" mat-button (click)="toggle()">
+    <mat-icon>menu</mat-icon>
+  </button>
   <!-- <a [routerLink]="['']" -->
   <a [routerLink]="[{ outlets: { categories: ['landing'] } }]"
     ><img src="../../../assets/logo.svg" alt="company logo"
@@ -18,6 +17,7 @@
     <mat-autocomplete #auto="matAutocomplete" id="autocomplete">
       <mat-option>
         <app-bundle-card
+          (click)="redirectTo(item.id)"
           *ngFor="let item of results"
           [Title]="item.title"
           [Category]="item.category"
